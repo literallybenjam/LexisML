@@ -31,7 +31,7 @@ The LexisML specification carries two version numbers: a major version number (f
 Major versions may add or remove features and contain other significant revisions which would not be supported by previous versions of the specification.
 Minor versions may also add additional features, but must support everything described by the associated major version.
 
-In addition, addendums to this specification may be published to this specification; these can be found [here][addendums].
+In addition, addendums to this specification may be published to this specification; these can be found [here](addendums).
 Addendums will be used to clarify content or correct errors in the specification, and may contain other smaller additions.
 These addendums will be integrated into the main specification upon publication of the next major version.
 
