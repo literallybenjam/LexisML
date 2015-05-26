@@ -70,7 +70,7 @@ This specification is written using GitHub-flavored markdown. Definitions, requi
 
 **⚠ This is a warning**
 
-Links are marked up like [this][EXAMPLE]. The defining instance of a term is marked up like <dfn id="this">this</dfn>, and later references to that term are marked up like [<i>this</i>](#this).
+Links are marked up like [this][EXAMPLE]. The defining instance of a term is marked up like <b id="this">this</b>, and later references to that term are marked up like [<i>this</i>](#this).
 
 Code fragments and attribute names are marked up like `this`. Element names are enclosed in less-than and greater-than signs, like `<this>`.
 
