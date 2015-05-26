@@ -10,7 +10,7 @@ This document defines the second version of LexisML, a markup language for recor
 This is the first version to have a complete standard.
 
 LexisML 2.0 was developed by [Benjamin Russel Shoemake][BENJAM] for use with [the langdev project][LANGDEV].
-The specification was written in [GitHub-Flavored Markdown][GFM] and published to GitHub at <https://github.com/literallybenjam/LexisML/2>.
+The specification was written in [GitHub-Flavored Markdown][GFM] and published to GitHub at <https://github.com/literallybenjam/LexisML/2.0/standard>.
 A version history can be found there.
 If you wish to get involved in the LexisML project, reach out to the langdev team [on twitter][LANGDEVTWEETS] or [through GitHub][LANGDEV].
 
