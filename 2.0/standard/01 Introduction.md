@@ -60,15 +60,15 @@ LexisML aims to be flexible enough to accomodate this diverse set of needs, whil
 
 This specification is written using GitHub-flavored markdown. Definitions, requirements, and explanations are marked up like this.
 
-_  This is an aside  _
+*This is an aside*
 
 ```
     This is a code block
 ```
 
-**  ☠ This is an issue  **
+**☠ This is an issue**
 
-**  ⚠ This is a warning  **
+**⚠ This is a warning**
 
 Links are marked up like [this][EXAMPLE]. The defining instance of a term is marked up like <dfn id="this">this</dfn>, and later references to that term are marked up like [<i>this</i>](#this).
 
