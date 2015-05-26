@@ -70,6 +70,8 @@ This specification is written using GitHub-flavored markdown. Definitions, requi
 
 **⚠ This is a warning**
 
+> This is a requirement
+
 Links are marked up like [this][EXAMPLE]. The defining instance of a term is marked up like **_this_**, and later references to that term are marked up like [**this**](#typographic-conventions).
 *This is emphasized*, and __this is important__.
 
