@@ -66,11 +66,11 @@ This specification is written using GitHub-flavored markdown. Definitions, requi
     This is a code block
 ```
 
-**☠ This is an issue**
+*✏ This is an issue*
 
 **⚠ This is a warning**
 
-> This is a requirement
+> __This is a requirement__
 
 Links are marked up like [this][EXAMPLE]. The defining instance of a term is marked up like **_this_**, and later references to that term are marked up like [**this**](#typographic-conventions).
 *This is emphasized*, and __this is important__.
