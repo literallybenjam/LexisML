@@ -29,7 +29,7 @@ __The LexisML Version 2.0 Specification is still very much under development and
 05. [Processing](05%20Processing.md)
 06. [The LexisML Syntax](06%20The%20LexisML%20Syntax.md)
 07. [The LexisMD Syntax](07%20The%20LexisMD%20Syntax.md)
-08. [Errata](07%20The%20LexisMD%20Syntax.md)
+08. [Errata](08%20Errata.md)
 
 
 [BENJAM]: http://benjam.xyz/
