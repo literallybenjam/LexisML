@@ -38,9 +38,9 @@ These addendums will be integrated into the main specification upon publication 
 Finally, small errors in this specification may be corrected without increasing the version number or publishing an addendum.
 These corrections will be noted, with date, in [08 Errata](08%20Errata.md).
 
-The current status of this specification is **Working Draft**, which means that it is unstable and highly subject to revision.
-Once features are finalized, it will progress to **Release Canidate** status, at which point it will be reviewed for errors and completeness.
-Finally, it will be approved as a **Final Release**, at which point it will be beyond revision except through the mechanisms of addendum and errata described previously.
+The current status of this specification is **_Working Draft_**, which means that it is unstable and highly subject to revision.
+Once features are finalized, it will progress to **_Release Canidate_** status, at which point it will be reviewed for errors and completeness.
+Finally, it will be approved as a **_Final Release_**, at which point it will be beyond revision except through the mechanisms of addendum and errata described previously.
 At this point, later versions of the specification may be developed and published; these will supercede this and all previous versions.
 
 ###  design goals:  ###
@@ -70,11 +70,17 @@ This specification is written using GitHub-flavored markdown. Definitions, requi
 
 **⚠ This is a warning**
 
-Links are marked up like [this][EXAMPLE]. The defining instance of a term is marked up like **this**, and later references to that term are marked up like [_this_](#typographic-conventions).
+Links are marked up like [this][EXAMPLE]. The defining instance of a term is marked up like **_this_**, and later references to that term are marked up like [**this**](#typographic-conventions).
 *This is emphasized*, and __this is important__.
 
 Code fragments and attribute names are marked up like `this`.
 Element names are enclosed in less-than and greater-than signs, like `<this>`.
+
+###  the LexisML and LexisMD syntaxes  ##
+
+The LexisML Specification defines an abstract methodology for marking up lexical content, and then two syntaxes which implement this methodology.
+The first of these, **_The LexisML Syntax_**, is an implementation of XML, while the second, **_The LexisMD Syntax_**, is an expansion of Markdown syntax.
+Most of the features described in this specification can be applied to both syntaxes; however, each has its strengths and weaknesses.
 
 [BENJAM]: http://benjam.xyz/
 [EXAMPLE]: http://example.com/
