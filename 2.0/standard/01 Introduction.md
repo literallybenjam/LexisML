@@ -74,7 +74,7 @@ Definitions, requirements, and explanations are marked up like this.
 
 **⚠ This is a warning**
 
-> __This is normative__
+> __This is a [**normative**][TERMS] statement__
 
 Links are marked up like [this][EXAMPLE].
 Links to sections of this specification are marked up like [§ this](#this), while links to chapters in this specification are marked up like this: [01 Introduction](01%20Introduction.md).
