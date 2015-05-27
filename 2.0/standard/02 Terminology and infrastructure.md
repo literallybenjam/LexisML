@@ -8,7 +8,7 @@ Working Draft
 
 ##  02 Terminology and infrastructure  ##
 
-This section much of the common terminology used by this specification, requirements for conformance, and other information which will be referenced often later in the specification.
+This section defines much of the common terminology used by this specification, requirements for conformance, and other information which will be referenced often later on.
 
 ###  terminology:  ###
 
@@ -16,7 +16,7 @@ This section much of the common terminology used by this specification, requirem
 
 This specification inherits much of its terminology from the specifications on which it is founded, but some words contain special meanings when they are used here.
 
-A **_name_** identifies the referrent as belonging to a particular class of similar entities.
+A **_name_** identifies its referrent as belonging to a particular class of similar entities.
 
 An **_element_** is a container for information.
 This information is referred to as its **_contents_**.
@@ -30,24 +30,24 @@ The information provided by an [**attribute**][TERMS] is referred to as its **va
 The type of information provided is determined by the [**name**][TERMS] of the [**attribute**][TERMS] and that of the [**element**][TERMS] to which it belongs.
 
 [**Elements**][TERMS] which have no [**contents**][TERMS], [**attributes**][TERMS] with no [**value**][TERMS], and [**strings**][DEPENDENCY] of zero [**code units**][DEPENDENCY] are considered **_empty_**.
-Any [**string**][DEPENDENCY] which is [**empty**][TERMS] is referred to as **_the empty string_**
+Any [**string**][DEPENDENCY] which is [**empty**][TERMS] may be referred to as **_the empty string_**
 For the purposes of this specification, [**attributes**][TERMS] with no [**value**][TERMS] and [**attributes**][TERMS] with a [**value**][TERMS] of [**the empty string**][TERMS] are considered equivalent.
 
-[**Attributes**][TERMS] whose [**values**][TERMS] are defined are **_present_**; [**attributes**][TERMS] which may [**belong to**][TERMS] an [**element**][TERMS] but whose [**values**][TERMS] are not defined are **_absent_**.
+[**Attributes**][TERMS] whose [**values**][TERMS] are defined are **_present_**; [**attributes**][TERMS] which [**belong to**][TERMS] an [**element**][TERMS] but whose [**values**][TERMS] are not defined are **_absent_**.
 An [**attribute**][TERMS] which is defined as [**empty**][TERMS] is still considered [**present**][TERMS].
 
 This specification uses the term **_document_** to refer to any use of LexisML markup which conforms to the normative requirements for documents set forth in this text.
 Other applications of LexisML markup are referred to as **_LexisML fragments_**.
 These may be either [**conforming**][CONFORMANCE] or [**non-conforming**][CONFORMANCE].
-[**Documents**][TERMS] may be considered [**conforming**][CONFORMANCE][**LexisML fragments**][TERMS].
+[**Documents**][TERMS] may be considered [**conforming**][CONFORMANCE] [**LexisML fragments**][TERMS].
 
 The terms above are defined abstractly, outside of any external specification or syntax.
 When referring to documents, elements, or attributes as defined in XML, this specification will use the words **_XML document_**, **_XML element_** and **_XML attribute_**.
 Unless otherwise stated, all [**XML elements**][TERMS] defined in this specification are in the [**LexisML namespace**][NAMESPACES], and all [**XML attributes**][TERMS] have no namespace.
 
-This specification uses the term **_file_** to refer to both information stored within filesystems and bitstreams.
+This specification uses the term **_file_** to refer to information stored within both filesystems and bitstreams.
 [**Files**][TERMS] may be classified according to their **_MIME types_**, as defined in [RFC 2046][MIME].
-The [**characters**][DEPENDENCY] used [**files**][TERMS] as a means of recording [**LexisML fragments**][TERMS] **_represent_** the associated LexisML markup.
+The [**characters**][DEPENDENCY] used in [**files**][TERMS] as a means of recording [**LexisML fragments**][TERMS] **_represent_** the associated LexisML markup.
 This specification defines two means of [**representing**][TERMS] LexisML: [**The LexisML Syntax**][LEXISML] and [**The LexisMD Syntax**][LEXISMD].
 
 A **_root element_** is an [**element**][TERMS] which is not contained by a [**parent element**][TERMS].
@@ -65,13 +65,7 @@ A statement is considered **_normative_** if it comprises part of the specificat
 
 > __This is a [**normative**][TERMS] statement.__
 
-In addition, the following sections are [**normative**][TERMS] in their entirety:
-
-- [01 Introduction § typographic conventions][TYPOGRAPHY]
-- [02 Terminology and infrastructure § terminology][TERMS]
-- [02 Terminology and infrastructure § conformance][CONFORMANCE]
-- [02 Terminology and infrastructure § dependencies][DEPENDENCY]
-- [02 Terminology and infrastructure § microsyntaxes and idioms][IDIOMS]
+In addition, entire sections may be marked as [**normative**][TERMS]; this will be done via a normative statement at their beginning.
 
 Statements which are formatted as notes according to [01 Introduction § typographic conventions][TYPOGRAPHY] are never normative.
 
@@ -84,7 +78,7 @@ An implementation which meets these requirements is considered **_conforming_**;
 A [**LexisML fragment**][TERMS] is [**conforming**][CONFORMANCE] only if it meets all normative requirements for [**LexisML fragments**][TERMS].
 A [**LexisML fragment**][TERMS] with [**elements**][TERMS], [**attributes**][TERMS], or [**values**][TERMS] which do not match the normative requirements specifed in this document is [**non-conforming**][CONFORMANCE].
 
-A [**conforming**][CONFORMANCE][**LexisML fragment**][TERMS] may be considered a [**document**][TERMS] only if it meets all normative requirements for documents.
+A [**conforming**][CONFORMANCE] [**LexisML fragment**][TERMS] may be considered a [**document**][TERMS] only if it meets all normative requirements for documents.
 All [**documents**][TERMS] must be [**conforming**][CONFORMANCE].
 
 An algorithm is [**conforming**][CONFORMANCE] if it produces an equivalent result as the algorithms provided by this specification for all [**conforming**][CONFORMANCE] inputs.
@@ -118,16 +112,21 @@ This section defines several idioms and microsyntaxes which will be employed by 
 
 [**Characters**][DEPENDENCY] with [**code points**][DEPENDENCY] in the following ranges or lists of values have special names by which they may be referred in this specification:
 
-- `U+0009 ␉⃞ [HORIZONTAL TAB]`, `U+000A ␊⃞ [LINE FEED]`, `U+000D ␍⃞ [CARRIAGE RETURN]`, `U+0020 ␠⃞ SPACE` : **_space character_**
+- `U+0009 ␉ [HORIZONTAL TAB]`, `U+000A ␊ [LINE FEED]`, `U+000D ␍ [CARRIAGE RETURN]`, `U+0020 ␠ SPACE` : **_space character_**
+
 - `U+0021..U+007E`: **_ASCII character_**
+
 - `U+0030..U+0039`: **_ASCII digit_**
+
 - `U+002B + PLUS SIGN`, `U+002D - HYPHEN-MINUS`, `U+2212 − MINUS SIGN`: **_signum_**
+
 - `U+0041..U+005A`, `U+005F _ LOW LINE`, `U+0061..U+007A`, `U+00C0..U+00D6`, `U+00D8..U+00F6`, `U+00F8..U+02FF`, `U+0370..U+037D`, `U+037F..U+1FFF`, `U+200C..U+200D`, `U+2070..U+218F`, `U+2C00..U+2FEF`, `U+3001..U+D7FF`, `U+F900..U+FDCF`, `U+FDF0..U+FFFD`, `U+10000..U+EFFFF`: **_word initial_**
+
 - `U+002D - HYPHEN-MINUS`, `U+002E . FULL STOP`, `U+0030..U+0039`, `U+0041..U+005A`, `U+005F _ LOW LINE`, `U+0061..U+007A`, `U+00B7 · MIDDLE DOT`, `U+00C0..U+00D6`, `U+00D8..U+00F6`, `U+00F8..U+02FF`, `U+0300..U+037D`, `U+037F..U+1FFF`, `U+200C..U+200D`, `U+203F..U+2040`, `U+2070..U+218F`, `U+2C00..U+2FEF`, `U+3001..U+D7FF`, `U+F900..U+FDCF`, `U+FDF0..U+FFFD`, `U+10000..U+EFFFF`: **_word character_**
 
-*Note that [**word initials**][STRINGS] and [**word characters**][STRINGS] match those characters allowed for _NameStartChar_ and _NameChar_, respectively, in [XML][XML], minus the colon (for compatibility with [XML Namespaces][XMLNS])*
+*((  Note that [**word initials**][STRINGS] and [**word characters**][STRINGS] match those characters allowed for _NameStartChar_ and _NameChar_, respectively, in [XML][XML], minus the colon (for compatibility with [XML Namespaces][XMLNS])  ))*
 
-An algorithm or syntax is said to **_collapse whitespace_** if every sequence of [**space characters**][STRINGS] is treated as though it were a single `U+0020 ␠⃞ SPACE`.
+An algorithm or syntax is said to **_collapse whitespace_** if every sequence of [**space characters**][STRINGS] is treated as though it were a single `U+0020 ␠ SPACE`.
 
 [**Strings**][DEPENDENCY] are sometimes used to signify other forms of content; the content signified by a [**string**][DEPENDENCY] is its **_interpretation_**.
 When a [**string**][DEPENDENCY] is treated as though it were its [**interpretation**][STRINGS], it is said to be **_intepreted as_** its [**interpretation**][STRINGS].
@@ -142,9 +141,9 @@ Other [**interpretations**][STRINGS] of [**strings**][DEPENDENCY] require that t
 
 - A [**string**][DEPENDENCY] may be [**interpreted as**][STRINGS] an **_unsigned integer_** if it contains only [**code points**][DEPENDENCY] which are [**ASCII digits**][STRINGS]. The [**interpretation**][STRINGS] of an [**unsigned integer**][STRINGS] is the number in base ten which is signified by the [**string**][DEPENDENCY].
 
-- A [**string**][DEPENDENCY] may be [**interpreted as**][STRINGS] a **_signed integer_** if its first [**code point**][DEPENDENCY] is a [**signum**][STRINGS] or an [**ASCII digit**][STRINGS], and the remaining [**code points**][DEPENDENCY] which are all [**ASCII digits**][STRINGS]. The [**interpretation**][STRINGS] of a [**signed integer**][STRINGS] which begins with `U+002B + PLUS SIGN` or an [**ASCII digit**][STRINGS] is the number in base ten which is signified by the [**ASCII digits**][DEPENDENCY] in the [**string**][DEPENDENCY]; the [**interpretation**][STRINGS] of a [**signed integer**][STRINGS] which begins with `U+002D - HYPHEN-MINUS` or `U+2212 − MINUS SIGN` is the number in base ten which is signified by the [**ASCII digits**][DEPENDENCY] in the [**string**][DEPENDENCY], subtracted from the number zero.
+- A [**string**][DEPENDENCY] may be [**interpreted as**][STRINGS] a **_signed integer_** if its first [**code point**][DEPENDENCY] is a [**signum**][STRINGS] or an [**ASCII digit**][STRINGS], and the remaining [**code points**][DEPENDENCY] are all [**ASCII digits**][STRINGS]. The [**interpretation**][STRINGS] of a [**signed integer**][STRINGS] which begins with `U+002B + PLUS SIGN` or an [**ASCII digit**][STRINGS] is the number in base ten which is signified by the [**ASCII digits**][DEPENDENCY] in the [**string**][DEPENDENCY]; the [**interpretation**][STRINGS] of a [**signed integer**][STRINGS] which begins with `U+002D - HYPHEN-MINUS` or `U+2212 − MINUS SIGN` is the number in base ten which is signified by the [**ASCII digits**][DEPENDENCY] in the [**string**][DEPENDENCY], subtracted from the number zero.
 
-[**Strings**][DEPENDENCY] which are required to be [**interpreted as**][STRINGS] one of the above and follow the associated microsyntax are considered **_valid_**.
+[**Strings**][DEPENDENCY] which are required to be [**interpreted as**][STRINGS] one of the above and follow the associated microsyntax are considered **_valid_**. Non-[**valid**][STRINGS] [**strings**][DEPENDENCY] are [**non-conforming**][CONFORMANCE].
 
 ####  attributes  ####
 
@@ -155,13 +154,13 @@ These are referred to by this specification as **_boolean attributes_**.
 [**Attributes**][TERMS] which are not [**boolean attributes**][ATTRIBUTES] have an **_initial value_**, which is a [**value**][TERMS] associated with them when they are [**absent**][TERMS].
 [**Attributes**][TERMS] whose [**initial values**][ATTRIBUTES] are not otherwise defined by this specification have the [**initial value**][TERMS] of [**the empty string**][TERMS]; this may be referred to as **_having no initial value_**.
 
-Some [**attributes**][TERMS] defined by this specification as only being able to have one of a finite set of [**values**][TERMS]; these are referred to as **_enumerated attributes_**.
+Some [**attributes**][TERMS] are defined by this specification as only being able to have one of a finite set of [**values**][TERMS]; these are referred to as **_enumerated attributes_**.
 The [**values**][TERMS] for which an [**enumerated attribute**][ATTRIBUTES] is [**conforming**][CONFORMANCE] are its **_possible values_**.
-Any [**enumerated attribute**][ATTRIBUTES] with a [**value**][TERMS] other than its [**possible values**][ATTRIBUTES] is [**non-conforming**][CONFORMANCE].
+Any [**enumerated attribute**][ATTRIBUTES] with a [**value**][TERMS] other than one of its [**possible values**][ATTRIBUTES] is [**non-conforming**][CONFORMANCE].
 
-This specification may define **_default values_** for [**enumerated attributes**][ATTRIBUTES], which [**the empty string**][TERMS] should be [**interpreted as**][STRINGS].
-[**Default values**][ATTRIBUTES] should also be used where [**non-conforming**][CONFORMANCE] [**values**][TERMS] are given.
-If a [**default value**][ATTRIBUTES] is not given and the [**initial value**][TERMS] for an [**enumerated attribute**][ATTRIBUTES] is not one of the [**possible values**][ATTRIBUTES], the [**enumerated attribute**][ATTRIBUTES] must be [**present**][TERMS].
+This specification may define **_default values_** for [**enumerated attributes**][ATTRIBUTES]. A [**value**][TERMS] which is [**the empty string**][TERMS] of an [**enumerated attribute**][ATTRIBUTES] must be [**interpreted as**][STRINGS] the [**default value**][ATTRIBUTES].
+[**Non-conforming**][CONFORMANCE] [**values**][TERMS] should also be [**interpreted as**][STRINGS] [**default values**][ATTRIBUTES] when given.
+If a [**default value**][ATTRIBUTES] is not given and the [**initial value**][TERMS] for an [**enumerated attribute**][ATTRIBUTES] is not one of its [**possible values**][ATTRIBUTES], the [**enumerated attribute**][ATTRIBUTES] must be [**present**][TERMS].
 
 ###  namespaces  ###
 
