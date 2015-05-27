@@ -21,7 +21,7 @@ A **_name_** identifies its referrent as belonging to a particular class of simi
 An **_element_** is a container for information.
 This information is referred to as its **_contents_**.
 The type of information contained within an [**element**][TERMS] is determined by its [**name**][TERMS], and more information about its [**contents**][TERMS] can be provided with [**attributes**][TERMS].
-Sometimes, the information contained within an [**element**][TERMS] includes other [**elements**][TERMS]; in this case, the [**element**][TERMS] which contains the others is referred to as the **_parent element_**, while the contained [**elements**][TERMS] are referred to as **_child elements_**.
+Sometimes, the information contained within an [**element**][TERMS] includes other [**elements**][TERMS]; in this case, the [**element**][TERMS] which contains the others is referred to as the **_parent element_**, while the contained [**elements**][TERMS] are referred to as **_child elements_** and are **_siblings_** to each other.
 When [**child elements**][TERMS] contain [**elements**][TERMS] themselves, these are referred to as **_descendants_** of the [**parent element**][TERMS], and the [**parent element**][TERMS] is referred to as an **_ancestor_**.
 
 **_Attributes_** provide additional information about an [**element**][TERMS] or its [**contents**][TERMS].
