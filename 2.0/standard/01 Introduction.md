@@ -58,9 +58,13 @@ LexisML aims to be flexible enough to accomodate this diverse set of needs, whil
 
 ###  typographic conventions:  ###
 
-This specification is written using GitHub-flavored markdown. Definitions, requirements, and explanations are marked up like this.
+> __This section is [**normative**][TERMS].__
 
-*This is an aside*
+This specification is written using GitHub Flavored Markdown, and inherits typographic conventions from the [Markdown][MARKDOWN] and [GitHub Flavored Markdown][GFM] specifications.
+
+Definitions, requirements, and explanations are marked up like this.
+
+*This is a note*
 
 ```
     This is a code block
@@ -70,20 +74,33 @@ This specification is written using GitHub-flavored markdown. Definitions, requi
 
 **⚠ This is a warning**
 
-> __This is a requirement__
+> __This is normative__
 
-Links are marked up like [this][EXAMPLE]. The defining instance of a term is marked up like **_this_**, and later references to that term are marked up like [**this**](#typographic-conventions).
+Links are marked up like [this][EXAMPLE].
+Links to sections of this specification are marked up like [§ this](#this), while links to chapters in this specification are marked up like this: [01 Introduction](01%20Introduction.md).
+These may be combined like this: [01 Introduction § typographic conventions][TYPOGRAPHY]; note that sections may be nested.
+
+The defining instance of a term is marked up like **_this_**, and later references to that term are marked up like [**this**][TYPOGRAPHY].
 *This is emphasized*, and __this is important__.
 
-Code fragments and attribute names are marked up like `this`.
-Element names are enclosed in less-than and greater-than signs, like `<this>`.
+Code fragments and [**attribute**][TERMS][**names**][TERMS] are marked up like `this`.
+[**Values**][TERMS] are enclosed in double-quotes, like `"this"`.
+[**Element**][TERMS][**names**][TERMS] are enclosed in less-than and greater-than signs, like `<this>`.
+These may be combined according to the syntax for start-tags as defined in [XML][XML]; for example, `<element attribute anotherAttribute="value">` describes an [**element**][TERMS] `<element>` with [**attribute**][TERMS] `attribute` and another [**attribute**][TERMS] `anotherAttribute` with [**value**][TERMS] `"value"`.
+Although XML syntax is used to describe [**elements**][TERMS], [**attributes**][TERMS], and [**values**][TERMS], [**The LexisML Syntax**][LEXISML] is not necessarily implied.
 
-###  the LexisML and LexisMD syntaxes  ##
+###  the LexisML and LexisMD syntaxes  ###
 
 The LexisML Specification defines an abstract methodology for marking up lexical content, and then two syntaxes which implement this methodology.
 The first of these, **_The LexisML Syntax_**, is an implementation of XML, while the second, **_The LexisMD Syntax_**, is an expansion of Markdown syntax.
 Most of the features described in this specification can be applied to both syntaxes; however, each has its strengths and weaknesses.
 
-[BENJAM]: http://benjam.xyz/
-[EXAMPLE]: http://example.com/
-[LANGDEV]: https://github.com/literallybenjam/langdev
+[BENJAM]: http://benjam.xyz/ "benjam.xyz"
+[EXAMPLE]: http://example.com/ "Example Domain"
+[GFM]: https://help.github.com/articles/github-flavored-markdown/ "GitHub Flavored Markdown"
+[LANGDEV]: https://github.com/literallybenjam/langdev "The Langdev Project"
+[MARKDOWN]: http://daringfireball.net/projects/markdown/ "Markdown"
+[TERMS]: 02%20Terminology%20and%20infrastructure.md#terminology "02 Terminology and infrastructure § terminology"
+[TYPOGRAPHY]: 01%20Introduction.md#typographic-conventions "01 Introduction § typographic conventions"
+[LEXISML]: 06%20The%20LexisML%20Syntax.md "06 The LexisML Syntax"
+[XML]: http://www.w3.org/TR/REC-xml/ "Extensible Markup Language (XML) 1.0 (Fifth Edition)"

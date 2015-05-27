@@ -23,7 +23,7 @@ __The LexisML Version 2.0 Specification is still very much under development and
 ##  Table of Contents  ##
 
 01. [Introduction](01%20Introduction.md)
-02. [Overview](02%20Overview.md)
+02. [Terminology and infrastructure](02%20Terminology%20and%20infrastructure.md)
 03. [Semantics](03%20Semantics.md)
 04. [Elements](04%20Elements.md)
 05. [Processing](05%20Processing.md)
