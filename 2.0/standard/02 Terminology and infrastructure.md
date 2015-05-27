@@ -164,6 +164,8 @@ If a [**default value**][ATTRIBUTES] is not given and the [**initial value**][TE
 
 ###  namespaces  ###
 
+> __This section is [**normative**][TERMS].__
+
 This document reserves the [**URL**][DEPENDENCY] `about:lexisml` as **_the LexisML namespace_**.
 It is recommended that web browsers and other LexisML processors display a page with information about supported features upon accessing this [**URL**][DEPENDENCY].
 

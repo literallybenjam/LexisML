@@ -24,6 +24,8 @@ In addition, this specification does not cover hardware, nor specific applicatio
 
 ###  about this specification:  ###
 
+> __This section is [**normative**][TERMS].__
+
 This specification defines version 2.0 of LexisML, a lexicon markup language.
 It was put together by [Benjamin Russel Shoemake][BENJAM], and is available at <https://github.com/literallybenjam/LexisML/2.0/standard>.
 
