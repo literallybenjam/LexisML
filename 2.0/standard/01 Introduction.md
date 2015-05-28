@@ -91,7 +91,7 @@ Code fragments and [**attribute**][TERMS] [**names**][TERMS] are marked up like 
 These may be combined according to the syntax for start-tags as defined in [XML][XML]; for example, `<element attribute anotherAttribute="value">` describes an [**element**][TERMS] `<element>` with [**attribute**][TERMS] `attribute` and another [**attribute**][TERMS] `anotherAttribute` with [**value**][TERMS] `"value"`.
 Although XML syntax is used to describe [**elements**][TERMS], [**attributes**][TERMS], and [**values**][TERMS], [**The LexisML Syntax**][LEXISML] is not necessarily implied.
 
-###  the LexisML and LexisMD syntaxes  ###
+###  the LexisML and LexisMD syntaxes:  ###
 
 The LexisML Specification defines an abstract methodology for marking up lexical content, and then two syntaxes which implement this methodology.
 The first of these, [**The LexisML Syntax**][LEXISML], is an implementation of XML, while the second, [**The LexisMD Syntax**][LEXISMD], is an expansion of Markdown syntax.

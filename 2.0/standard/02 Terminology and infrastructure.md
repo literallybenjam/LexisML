@@ -162,7 +162,7 @@ This specification may define **_default values_** for [**enumerated attributes*
 [**Non-conforming**][CONFORMANCE] [**values**][TERMS] should also be [**interpreted as**][STRINGS] [**default values**][ATTRIBUTES] when given.
 If a [**default value**][ATTRIBUTES] is not given and the [**initial value**][TERMS] for an [**enumerated attribute**][ATTRIBUTES] is not one of its [**possible values**][ATTRIBUTES], the [**enumerated attribute**][ATTRIBUTES] must be [**present**][TERMS].
 
-###  namespaces  ###
+###  namespaces:  ###
 
 > __This section is [**normative**][TERMS].__
 
