@@ -8,17 +8,17 @@ Working Draft
 
 ##  03 Semantics  ##
 
+[**Elements**][TERMS], [**attributes**][TERMS], and [**values**][TERMS] are defined by this specification to have certain associated meanings.
+This section provides an overview of many of the semantic terms used in this specification.
+
+> __[**LexisML fragments**][TERMS] who use these features in ways other than for their appropriate semantic purposes are [**non-conforming**][TERMS].__
+
+[DEPENDENCY]: 02%20Terminology%20and%20infrastructure.md#dependency "02 Terminology and infrastructure § dependency"
+[MODELS]: 03%20Semantics.md#content-models "03 Semantics § content models"
+[TERMS]: 02%20Terminology%20and%20infrastructure.md#terminology "02 Terminology and infrastructure § terminology"
+
 ###  contents:  ###
 
-01. documents
-02. elements
-    01. general
-    02. content models
-        01. entries
-        02. entry data
-        03. text-level semantics
-        04. embedded content
-    03. attributes
 03. entries
     01. lemmas
     02. forms
