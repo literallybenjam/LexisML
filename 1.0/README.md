@@ -19,7 +19,11 @@ The parent of a `<meta>` element must be a `<lexis>` element.
 The only contents of a `<meta>` element should be text nodes.
 
 It supports one attribute, `name`, which determines the type of metadata.
-Only `name="splash"` is supported; this is used to add splash text.
+The following values are supported:
+
+- `"title"` : The title of the document
+- `"description"` : A description of the document
+- `"splash"` : Splash text
 
 ###  `<word>` and `<affix>`  ###
 
