@@ -20,8 +20,10 @@ A **_name_** identifies its referrent as belonging to a particular class of simi
 
 An **_element_** is a container for information.
 This information is referred to as its **_contents_**.
+The [**contents**][TERMS] of an element may be some number of other [**elements**][TERMS] or [**strings**][DEPENDENCY].
 The type of information contained within an [**element**][TERMS] is determined by its [**name**][TERMS], and more information about its [**contents**][TERMS] can be provided with [**attributes**][TERMS].
-Sometimes, the information contained within an [**element**][TERMS] includes other [**elements**][TERMS]; in this case, the [**element**][TERMS] which contains the others is referred to as the **_parent element_**, while the contained [**elements**][TERMS] are referred to as **_child elements_** and are **_siblings_** to each other.
+
+When the [**contents**][TERMS] of an [**element**][TERMS] include other [**elements**][TERMS], in this case, the [**element**][TERMS] which contains the others is referred to as the **_parent element_**, while the contained [**elements**][TERMS] are referred to as **_child elements_** and are **_siblings_** to each other.
 When [**child elements**][TERMS] contain [**elements**][TERMS] themselves, these are referred to as **_descendants_** of the [**parent element**][TERMS], and the [**parent element**][TERMS] is referred to as an **_ancestor_**.
 
 **_Attributes_** provide additional information about an [**element**][TERMS] or its [**contents**][TERMS].
@@ -126,12 +128,11 @@ This section defines several idioms and microsyntaxes which will be employed by 
 
 *((  Note that [**word initials**][STRINGS] and [**word characters**][STRINGS] match those characters allowed for _NameStartChar_ and _NameChar_, respectively, in [XML][XML], minus the colon (for compatibility with [XML Namespaces][XMLNS])  ))*
 
-An algorithm or syntax is said to **_collapse whitespace_** if every sequence of [**space characters**][STRINGS] is treated as though it were a single `U+0020 ␠ SPACE`.
-
 [**Strings**][DEPENDENCY] are sometimes used to signify other forms of content; the content signified by a [**string**][DEPENDENCY] is its **_interpretation_**.
 When a [**string**][DEPENDENCY] is treated as though it were its [**interpretation**][STRINGS], it is said to be **_intepreted as_** its [**interpretation**][STRINGS].
 Except where required by this specification, the [**interpretation**][STRINGS] of a non-[**empty**][TERMS] [**string**][DEPENDENCY] is the [**string**][DEPENDENCY] itself.
 
+An algorithm or syntax is said to **_collapse whitespace_** if every sequence of [**space characters**][STRINGS] is [**interpreted as**][STRINGS] a single `U+0020 ␠ SPACE`.
 [**The empty string**][TERMS] must be [**interpreted as**][STRINGS] a lack of [**interpretation**][STRINGS].
 Other [**interpretations**][STRINGS] of [**strings**][DEPENDENCY] require that the [**strings**][DEPENDENCY] follow particular microsyntaxes:
 
