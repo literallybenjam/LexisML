@@ -13,7 +13,7 @@ Working Draft
 ###  the `<lexis>` element:  ###
 
 The `<lexis>` element must be the [**fragment root**][TERMS] of a [**document**][TERMS].
-Its [**contents**][TERMS] must be [`<meta>`][#the-meta-element] or [`<entry>`][#the-entry-element] elements.
+Its [**contents**][TERMS] must be [`<meta>`](#the-meta-element) or [`<entry>`](#the-entry-element) elements.
 
 ###  the `<meta>` element:  ###
 
@@ -49,13 +49,13 @@ The `<form>` element provides a form for the entry.
 Its [**contents**][TERMS] must be a [**string**][DEPENDENCY].
 
 The `lemma` [**boolean attribute**][ATTRIBUTES] identifies the `<form>` as being primary.
-For each [`<entry>`][#the-entry-element], only one [`<form>`][#the-form-element] element may have the [`lemma`][#the-form-element] [**present**][TERMS].
+For each [`<entry>`](#the-entry-element), only one [`<form>`](#the-form-element) element may have the [`lemma`](#the-form-element) [**present**][TERMS].
 
 ###  the `<data>` element:  ###
 
 The `<data>` element provides information about an entry.
-Its [**contents**][TERMS] must be some combination of [**strings**][DEPENDENCY] and [`<span>`][#the-span-element], [`<mention>`][#the-mention-element], [`<wordref>`][#the-wordref-element], or [`<image>`][#the-image-element] elements.
-[**Elements**][TERMS] from other specifications, for example [HTML][HTML], may also be included as children of the [`<data`][#the-data-element] element.
+Its [**contents**][TERMS] must be some combination of [**strings**][DEPENDENCY] and [`<span>`](#the-span-element), [`<mention>`](#the-mention-element), [`<wordref>`](#the-wordref-element), or [`<image>`](#the-image-element) elements.
+[**Elements**][TERMS] from other specifications, for example [HTML][HTML], may also be included as children of the [`<data`](#the-data-element) element.
 
 The `type` [**enumerated attribute**][ATTRIBUTES] identifies the type of entry.
 The following [**values**][TERMS] are supported:
@@ -78,8 +78,8 @@ The [**value**][TERMS] of the `href` [**attribute**][TERMS], if [**present**][T
 
 ###  the `<reference>` element:  ###
 
-The `<reference>` element references an [`<entry>`][#the-entry-element] element.
-Its [**contents**][TERMS] must be a [**string**][DEPENDENCY], which must match the contents of a [`<form>`][#the-form-element] [**child element**][TERMS] of some [`<entry>`][#the-entry-element].
+The `<reference>` element references an [`<entry>`](#the-entry-element) element.
+Its [**contents**][TERMS] must be a [**string**][DEPENDENCY], which must match the contents of a [`<form>`](#the-form-element) [**child element**][TERMS] of some [`<entry>`](#the-entry-element).
 
 [ATTRIBUTES]: 02%20Terminology%20and%20infrastructure.md#attributes "02 Terminology and infrastructure § microsyntaxes and idioms § attributes"
 [DEPENDENCY]: 02%20Terminology%20and%20infrastructure.md#dependency "02 Terminology and infrastructure § dependency"
