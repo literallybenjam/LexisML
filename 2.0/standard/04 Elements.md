@@ -23,9 +23,9 @@ Its [**contents**][TERMS] must be a [**string**][DEPENDENCY].
 The `type` [**enumerated attribute**][ATTRIBUTES] identifies the type of metadata included in its [**contents**][TERMS].
 The following [**values**][TERMS] are supported:
 
-- `title`: Document title [only one of these]
-- `description`: Document description [only one of these]
-- `splash`: Splash text
+- `"title"`: Document title [only one of these]
+- `"description"`: Document description [only one of these]
+- `"splash"`: Splash text
 
 ###  the `<entry>` element:  ###
 
