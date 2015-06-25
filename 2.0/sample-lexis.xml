@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<l:lexis xmlns="http://www.w3.org/1999/xhtml" xmlns:l="about:lexisml?word" xml:lang="en">
+    <l:meta type="title">Sample Lexis</meta>
+    <l:meta type="description">A sample LexisML Lexis file using the new syntax</meta>
+    <l:meta type="splash"><em>Splash content!</em></meta>
+    <!--  Multiple <meta type="splash"> elements are allowed  -->
+    <l:item lemma="sample item" src="sample-item.xml"/>
+</l:lexis>
