@@ -1,0 +1,3 @@
+html[data-state="loading"] {
+    cursor: progress;
+}

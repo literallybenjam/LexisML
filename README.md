@@ -6,3 +6,5 @@ The standard for LexisML is currently __in active development__; you can view it
 
 __This version is OUTDATED; LexisML has been completely revamped but the standard has not yet been written.
 You can check out the [sample-lexis.xml](sample-lexis.xml) and [sample-word.xml](sample-word.xml) files for examples of the new syntax.__
+
+This repository contains tools for rendering and using LexisML files.
