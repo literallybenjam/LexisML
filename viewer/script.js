@@ -22,6 +22,7 @@ function handleClicks(e) {
     if (e.type !== "click") return;
     var n = e.target;
     if (n.dataset && n.dataset.src && !document.documentElement.hasAttribute("data-loading")) loadWord(n.dataset.src);
+    else if (n.namespaceURI === "about:lexisml?word" && n.tagName === "wordref") loadWord(n.getAttribute("src"));
 }
 
 function handleInputs(e) {

@@ -1,7 +1,8 @@
 @charset "UTF-8";
+@namespace url(http://www.w3.org/1999/xhtml);
 @namespace word url(about:lexisml?word);
 
-html[data-loading] {
+html[data-loading], html[data-loading] #list li, html[data-loading] word|wordref {
     cursor: progress;
 }
 
@@ -65,9 +66,15 @@ word|alts {
 
 word|def {
     display: list-item;
+    list-style-position: inside;
 }
 
 word|etymology::before {
     font-weight: bold;
     content: "Etymology: ";
+}
+
+word|wordref {
+    display: inline;
+    cursor: pointer;
 }
