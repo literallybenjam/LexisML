@@ -35,6 +35,7 @@ function handleClicks(e) {
         handleInputs();
     }
     else if (this.id === "title") {
+        document.getElementById("container").textContent = "";
         document.getElementById("search").value = "";
         handleInputs();
     }
