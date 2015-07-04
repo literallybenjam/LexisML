@@ -143,7 +143,7 @@ function processIndex() {
                 break;
 
             case "item":
-                items.push(new Item(current_element.textContent.trim(), current_element.getAttribute("src"), current_element.getAttribute("tags").trim()));
+                items.push(new Item(current_element.textContent.trim(), current_element.getAttribute("src"), current_element.getAttribute("tag")));
                 break;
 
         }
