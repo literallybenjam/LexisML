@@ -11,12 +11,13 @@ body {
 
 #header {
     text-align: center;
+    margin: 1em;
     border-bottom: thin black solid;
 }
 
 #sidebar {
+    float: left;
     width: 25%;
-    margin: 0 -25%;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -32,6 +33,10 @@ body {
 
 #list li {
     cursor: pointer;
+}
+
+#container {
+    padding-left: 25%;
 }
 
 word|* {
