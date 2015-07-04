@@ -52,15 +52,15 @@ function handleClicks(e) {
     if (n.dataset && n.dataset.src && !document.documentElement.hasAttribute("data-loading")) loadWord(n.dataset.src);
     else if (this.namespaceURI === "about:lexisml?word" && this.tagName === "wordref") {
         require_perfect_match = true;
-        if (this.hasAttribute("for")) document.getElementById("search").namedItem("input").value = this.getAttribute("for");
-        else document.getElementById("search").namedItem("input").value = this.textContent;
-        document.getElementById("search").namedItem("tags").item(0);
+        if (this.hasAttribute("for")) document.getElementById("search").elements.namedItem("input").value = this.getAttribute("for");
+        else document.getElementById("search").elements.namedItem("input").value = this.textContent;
+        document.getElementById("search").elements.namedItem("tags").item(0);
         handleInputs();
     }
     else if (this.id === "title") {
         document.getElementById("container").textContent = "";
-        document.getElementById("search").namedItem("input").value = "";
-        document.getElementById("search").namedItem("tags").item(0);
+        document.getElementById("search").elements.namedItem("input").value = "";
+        document.getElementById("search").elements.namedItem("tags").item(0);
         handleInputs();
     }
 }
@@ -68,8 +68,8 @@ function handleClicks(e) {
 function handleInputs() {
 
     var i;
-    var tag = document.getElementById("search").namedItem("tags").value;
-    var value = document.getElementById("search").namedItem("input").value.toLocaleLowerCase();
+    var tag = document.getElementById("search").elements.namedItem("tags").value;
+    var value = document.getElementById("search").elements.namedItem("input").value.toLocaleLowerCase();
 
     for (i = 0; i < document.getElementById("list").children.length; i++) {
 
