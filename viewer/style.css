@@ -77,4 +77,6 @@ word|etymology::before {
 word|wordref {
     display: inline;
     cursor: pointer;
+    text-decoration: underline;
+    text-decoration-style: dashed;
 }

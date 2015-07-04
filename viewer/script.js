@@ -4,7 +4,12 @@ var splashes = [];
 var require_perfect_match = false;
 
 function processWord() {
+    var i;
     var word = this.response.documentElement.cloneNode(true);
+    var wordrefs = word.getElementsByTagNameNS("about:lexisml?word", "wordref");
+    for (i = 0; i < wordrefs.length; i++) {
+        wordrefs.item(i).addEventListener("click", handleClicks, false);
+    }
     document.getElementById("container").textContent = "";
     document.getElementById("container").appendChild(word);
     document.documentElement.removeAttribute("data-loading");
@@ -23,9 +28,9 @@ function handleClicks(e) {
     if (e.type !== "click") return;
     var n = e.target;
     if (n.dataset && n.dataset.src && !document.documentElement.hasAttribute("data-loading")) loadWord(n.dataset.src);
-    else if (n.namespaceURI === "about:lexisml?word" && n.tagName === "wordref") {
-        if (n.hasAttribute("for")) document.getElementById("search").value = n.getAttribute("for");
-        else document.getElementById("search").value = n.textContent;
+    else if (this.namespaceURI === "about:lexisml?word" && this.tagName === "wordref") {
+        if (this.hasAttribute("for")) document.getElementById("search").value = this.getAttribute("for");
+        else document.getElementById("search").value = this.textContent;
     }
 }
 
