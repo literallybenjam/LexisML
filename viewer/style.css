@@ -23,6 +23,17 @@ html[data-loading], html[data-loading] #list li, html[data-loading] #title, html
     display: block;
     margin: auto;
     width: 80%;
+    text-align: center;
+}
+
+#search input {
+    display: inline;
+    width: 50%;
+}
+
+#search select {
+    display: inline;
+    width: 50%;
 }
 
 #list {
