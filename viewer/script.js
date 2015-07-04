@@ -83,7 +83,7 @@ function handleInputs() {
         }
 
         else {
-            if (value == document.getElementById("list").children.item(i).textContent.toLocaleLowerCase().substr(0, value.length) && (!tag || document.getElementById("list").children.item(i).dataset.tag.split("/\s+/").indexOf(tag) !== -1)) document.getElementById("list").children.item(i).hidden = false;
+            if (value == document.getElementById("list").children.item(i).textContent.toLocaleLowerCase().substr(0, value.length) && (!tag || document.getElementById("list").children.item(i).dataset.tag.split(/\s+/).indexOf(tag) !== -1)) document.getElementById("list").children.item(i).hidden = false;
             else document.getElementById("list").children.item(i).hidden = true;
         }
 
@@ -178,7 +178,7 @@ function processIndex() {
 
     var search_tags = document.createElementNS("http://www.w3.org/1999/xhtml", "select");
     search_tags.name = "tags";
-    search_tags.addEventListener("input", handleInputs, false);
+    search_tags.addEventListener("change", handleInputs, false);
     search_tags.add(document.createElementNS("http://www.w3.org/1999/xhtml", "option"));
     var optgroup;
     var option;
