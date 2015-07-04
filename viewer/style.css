@@ -1,3 +1,31 @@
 html[data-loading] {
     cursor: progress;
 }
+
+body {
+    padding: 0 0 0 20%;
+}
+
+#header {
+    text-align: center;
+    border-bottom: thin black solid;
+}
+
+#sidebar {
+    width: 25%;
+    margin: 0 -25%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#search {
+    width: 100%;
+}
+
+#list {
+    list-style-type: none;
+}
+
+#list li {
+    cursor: pointer;
+}
