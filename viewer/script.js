@@ -10,15 +10,20 @@ function processWord() {
     if (!document.getElementsByTagNameNS("about:lexisml?word", "word").length) document.body.appendChild(word);
     else document.getElementsByTagNameNS("about:lexisml?word", "word").item(0).parentElement.replaceChild(word, document.getElementsByTagNameNS("about:lexisml?word", "word").item(0));
 
+    document.documentElement.removeAttribute("data-loading");
+
 }
 
 function loadWord(src) {
+
     document.documentElement.setAttribute("data-loading", "");
+
     var request = new XMLHttpRequest();
     request.open("GET", src, true);
     request.responseType = "document";
     request.addEventListener("load", processWord, false);
     request.send();
+
 }
 
 function handleClicks(e) {
