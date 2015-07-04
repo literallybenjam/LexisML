@@ -29,6 +29,7 @@ function handleClicks(e) {
     var n = e.target;
     if (n.dataset && n.dataset.src && !document.documentElement.hasAttribute("data-loading")) loadWord(n.dataset.src);
     else if (this.namespaceURI === "about:lexisml?word" && this.tagName === "wordref") {
+        require_perfect_match = true;
         if (this.hasAttribute("for")) document.getElementById("search").value = this.getAttribute("for");
         else document.getElementById("search").value = this.textContent;
         handleInputs();
