@@ -11,7 +11,7 @@
             <l:alts>sample-item, itemsample</l:alts> <!--  optional : alternate representations go here  -->
             <l:def>an item which is offered up for sampling</l:def> <!--  word definition  -->
             <l:def>an item which is presented as a sample</l:def>
-            <l:def><a href="./sample-word.xml">this document</a></l:def>
+            <l:def><l:wordref src="sample-word.xml">this document</l:wordref></l:def>
         </l:section>
         <!--  Multiple sections can be used for different parts of speech, etc.  -->
     </l:entry>
