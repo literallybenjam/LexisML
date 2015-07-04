@@ -113,8 +113,9 @@ function processIndex() {
 
     var current_element;
     var object;
-    for (i = 0; i < index_document.documentElement.children.length; i++) {
-        current_element = index_document.documentElement.children.item(i);
+    for (i = 0; i < index_document.documentElement.childNodes.length; i++) {
+        current_element = index_document.documentElement.childNodes.item(i);
+        if (current_element.nodeType != Node.ELEMENT_NODE) continue;
         switch (current_element.tagName) {
 
             case "meta":
@@ -132,8 +133,9 @@ function processIndex() {
 
             case "taggroup":
                 object = new TagGroup(current_element.getAttribute("name"));
-                for (j = 0; j < current_element.children.length; j++) {
-                    object.add(new Tag(current_element.children.item(j).textContent.trim(), current_element.children.item(j).getAttribute("value")));
+                for (j = 0; j < current_element.childNodes.length; j++) {
+                if (current_element.childNodes.item(j).nodeType != Node.ELEMENT_NODE) continue;
+                    object.add(new Tag(current_element.childNodes.item(j).textContent.trim(), current_element.childNodes.item(j).getAttribute("value")));
                 }
                 tags.push(object);
                 break;
