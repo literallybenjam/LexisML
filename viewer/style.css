@@ -22,18 +22,18 @@ html[data-loading], html[data-loading] #list li, html[data-loading] #title, html
 #search {
     display: block;
     margin: auto;
-    width: 80%;
+    width: 100%;
     text-align: center;
 }
 
 #search input {
     display: inline;
-    width: 50%;
+    width: 40%;
 }
 
 #search select {
     display: inline;
-    width: 50%;
+    width: 40%;
 }
 
 #list {
