@@ -21,7 +21,7 @@ function TagGroup(name) {
 TagGroup.prototype = {
     add: function(tag) {
         this.tags.push(tag);
-        return this.item(this.tags.length);
+        return this.tags[this.tags.length];
     }
 }
 
