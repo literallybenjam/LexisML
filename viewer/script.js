@@ -83,7 +83,7 @@ function handleInputs() {
         }
 
         else {
-            if (value == document.getElementById("list").children.item(i).textContent.toLocaleLowerCase().substr(0, value.length) && (!tag || document.getElementById("list").children.item(i).dataset.tag.split("/\s+/").indexOf(tag) !== 1)) document.getElementById("list").children.item(i).hidden = false;
+            if (value == document.getElementById("list").children.item(i).textContent.toLocaleLowerCase().substr(0, value.length) && (!tag || document.getElementById("list").children.item(i).dataset.tag.split("/\s+/").indexOf(tag) !== -1)) document.getElementById("list").children.item(i).hidden = false;
             else document.getElementById("list").children.item(i).hidden = true;
         }
 
