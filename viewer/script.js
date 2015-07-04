@@ -1,6 +1,7 @@
 /* jslint asi:true, browser:true */
 
 var splashes = [];
+var require_perfect_match = false;
 
 function processWord() {
     var word = this.response.documentElement.cloneNode(true);
@@ -22,22 +23,25 @@ function handleClicks(e) {
     if (e.type !== "click") return;
     var n = e.target;
     if (n.dataset && n.dataset.src && !document.documentElement.hasAttribute("data-loading")) loadWord(n.dataset.src);
+    else if (n.namespaceURI === "about:lexisml?word" && n.tagName === "wordref") {
+        if (n.hasAttribute("for")) document.getElementById("search").value = n.getAttribute("for");
+        else document.getElementById("search").value = n.textContent;
+    }
 }
 
 function handleInputs(e) {
 
     if (e.type !== "input" || e.target !== document.getElementById("search")) return;
     var i;
-    var found = false;
     var value = document.getElementById("search").value.toLocaleLowerCase();
 
     for (i = 0; i < document.getElementById("list").children.length; i++) {
-        if (value == document.getElementById("list").children.item(i).textContent.toLocaleLowerCase().substr(0, value.length)) {
-            document.getElementById("list").children.item(i).hidden = false;
-            found = true;
-        }
+        if (require_perfect_match && value !== document.getElementById("list").children.item(i).textContent.toLocaleLowerCase())  document.getElementById("list").children.item(i).hidden = true;
+        else if (value == document.getElementById("list").children.item(i).textContent.toLocaleLowerCase().substr(0, value.length)) document.getElementById("list").children.item(i).hidden = false;
         else document.getElementById("list").children.item(i).hidden = true;
     }
+
+    require_perfect_match = false;
 
 }
 
