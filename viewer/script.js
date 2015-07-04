@@ -113,7 +113,7 @@ function processIndex() {
 
     var current_element;
     var object;
-    for (i = 0; i < index_document.documentElement.childrem.length; i++) {
+    for (i = 0; i < index_document.documentElement.children.length; i++) {
         current_element = index_document.documentElement.children.item(i);
         switch (current_element.tagName) {
 
