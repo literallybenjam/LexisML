@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<l:lexis xmlns="http://www.w3.org/1999/xhtml" xmlns:l="about:lexisml?lexis" xml:lang="en">
-    <l:meta type="title">Sample Lexis</meta>
-    <l:meta type="description">A sample LexisML Lexis file using the new syntax</meta>
-    <l:meta type="splash"><em>Splash content!</em></meta>
+<lexis xmlns="about:lexisml?lexis" xmlns:html="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <meta type="title">Sample Lexis</meta>
+    <meta type="description">A sample LexisML Lexis file using the new syntax</meta>
+    <meta type="splash"><html:em>Splash content!</html:em></meta>
     <!--  Multiple <meta type="splash"> elements are allowed  -->
-    <l:item lemma="sample item" src="sample-item.xml"/>
-</l:lexis>
+    <taggroup name="Some tags"> <!-- <taggroup> elements group tags! -->
+        <tag value="tag1">A tag</tag> <!--  Reference tags by their value attribute; these must be unique and space-free  -->
+        <tag value="tag2">An unused tag</tag>
+    </taggroup>
+    <tag value="tag3">Another tag</tag> <!--  Tags don't have to be in <taggroups>  -->
+    <item src="sample-item.xml" tag="tag1 tag3">sample item</item>
+</lexis>
