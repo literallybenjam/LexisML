@@ -156,6 +156,7 @@ function processIndex() {
     while (metadata.title.childNodes.length) {
         title.appendChild(metadata.title.item(0));
     }
+    document.title = metadata.title.textContent;
     title.addEventListener("click", handleClicks, false);
 
     var splash = document.createElementNS("http://www.w3.org/1999/xhtml", "span");
