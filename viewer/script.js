@@ -151,33 +151,40 @@ function processIndex() {
 
     items.sort(function(a, b) {return a.lemma.localeCompare(b.lemma);});
 
-    var title = document.createElementNS("http://www.w3.org/1999/xhtml", "h1");
-    title.id = "title";
-    while (metadata.title.childNodes.length) {
-        title.appendChild(metadata.title.item(0));
+    var title;
+    if (metadata.title) {
+        title = document.createElementNS("http://www.w3.org/1999/xhtml", "h1");
+        title.id = "title";
+        while (metadata.title.childNodes.length) {
+            title.appendChild(metadata.title.childNodes.item(0));
+        }
+        document.title = metadata.title.textContent;
+        title.addEventListener("click", handleClicks, false);
     }
-    document.title = metadata.title.textContent;
-    title.addEventListener("click", handleClicks, false);
 
-    var splash = document.createElementNS("http://www.w3.org/1999/xhtml", "span");
-    splash.id = "splash";
-    if (metadata.splashes.length !== 0) {
+    var splash;
+    if (metadata.splashes.length) {
+        splash = document.createElementNS("http://www.w3.org/1999/xhtml", "span");
+        splash.id = "splash";
         i = Math.floor(Math.random() * metadata.splashes.length);
         while (metadata.splashes[i].childNodes.length) {
-            splash.appendChild(metadata.splashes[i].item(0));
+            splash.appendChild(metadata.splashes[i].childNodes.item(0));
         }
     }
 
-    var description = document.createElementNS("http://www.w3.org/1999/xhtml", "p");
-    while (metadata.description.childNodes.length) {
-        description.appendChild(metadata.description.item(0));
+    var description;
+    if (metadata.description) {
+        description = document.createElementNS("http://www.w3.org/1999/xhtml", "p");
+        while (metadata.description.childNodes.length) {
+            description.appendChild(metadata.description.childNodes.item(0));
+        }
     }
 
     var header = document.createElementNS("http://www.w3.org/1999/xhtml", "header");
     header.id = "header";
-    if (title.textContent) header.appendChild(title);
-    if (splash.textContent) header.appendChild(splash);
-    if (description.textContent) header.appendChild(description);
+    if (title) header.appendChild(title);
+    if (splash) header.appendChild(splash);
+    if (description) header.appendChild(description);
     document.body.appendChild(header);
 
     var search_input = document.createElementNS("http://www.w3.org/1999/xhtml", "input");
