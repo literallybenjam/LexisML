@@ -27,7 +27,7 @@ TagGroup.prototype = {
 
 function processWord() {
     var i;
-    var word = this.response.documentElement.cloneNode(true);
+    var word = document.importNode(this.response.documentElement, true);
     var wordrefs = word.getElementsByTagNameNS("about:lexisml?word", "wordref");
     for (i = 0; i < wordrefs.length; i++) {
         wordrefs.item(i).addEventListener("click", handleClicks, false);
@@ -120,13 +120,13 @@ function processIndex() {
             case "meta":
                 switch (current_element.getAttribute("type")) {
                     case "title":
-                        metadata.title = document.cloneNode(current_element, true);
+                        metadata.title = document.importNode(current_element, true);
                         break;
                     case "description":
-                        metadata.description = document.cloneNode(current_element, true);
+                        metadata.description = document.importNode(current_element, true);
                         break;
                     case "splash":
-                        metadata.splashes.push(document.cloneNode(current_element, true));
+                        metadata.splashes.push(document.importNode(current_element, true));
                 }
                 break;
 
