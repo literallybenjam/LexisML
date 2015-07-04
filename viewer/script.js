@@ -21,7 +21,7 @@ function loadWord(src) {
 function handleClicks(e) {
     if (e.type !== "click") return;
     var n = e.target;
-    if (n.dataset.src && !document.documentElement.hasAttribute("data-loading")) loadWord(n.dataset.src);
+    if (n.dataset && n.dataset.src && !document.documentElement.hasAttribute("data-loading")) loadWord(n.dataset.src);
 }
 
 function handleInputs(e) {
@@ -32,7 +32,7 @@ function handleInputs(e) {
     var value = document.getElementById("search").value.toLocaleLowerCase();
 
     for (i = 0; i < document.getElementById("list").children.length; i++) {
-        if (value == document.getElementById("list").children.item(i).toLocaleLowerCase().substr(0, value.length)) {
+        if (value == document.getElementById("list").children.item(i).textContent.toLocaleLowerCase().substr(0, value.length)) {
             document.getElementById("list").children.item(i).hidden = false;
             found = true;
         }
