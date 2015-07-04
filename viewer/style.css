@@ -1,3 +1,6 @@
+@charset "UTF-8";
+@namespace word url(about:lexisml?word);
+
 html[data-loading] {
     cursor: progress;
 }
@@ -28,4 +31,41 @@ body {
 
 #list li {
     cursor: pointer;
+}
+
+word|* {
+    display: block;
+}
+
+word|lemma {
+    font-size: 2rem;
+}
+
+word|pron {
+    font-style: italic;
+}
+
+word|etymology, word|aside, word|section {
+    margin: 1em 0;
+}
+
+word|section {
+    padding: 0 0 0 1em;
+}
+
+word|section word|heading {
+    margin: 0 0 0 -1em;
+}
+
+word|alts {
+    font-style: italic;
+}
+
+word|def {
+    display: list-item;
+}
+
+word|etymology::before {
+    font-weight: bold;
+    content: "Etymology: ";
 }
