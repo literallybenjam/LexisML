@@ -31,19 +31,31 @@ function handleClicks(e) {
     else if (this.namespaceURI === "about:lexisml?word" && this.tagName === "wordref") {
         if (this.hasAttribute("for")) document.getElementById("search").value = this.getAttribute("for");
         else document.getElementById("search").value = this.textContent;
+        handleInputs();
     }
 }
 
-function handleInputs(e) {
+function handleInputs() {
 
-    if (e.type !== "input" || e.target !== document.getElementById("search")) return;
     var i;
     var value = document.getElementById("search").value.toLocaleLowerCase();
 
     for (i = 0; i < document.getElementById("list").children.length; i++) {
-        if (require_perfect_match && value !== document.getElementById("list").children.item(i).textContent.toLocaleLowerCase())  document.getElementById("list").children.item(i).hidden = true;
-        else if (value == document.getElementById("list").children.item(i).textContent.toLocaleLowerCase().substr(0, value.length)) document.getElementById("list").children.item(i).hidden = false;
-        else document.getElementById("list").children.item(i).hidden = true;
+
+
+        if (require_perfect_match) {
+            if (value == document.getElementById("list").children.item(i).textContent) {
+                document.getElementById("list").children.item(i).hidden = false;
+                loadWord(document.getElementById("list").children.item(i).dataset.src);
+            }
+            else document.getElementById("list").children.item(i).hidden = true;
+        }
+
+        else {
+            if (value == document.getElementById("list").children.item(i).textContent.toLocaleLowerCase().substr(0, value.length)) document.getElementById("list").children.item(i).hidden = false;
+            else document.getElementById("list").children.item(i).hidden = true;
+        }
+
     }
 
     require_perfect_match = false;
