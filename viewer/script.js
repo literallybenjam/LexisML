@@ -198,7 +198,7 @@ function processIndex() {
     var search_tags = document.createElementNS("http://www.w3.org/1999/xhtml", "select");
     search_tags.name = "tags";
     search_tags.addEventListener("change", handleInputs, false);
-    search_tags.add(document.createElementNS("http://www.w3.org/1999/xhtml", "option"));
+    search_tags.appendChild(document.createElementNS("http://www.w3.org/1999/xhtml", "option"));
     var optgroup;
     var option;
     for (i = 0; i < tags.length; i++) {
@@ -211,13 +211,13 @@ function processIndex() {
                 option.value = tags[i].tags[j].value;
                 optgroup.appendChild(option);
             }
-            search_tags.add(optgroup);
+            search_tags.appendChild(optgroup);
         }
         else if (tags[i] instanceof Tag) {
             option = document.createElementNS("http://www.w3.org/1999/xhtml", "option");
             option.textContent = tags[i].name;
             option.value = tags[i].value;
-            search_tags.add(option);
+            search_tags.appendChild(option);
         }
     }
 
