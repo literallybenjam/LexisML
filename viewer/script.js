@@ -30,6 +30,8 @@ function processIndex() {
     var index_document = this.response;
     if (!(index_document instanceof Document) || index_document.documentElement.namespaceURI !== "about:lexisml?lexis") return;
 
+    document.body.textContent = "";
+
     var header = document.createElementNS("http://www.w3.org/1999/xhtml", "header");
     var title = document.createElementNS("http://www.w3.org/1999/xhtml", "h1");
     var description = document.createElementNS("http://www.w3.org/1999/xhtml", "p");
