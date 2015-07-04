@@ -3,41 +3,25 @@
 var splashes = [];
 
 function processWord() {
-
     var word = this.response.documentElement.cloneNode(true);
-
-    document.getElementById("list").hidden = true;
-    if (!document.getElementsByTagNameNS("about:lexisml?word", "word").length) document.getElementById("container").appendChild(word);
-    else document.getElementsByTagNameNS("about:lexisml?word", "word").item(0).parentElement.replaceChild(word, document.getElementsByTagNameNS("about:lexisml?word", "word").item(0));
-
+    document.getElementById("container").textContent = "";
+    document.getElementById("container").appendChild(word);
     document.documentElement.removeAttribute("data-loading");
-
 }
 
 function loadWord(src) {
-
     document.documentElement.setAttribute("data-loading", "");
-
     var request = new XMLHttpRequest();
     request.open("GET", src, true);
     request.responseType = "document";
     request.addEventListener("load", processWord, false);
     request.send();
-
 }
 
 function handleClicks(e) {
-
     if (e.type !== "click") return;
     var n = e.target;
-
-    if (n === document.getElementById("search")) {
-        while (document.getElementsByTagNameNS("about:lexisml?word", "word").length) document.getElementsByTagNameNS("about:lexisml?word", "word").item(0).parentElement.removeChild(document.getElementsByTagNameNS("about:lexisml?word", "word").item(0));
-        document.getElementById("list").hidden = false;
-    }
-
-    else if (n.dataset.src && !document.documentElement.hasAttribute("data-loading")) loadWord(n.dataset.src);
-
+    if (n.dataset.src && !document.documentElement.hasAttribute("data-loading")) loadWord(n.dataset.src);
 }
 
 function handleInputs(e) {
