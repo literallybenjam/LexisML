@@ -2,25 +2,56 @@
 
 var splashes = [];
 
+function processWord() {
+
+    var word = this.response.documentElement.cloneNode(true);
+
+    document.getElementById("list").hidden = true;
+    if (!document.getElementsByTagNameNS("about:lexisml?word", "word").length) document.body.appendChild(word);
+    else document.getElementsByTagNameNS("about:lexisml?word", "word").item(0).parentElement.replaceChild(word, document.getElementsByTagNameNS("about:lexisml?word", "word").item(0));
+
+}
+
+function loadWord(src) {
+    document.documentElement.setAttribute("data-loading", "");
+    var request = new XMLHttpRequest();
+    request.open("GET", src, true);
+    request.responseType = "document";
+    request.addEventListener("load", processWord, false);
+    request.send();
+}
+
 function handleClicks(e) {
+
     if (e.type !== "click") return;
     var n = e.target;
-    if (!n.dataset.src) return;
+
+    if (n === document.getElementById("search")) {
+        while (document.getElementsByTagNameNS("about:lexisml?word", "word").length) document.getElementsByTagNameNS("about:lexisml?word", "word").item(0).parentElement.removeChild(document.getElementsByTagNameNS("about:lexisml?word", "word").item(0));
+        document.getElementById("list").hidden = false;
+    }
+
+    else if (n.dataset.src && !document.documentElement.hasAttribute("data-loading")) loadWord(n.dataset.src);
+
 }
 
 function handleInputs(e) {
+
     if (e.type !== "input" || e.target !== document.getElementById("search")) return;
     var i;
     var found = false;
+    var value = document.getElementById("search").value.toLocaleLowerCase();
+
     for (i = 0; i < document.getElementById("list").children.length; i++) {
-        if (document.getElementById("search").value) {
+        if (value == document.getElementById("list").children.item(i).toLocaleLowerCase().substr(0, value.length)) {
             document.getElementById("list").children.item(i).hidden = false;
             found = true;
         }
         else document.getElementById("list").children.item(i).hidden = true;
     }
-    if (!found && document.getElementById("search").value) document.getElementById("nothing_found").hidden = false;
+    if (!found && value) document.getElementById("nothing_found").hidden = false;
     else document.getElementById("nothing_found").hidden = true;
+
 }
 
 function processIndex() {
@@ -86,7 +117,7 @@ function processIndex() {
         list_item = document.createElementNS("http://www.w3.org/1999/xhtml", "li");
         list_item.dataset.src = items[i].src;
         list_item.textContent = items[i].lemma;
-        list_item.hidden = true;
+        list_item.hidden = false;
         list.appendChild(list_item);
     }
     document.body.appendChild(list);
