@@ -5,10 +5,6 @@ html[data-loading] {
     cursor: progress;
 }
 
-body {
-    padding: 0 0 0 20%;
-}
-
 #header {
     text-align: center;
     margin: 1em;
