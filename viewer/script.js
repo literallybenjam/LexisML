@@ -120,13 +120,13 @@ function processIndex() {
             case "meta":
                 switch (current_element.getAttribute("type")) {
                     case "title":
-                        metadata.title = current_element.textContent.trim();
+                        metadata.title = document.cloneNode(current_element, true);
                         break;
                     case "description":
-                        metadata.description = current_element.textContent.trim();
+                        metadata.description = document.cloneNode(current_element, true);
                         break;
                     case "splash":
-                        metadata.splashes.push(current_element.textContent.trim());
+                        metadata.splashes.push(document.cloneNode(current_element, true));
                 }
                 break;
 
@@ -153,15 +153,25 @@ function processIndex() {
 
     var title = document.createElementNS("http://www.w3.org/1999/xhtml", "h1");
     title.id = "title";
-    title.textContent = metadata.title;
+    while (metadata.title.childNodes.length) {
+        title.appendChild(metadata.title.item(0));
+    }
+    document.title = metadata.title.textContent;
     title.addEventListener("click", handleClicks, false);
 
     var splash = document.createElementNS("http://www.w3.org/1999/xhtml", "span");
     splash.id = "splash";
-    if (metadata.splashes.length !== 0) splash.textContent = metadata.splashes[Math.floor(Math.random() * metadata.splashes.length)];
+    if (metadata.splashes.length !== 0) {
+        i = Math.floor(Math.random() * metadata.splashes.length);
+        while (metadata.splashes[i].childNodes.length) {
+            splash.appendChild(metadata.splashes[i].item(0));
+        }
+    }
 
     var description = document.createElementNS("http://www.w3.org/1999/xhtml", "p");
-    description.textContent = metadata.title;
+    while (metadata.description.childNodes.length) {
+        description.appendChild(metadata.description.item(0));
+    }
 
     var header = document.createElementNS("http://www.w3.org/1999/xhtml", "header");
     header.id = "header";
