@@ -2,7 +2,7 @@
 @namespace url(http://www.w3.org/1999/xhtml);
 @namespace word url(about:lexisml?word);
 
-html[data-loading], html[data-loading] #list li, html[data-loading] word|wordref {
+html[data-loading], html[data-loading] #list li, html[data-loading] #title, html[data-loading] word|wordref {
     cursor: progress;
 }
 
@@ -20,6 +20,7 @@ html[data-loading], html[data-loading] #list li, html[data-loading] word|wordref
 }
 
 #search {
+    display: block;
     margin: auto;
     width: 80%;
 }
@@ -28,7 +29,7 @@ html[data-loading], html[data-loading] #list li, html[data-loading] word|wordref
     list-style-type: none;
 }
 
-#list li {
+#list li, #title {
     cursor: pointer;
 }
 

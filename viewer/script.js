@@ -34,6 +34,10 @@ function handleClicks(e) {
         else document.getElementById("search").value = this.textContent;
         handleInputs();
     }
+    else if (this.id === "title") {
+        document.getElementById("search").value = "";
+        handleInputs();
+    }
 }
 
 function handleInputs() {
@@ -75,6 +79,8 @@ function processIndex() {
     var header = document.createElementNS("http://www.w3.org/1999/xhtml", "header");
     header.id = "header";
     var title = document.createElementNS("http://www.w3.org/1999/xhtml", "h1");
+    title.id = "title";
+    title.addEventListener("click", handleClicks, false);
     var description = document.createElementNS("http://www.w3.org/1999/xhtml", "p");
     var splash = document.createElementNS("http://www.w3.org/1999/xhtml", "span");
     splash.id = "splash";
