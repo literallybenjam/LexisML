@@ -7,7 +7,7 @@ function processWord() {
     var word = this.response.documentElement.cloneNode(true);
 
     document.getElementById("list").hidden = true;
-    if (!document.getElementsByTagNameNS("about:lexisml?word", "word").length) document.body.appendChild(word);
+    if (!document.getElementsByTagNameNS("about:lexisml?word", "word").length) document.getElementById("container").appendChild(word);
     else document.getElementsByTagNameNS("about:lexisml?word", "word").item(0).parentElement.replaceChild(word, document.getElementsByTagNameNS("about:lexisml?word", "word").item(0));
 
     document.documentElement.removeAttribute("data-loading");
@@ -54,8 +54,6 @@ function handleInputs(e) {
         }
         else document.getElementById("list").children.item(i).hidden = true;
     }
-    if (!found && value) document.getElementById("nothing_found").hidden = false;
-    else document.getElementById("nothing_found").hidden = true;
 
 }
 
@@ -69,6 +67,7 @@ function processIndex() {
     document.body.textContent = "";
 
     var header = document.createElementNS("http://www.w3.org/1999/xhtml", "header");
+    header.id = "header";
     var title = document.createElementNS("http://www.w3.org/1999/xhtml", "h1");
     var description = document.createElementNS("http://www.w3.org/1999/xhtml", "p");
     var splash = document.createElementNS("http://www.w3.org/1999/xhtml", "span");
@@ -96,15 +95,16 @@ function processIndex() {
     if (title.textContent) header.appendChild(title);
     if (splash.textContent) header.appendChild(splash);
     if (description.textContent) header.appendChild(description);
-    var search_label = document.createElementNS("http://www.w3.org/1999/xhtml", "label");
-    search_label.htmlFor = "search";
-    search_label.textContent = "Search: ";
-    var search_input = document.createElementNS("http://www.w3.org/1999/xhtml", "input");
-    search_input.id = "search";
-    search_input.type = "search";
-    search_input.setAttribute = ("spellcheck", "false");
-    search_input.addEventListener("input", handleInputs, false);
-    document.body.appendChild(header).appendChild(search_label).appendChild(search_input);
+    document.body.appendChild(header);
+
+    var sidebar = document.createElementNS("http://www.w3.org/1999/xhtml", "nav");
+    sidebar.id = "sidebar";
+    var search = document.createElementNS("http://www.w3.org/1999/xhtml", "input");
+    search.id = "search";
+    search.type = "search";
+    search.setAttribute = ("spellcheck", "false");
+    search.addEventListener("input", handleInputs, false);
+    sidebar.appendChild(search);
 
     var list = document.createElementNS("http://www.w3.org/1999/xhtml", "ul");
     list.id = "list";
@@ -125,13 +125,13 @@ function processIndex() {
         list_item.hidden = false;
         list.appendChild(list_item);
     }
-    document.body.appendChild(list);
+    sidebar.appendChild(list);
 
-    var nothing_found = document.createElementNS("http://www.w3.org/1999/xhtml", "p");
-    nothing_found.id = "nothing_found";
-    nothing_found.textContent = "No results.";
-    nothing_found.hidden = true;
-    document.body.appendChild(nothing_found);
+    document.body.appendChild(sidebar);
+
+    var container = document.createElementNS("http://www.w3.org/1999/xhtml", "div");
+    container.id = "container";
+    document.body.appendChild(container);
 
 }
 

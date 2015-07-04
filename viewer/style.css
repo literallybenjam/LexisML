@@ -1,3 +1,71 @@
+@charset "UTF-8";
+@namespace word url(about:lexisml?word);
+
 html[data-loading] {
     cursor: progress;
+}
+
+body {
+    padding: 0 0 0 20%;
+}
+
+#header {
+    text-align: center;
+    border-bottom: thin black solid;
+}
+
+#sidebar {
+    width: 25%;
+    margin: 0 -25%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#search {
+    width: 100%;
+}
+
+#list {
+    list-style-type: none;
+}
+
+#list li {
+    cursor: pointer;
+}
+
+word|* {
+    display: block;
+}
+
+word|lemma {
+    font-size: 2rem;
+}
+
+word|pron {
+    font-style: italic;
+}
+
+word|etymology, word|aside, word|section {
+    margin: 1em 0;
+}
+
+word|section {
+    padding: 0 0 0 1em;
+}
+
+word|section word|heading {
+    margin: 0 0 0 -1em;
+}
+
+word|alts {
+    font-style: italic;
+}
+
+word|def {
+    display: list-item;
+}
+
+word|etymology::before {
+    font-weight: bold;
+    content: "Etymology: ";
 }
