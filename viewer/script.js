@@ -49,15 +49,23 @@ function loadWord(src) {
 function handleClicks(e) {
     if (e.type !== "click" || document.documentElement.hasAttribute("data-loading")) return;
     var n = e.target;
+    var value;
     if (n.dataset && n.dataset.src) {
         loadWord(n.dataset.src);
-        window.history.pushState(null, "", "?" + n.textContent);
+        window.history.pushState({
+            input: document.getElementById("search").elements.namedItem("input").value,
+            tag: document.getElementById("search").elements.namedItem("tags").selectedIndex
+        }, "", "?" + n.textContent);
     }
     else if (this.namespaceURI === "about:lexisml?word" && this.tagName === "wordref") {
         require_perfect_match = true;
-        if (this.hasAttribute("for")) document.getElementById("search").elements.namedItem("input").value = this.getAttribute("for");
-        else document.getElementById("search").elements.namedItem("input").value = this.textContent;
-        window.history.pushState(null, "", "?" + document.getElementById("search").elements.namedItem("input").value);
+        if (this.hasAttribute("for")) value = this.getAttribute("for");
+        else value = this.textContent;
+        window.history.pushState({
+            input: document.getElementById("search").elements.namedItem("input").value,
+            tag: document.getElementById("search").elements.namedItem("tags").selectedIndex
+        }, "", "?" + value);
+        document.getElementById("search").elements.namedItem("input").value = value;
         document.getElementById("search").elements.namedItem("tags").item(0);
         handleInputs();
     }
@@ -65,7 +73,10 @@ function handleClicks(e) {
         document.getElementById("container").textContent = "";
         document.getElementById("search").elements.namedItem("input").value = "";
         document.getElementById("search").elements.namedItem("tags").item(0);
-        window.history.pushState(null, "", "?");
+        window.history.pushState({
+            input: document.getElementById("search").elements.namedItem("input").value,
+            tag: document.getElementById("search").elements.namedItem("tags").selectedIndex
+        }, "", "?");
         handleInputs();
     }
 }
@@ -101,13 +112,18 @@ function handleInputs() {
 
 }
 
-function handleQuery() {
+function handleQuery(e) {
     var q = decodeURIComponent(window.location.search);
     if (!q) q = "?";
     require_perfect_match = true;
     document.getElementById("search").elements.namedItem("input").value = q.substr(1);
     document.getElementById("search").elements.namedItem("tags").item(0);
     handleInputs();
+    if (e.state) {
+        document.getElementById("search").elements.namedItem("input").value = e.state.input;
+        document.getElementById("search").elements.namedItem("tags").item(e.state.tag);
+        handleInputs();
+    }
 }
 
 function processIndex() {
