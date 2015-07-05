@@ -97,6 +97,14 @@ function handleInputs() {
 
 }
 
+function handleQuery() {
+    var q = window.location.search;
+    if (!q) q = "?";
+    document.getElementById("search").elements.namedItem("input").value = q.substr(1);
+    document.getElementById("search").elements.namedItem("tags").item(0);
+    handleInputs();
+}
+
 function processIndex() {
 
     var i;
@@ -252,6 +260,11 @@ function processIndex() {
     container.id = "container";
     document.body.appendChild(container);
 
+    handleQuery();
+
+    window.addEventListener("popstate", handleQuery, false);
+    document.documentElement.addEventListener("click", handleClicks, true);
+
 }
 
 function loadIndex() {
@@ -262,14 +275,4 @@ function loadIndex() {
     request.send();
 }
 
-function processQuery() {
-    var q = window.location.query;
-    if (!q) q = "?";
-    else document.getElementById("search").elements.namedItem("input").value = q.substr(1);
-    document.getElementById("search").elements.namedItem("tags").item(0);
-    handleInputs();
-}
-
 window.addEventListener("load", loadIndex, false);
-window.addEventListener("popstate", processQuery, false);
-document.documentElement.addEventListener("click", handleClicks, true);
