@@ -74,13 +74,16 @@ function handleInputs() {
     var i;
     var tag = document.getElementById("search").elements.namedItem("tags").value;
     var value = document.getElementById("search").elements.namedItem("input").value.toLocaleLowerCase();
+    var matched = false;
 
     for (i = 0; i < document.getElementById("list").children.length; i++) {
 
+        if (!value) document.getElementById("list").children.item(i).hidden = false;
 
-        if (require_perfect_match) {
+        else if (!matched && require_perfect_match) {
             if (value == document.getElementById("list").children.item(i).textContent) {
                 document.getElementById("list").children.item(i).hidden = false;
+                matched = true;
                 loadWord(document.getElementById("list").children.item(i).dataset.src);
             }
             else document.getElementById("list").children.item(i).hidden = true;
@@ -100,6 +103,7 @@ function handleInputs() {
 function handleQuery() {
     var q = decodeURIComponent(window.location.search);
     if (!q) q = "?";
+    require_perfect_match = true;
     document.getElementById("search").elements.namedItem("input").value = q.substr(1);
     document.getElementById("search").elements.namedItem("tags").item(0);
     handleInputs();
