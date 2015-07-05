@@ -119,7 +119,7 @@ function handleQuery(e) {
     document.getElementById("search").elements.namedItem("input").value = q.substr(1);
     document.getElementById("search").elements.namedItem("tags").item(0);
     handleInputs();
-    if (e.state) {
+    if (e && e.state) {
         document.getElementById("search").elements.namedItem("input").value = e.state.input;
         document.getElementById("search").elements.namedItem("tags").item(e.state.tag);
         handleInputs();
