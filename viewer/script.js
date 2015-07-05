@@ -47,9 +47,12 @@ function loadWord(src) {
 }
 
 function handleClicks(e) {
-    if (e.type !== "click") return;
+    if (e.type !== "click" || document.documentElement.hasAttribute("data-loading")) return;
     var n = e.target;
-    if (n.dataset && n.dataset.src && !document.documentElement.hasAttribute("data-loading")) loadWord(n.dataset.src);
+    if (n.dataset && n.dataset.src) {
+        loadWord(n.dataset.src);
+        window.history.pushState(null, "", "?" + n.textContent);
+    }
     else if (this.namespaceURI === "about:lexisml?word" && this.tagName === "wordref") {
         require_perfect_match = true;
         if (this.hasAttribute("for")) document.getElementById("search").elements.namedItem("input").value = this.getAttribute("for");
@@ -61,6 +64,7 @@ function handleClicks(e) {
         document.getElementById("container").textContent = "";
         document.getElementById("search").elements.namedItem("input").value = "";
         document.getElementById("search").elements.namedItem("tags").item(0);
+        window.history.pushState(null, "", "?");
         handleInputs();
     }
 }
@@ -134,7 +138,7 @@ function processIndex() {
             case "taggroup":
                 object = new TagGroup(current_element.getAttribute("name"));
                 for (j = 0; j < current_element.childNodes.length; j++) {
-                if (current_element.childNodes.item(j).nodeType != Node.ELEMENT_NODE) continue;
+                    if (current_element.childNodes.item(j).nodeType != Node.ELEMENT_NODE) continue;
                     object.add(new Tag(current_element.childNodes.item(j).textContent.trim(), current_element.childNodes.item(j).getAttribute("value")));
                 }
                 tags.push(object);
@@ -258,5 +262,14 @@ function loadIndex() {
     request.send();
 }
 
+function processQuery() {
+    var q = window.location.query;
+    if (!q) q = "?";
+    else document.getElementById("search").elements.namedItem("input").value = q.substr(1);
+    document.getElementById("search").elements.namedItem("tags").item(0);
+    handleInputs();
+}
+
 window.addEventListener("load", loadIndex, false);
+window.addEventListener("popstate", processQuery, false);
 document.documentElement.addEventListener("click", handleClicks, true);
