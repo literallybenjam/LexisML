@@ -98,7 +98,7 @@ function handleInputs() {
 }
 
 function handleQuery() {
-    var q = window.location.search;
+    var q = decodeURIComponent(window.location.search);
     if (!q) q = "?";
     document.getElementById("search").elements.namedItem("input").value = q.substr(1);
     document.getElementById("search").elements.namedItem("tags").item(0);
