@@ -57,6 +57,7 @@ function handleClicks(e) {
         require_perfect_match = true;
         if (this.hasAttribute("for")) document.getElementById("search").elements.namedItem("input").value = this.getAttribute("for");
         else document.getElementById("search").elements.namedItem("input").value = this.textContent;
+        window.history.pushState(null, "", "?" + document.getElementById("search").elements.namedItem("input").value);
         document.getElementById("search").elements.namedItem("tags").item(0);
         handleInputs();
     }
