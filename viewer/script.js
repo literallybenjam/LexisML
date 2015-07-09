@@ -289,8 +289,14 @@ function processIndex() {
 }
 
 function loadIndex() {
+    var src = "index.xml";
+    var base;
+    if (document.documentElement.dataset && document.documentElement.dataset.lexisSrc) src = document.documentElement.dataset.lexisSrc;
+    if (document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", "base")) base = document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", "base").item(0);
+    else base = document.head.appendChild(document.createElementNS("http://www.w3.org/1999/xhtml", "base"));
+    base.href = src;
     var request = new XMLHttpRequest();
-    request.open("GET", "index.xml", true);
+    request.open("GET", "", true);
     request.responseType = "document";
     request.addEventListener("load", processIndex, false);
     request.send();
