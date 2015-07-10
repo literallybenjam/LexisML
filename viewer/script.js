@@ -290,9 +290,9 @@ Lexis.Viewer = {
 
     processWord: function() {
         document.documentElement.removeAttribute("data-lexis-viewer-is_loading");
-        if (document.documentElement.namespaceURI != "about:lexisml?word") return;
         var i;
         var word = document.importNode(this.response.documentElement, true);
+        if (word.namespaceURI != "about:lexisml?word") return;
         var wordrefs = word.getElementsByTagNameNS("about:lexisml?word", "wordref");
         for (i = 0; i < wordrefs.length; i++) {
             wordrefs.item(i).addEventListener("click", Lexis.Viewer.handleClicks, false);
