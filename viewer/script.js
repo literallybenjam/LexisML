@@ -123,6 +123,7 @@ Lexis.Viewer = {
         var base;
         if (document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", "base").length) base = document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", "base").item(0);
         else base = document.head.appendChild(document.createElementNS("http://www.w3.org/1999/xhtml", "base"));
+        base.href = "";
         base.href = src;
 
         var request = new XMLHttpRequest();
