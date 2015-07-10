@@ -25,9 +25,9 @@ Lexis.Viewer = {
         var value;
         if (n.dataset && n.dataset.lexisViewerSrc) {
             Lexis.Viewer.loadWord(n.dataset.lexisViewerSrc);
-            if (document.getElementById("lexis-viewer-search")) Lexis.Viewer.pushQuery("word", n.textContent, {
-                input: document.getElementById("lexis-viewer-search").elements.namedItem("input").value,
-                tag: document.getElementById("lexis-viewer-search").elements.namedItem("tags").selectedIndex
+            if (document.getElementById("lexis-viewer-input") && document.getElementById("lexis-viewer-tags")) Lexis.Viewer.pushQuery("word", n.textContent, {
+                input: document.getElementById("lexis-viewer-input").value,
+                tag: document.getElementById("lexis-viewer-tags").selectedIndex
             });
             e.preventDefault();
         }
@@ -35,24 +35,24 @@ Lexis.Viewer = {
             Lexis.Viewer.require_perfect_match = true;
             if (this.hasAttribute("for")) value = this.getAttribute("for");
             else value = this.textContent;
-            if (document.getElementById("lexis-viewer-search")) {
+            if (document.getElementById("lexis-viewer-input") && document.getElementById("lexis-viewer-tags")) {
                 Lexis.Viewer.pushQuery("word", value, {
-                    input: document.getElementById("lexis-viewer-search").elements.namedItem("input").value,
-                    tag: document.getElementById("lexis-viewer-search").elements.namedItem("tags").selectedIndex
+                    input: document.getElementById("lexis-viewer-input").value,
+                    tag: document.getElementById("lexis-viewer-tags").selectedIndex
                 });
-                document.getElementById("lexis-viewer-search").elements.namedItem("input").value = value;
-                document.getElementById("lexis-viewer-search").elements.namedItem("tags").item(0);
+                document.getElementById("lexis-viewer-input").value = value;
+                document.getElementById("lexis-viewer-tags").item(0);
             }
             Lexis.Viewer.handleInputs();
         }
         else if (this.id === "lexis-viewer-title") {
             if (document.getElementById("lexis-viewer-word")) document.getElementById("lexis-viewer-word").textContent = "";
-            if (document.getElementById("lexis-viewer-search")) {
-                document.getElementById("lexis-viewer-search").elements.namedItem("input").value = "";
-                document.getElementById("lexis-viewer-search").elements.namedItem("tags").item(0);
+            if (document.getElementById("lexis-viewer-input") && document.getElementById("lexis-viewer-tags")) {
+                document.getElementById("lexis-viewer-input").value = "";
+                document.getElementById("lexis-viewer-tags").item(0);
                 Lexis.Viewer.pushQuery("word", "", {
-                    input: document.getElementById("lexis-viewer-search").elements.namedItem("input").value,
-                    tag: document.getElementById("lexis-viewer-search").elements.namedItem("tags").selectedIndex
+                    input: document.getElementById("lexis-viewer-input").value,
+                    tag: document.getElementById("lexis-viewer-tags").selectedIndex
                 });
             }
             Lexis.Viewer.handleInputs();
@@ -61,11 +61,11 @@ Lexis.Viewer = {
 
     handleInputs: function() {
 
-        if (!document.getElementById("lexis-viewer-search") || !document.getElementById("lexis-viewer-entry_list")) return;
+        if (!document.getElementById("lexis-viewer-input") || !document.getElementById("lexis-viewer-tags") || !document.getElementById("lexis-viewer-entry_list")) return;
 
         var i;
-        var tag = document.getElementById("lexis-viewer-search").elements.namedItem("tags").value;
-        var value = document.getElementById("lexis-viewer-search").elements.namedItem("input").value.toLocaleLowerCase();
+        var tag = document.getElementById("lexis-viewer-tags").value;
+        var value = document.getElementById("lexis-viewer-input").value.toLocaleLowerCase();
         var matched = false;
 
         for (i = 0; i < document.getElementById("lexis-viewer-entry_list").children.length; i++) {
@@ -93,14 +93,14 @@ Lexis.Viewer = {
     },
 
     handleQuery: function(e) {
-        if (!document.getElementById("lexis-viewer-search")) return;
+        if (!document.getElementById("lexis-viewer-input") || !document.getElementById("lexis-viewer-tags")) return;
         Lexis.Viewer.require_perfect_match = true;
-        document.getElementById("lexis-viewer-search").elements.namedItem("input").value = Lexis.Viewer.getQuery("word");
-        document.getElementById("lexis-viewer-search").elements.namedItem("tags").item(0);
+        document.getElementById("lexis-viewer-input").value = Lexis.Viewer.getQuery("word");
+        document.getElementById("lexis-viewer-tags").item(0);
         Lexis.Viewer.handleInputs();
         if (e && e.state) {
-            document.getElementById("lexis-viewer-search").elements.namedItem("input").value = e.state.input;
-            document.getElementById("lexis-viewer-search").elements.namedItem("tags").item(e.state.tag);
+            document.getElementById("lexis-viewer-input").value = e.state.input;
+            document.getElementById("lexis-viewer-tags").item(e.state.tag);
             Lexis.Viewer.handleInputs();
         }
     },
@@ -229,47 +229,47 @@ Lexis.Viewer = {
             }
         }
 
-        var search_input = document.createElementNS("http://www.w3.org/1999/xhtml", "input");
-        search_input.name = "input";
-        search_input.type = "search";
-        search_input.setAttribute = ("spellcheck", "false");
-        search_input.addEventListener("input", Lexis.Viewer.handleInputs, false);
-
-        var search_tags = document.createElementNS("http://www.w3.org/1999/xhtml", "select");
-        search_tags.name = "tags";
-        search_tags.addEventListener("change", Lexis.Viewer.handleInputs, false);
-        search_tags.appendChild(document.createElementNS("http://www.w3.org/1999/xhtml", "option"));
-        var optgroup;
-        var option;
-        for (i = 0; i < tags.length; i++) {
-            if (tags[i] instanceof Lexis.Viewer.TagGroup) {
-                optgroup = document.createElementNS("http://www.w3.org/1999/xhtml", "optgroup");
-                optgroup.label = tags[i].name;
-                for (j = 0; j < tags[i].tags.length; j++) {
-                    option = document.createElementNS("http://www.w3.org/1999/xhtml", "option");
-                    option.textContent = tags[i].tags[j].name;
-                    option.value = tags[i].tags[j].value;
-                    optgroup.appendChild(option);
-                }
-                search_tags.appendChild(optgroup);
+        if (document.getElementById("lexis-viewer-input")) {
+            if (document.getElementById("lexis-viewer-input").tagName.toLowerCase() !== "input" || document.getElementById("lexis-viewer-input").type !== "search") {
+                temp = document.createElementNS("http://www.w3.org/1999/xhtml", "input");
+                document.getElementById("lexis-viewer-input").parentElement.replaceChild(temp, document.getElementById("lexis-viewer-input"));
+                temp.id = "lexis-viewer-input";
             }
-            else if (tags[i] instanceof Lexis.Viewer.Tag) {
-                option = document.createElementNS("http://www.w3.org/1999/xhtml", "option");
-                option.textContent = tags[i].name;
-                option.value = tags[i].value;
-                search_tags.appendChild(option);
-            }
+            document.getElementById("lexis-viewer-input").value = "";
+            document.getElementById("lexis-viewer-input").setAttribute = ("spellcheck", "false");
+            document.getElementById("lexis-viewer-input").addEventListener("input", Lexis.Viewer.handleInputs, false);
         }
 
-        if (document.getElementById("lexis-viewer-search")) {
-            if (document.getElementById("lexis-viewer-search").tagName.toLowerCase() !== "form") {
-                temp = document.createElementNS("http://www.w3.org/1999/xhtml", "form");
-                document.getElementById("lexis-viewer-search").parentElement.replaceChild(temp, document.getElementById("lexis-viewer-search"));
-                temp.id = "lexis-viewer-search";
+        if (document.getElementById("lexis-viewer-tags")) {
+            if (document.getElementById("lexis-viewer-tags").tagName.toLowerCase() !== "select") {
+                temp = document.createElementNS("http://www.w3.org/1999/xhtml", "select");
+                document.getElementById("lexis-viewer-tags").parentElement.replaceChild(temp, document.getElementById("lexis-viewer-tags"));
+                temp.id = "lexis-viewer-tags";
             }
-            document.getElementById("lexis-viewer-search").textContent = "";
-            document.getElementById("lexis-viewer-search").appendChild(search_input);
-            document.getElementById("lexis-viewer-search").appendChild(search_tags);
+            document.getElementById("lexis-viewer-tags").textContent = "";
+            document.getElementById("lexis-viewer-tags").addEventListener("change", Lexis.Viewer.handleInputs, false);
+            document.getElementById("lexis-viewer-tags").appendChild(document.createElementNS("http://www.w3.org/1999/xhtml", "option"));
+            var optgroup;
+            var option;
+            for (i = 0; i < tags.length; i++) {
+                if (tags[i] instanceof Lexis.Viewer.TagGroup) {
+                    optgroup = document.createElementNS("http://www.w3.org/1999/xhtml", "optgroup");
+                    optgroup.label = tags[i].name;
+                    for (j = 0; j < tags[i].tags.length; j++) {
+                        option = document.createElementNS("http://www.w3.org/1999/xhtml", "option");
+                        option.textContent = tags[i].tags[j].name;
+                        option.value = tags[i].tags[j].value;
+                        optgroup.appendChild(option);
+                    }
+                    document.getElementById("lexis-viewer-tags").appendChild(optgroup);
+                }
+                else if (tags[i] instanceof Lexis.Viewer.Tag) {
+                    option = document.createElementNS("http://www.w3.org/1999/xhtml", "option");
+                    option.textContent = tags[i].name;
+                    option.value = tags[i].value;
+                    document.getElementById("lexis-viewer-tags").appendChild(option);
+                }
+            }
         }
 
         if (document.getElementById("lexis-viewer-entry_list")) {

@@ -15,12 +15,12 @@ html[data-lexis-viewer-is_loading] word|wordref {
     text-align: center;
 }
 
-#lexis-viewer-search input {
+#lexis-viewer-input {
     display: inline;
     width: 40%;
 }
 
-#lexis-viewer-search select {
+#lexis-viewer-tags {
     display: inline;
     width: 40%;
 }
