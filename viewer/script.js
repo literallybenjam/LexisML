@@ -288,10 +288,16 @@ function processIndex() {
 
 }
 
-function loadIndex() {
-    var src = "index.xml";
+function loadIndex(src) {
+
+    if (document.documentElement.namespaceURI != "http://www.w3.org/1999/xhtml") return;
+    if (src instanceof Event && src.type === "load") {
+        if (document.documentElement.dataset && document.documentElement.dataset.lexisSrc) src = document.documentElement.dataset.lexisSrc;
+        else return;
+    }
+    if (typeof src != "string" && !(src instanceof String)) return;
+
     var base;
-    if (document.documentElement.dataset && document.documentElement.dataset.lexisSrc) src = document.documentElement.dataset.lexisSrc;
     if (document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", "base")) base = document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", "base").item(0);
     else base = document.head.appendChild(document.createElementNS("http://www.w3.org/1999/xhtml", "base"));
     base.href = src;
@@ -300,6 +306,7 @@ function loadIndex() {
     request.responseType = "document";
     request.addEventListener("load", processIndex, false);
     request.send();
+
 }
 
 window.addEventListener("load", loadIndex, false);
