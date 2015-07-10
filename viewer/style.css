@@ -2,21 +2,11 @@
 @namespace url(http://www.w3.org/1999/xhtml);
 @namespace word url(about:lexisml?word);
 
-html[data-lexis-viewer-is_loading], html[data-viewer-is_loading] #lexis-viewer-entry_list li, html[data-lexis-viewer-is_loading] #lexis-viewer-title, html[data-lexis-viewer-is_loading] word|wordref {
+html[data-lexis-viewer-is_loading],
+html[data-lexis-viewer-is_loading] #lexis-viewer-entry_list li,
+html[data-lexis-viewer-is_loading] #lexis-viewer-title,
+html[data-lexis-viewer-is_loading] word|wordref {
     cursor: progress;
-}
-
-#lexis-viewer-header {
-    text-align: center;
-    margin: 1em;
-    border-bottom: thin black solid;
-}
-
-#lexis-viewer-sidebar {
-    float: left;
-    width: 25%;
-    overflow-x: hidden;
-    overflow-y: auto;
 }
 
 #lexis-viewer-search {
@@ -40,12 +30,9 @@ html[data-lexis-viewer-is_loading], html[data-viewer-is_loading] #lexis-viewer-e
     list-style-type: none;
 }
 
-#lexis-viewer-entry_list li, #lexis-viewer-title {
+#lexis-viewer-entry_list li,
+#lexis-viewer-title {
     cursor: pointer;
-}
-
-#lexis-viewer-word {
-    padding-left: 25%;
 }
 
 word|* {
@@ -60,7 +47,9 @@ word|pron {
     font-style: italic;
 }
 
-word|etymology, word|aside, word|section {
+word|etymology,
+word|aside,
+word|section {
     margin: 1em 0;
 }
 
