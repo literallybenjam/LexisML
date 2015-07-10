@@ -120,6 +120,8 @@ Lexis.Viewer = {
         }
         if (typeof src != "string" && !(src instanceof String)) return;
 
+        Lexis.Viewer.src = src;
+
         var request = new XMLHttpRequest();
         request.open("GET", Lexis.Viewer.src, true);
         request.responseType = "document";
