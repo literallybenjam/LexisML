@@ -120,14 +120,8 @@ Lexis.Viewer = {
         }
         if (typeof src != "string" && !(src instanceof String)) return;
 
-        var base;
-        if (document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", "base").length) base = document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", "base").item(0);
-        else base = document.head.appendChild(document.createElementNS("http://www.w3.org/1999/xhtml", "base"));
-        base.href = "";
-        base.href = src;
-
         var request = new XMLHttpRequest();
-        request.open("GET", "", true);
+        request.open("GET", Lexis.Viewer.src, true);
         request.responseType = "document";
         request.addEventListener("load", Lexis.Viewer.processIndex, false);
         request.send();
@@ -137,7 +131,7 @@ Lexis.Viewer = {
     loadWord: function(src) {
         document.documentElement.setAttribute("data-lexis-viewer-is_loading", "");
         var request = new XMLHttpRequest();
-        request.open("GET", src, true);
+        request.open("GET", Lexis.Viewer.src + "/../" + src, true);
         request.responseType = "document";
         request.addEventListener("load", Lexis.Viewer.processWord, false);
         request.send();
@@ -328,6 +322,8 @@ Lexis.Viewer = {
     },
 
     require_perfect_match: false,
+
+    src: "",
 
     Tag: function(name, value) {
         this.name = name;
