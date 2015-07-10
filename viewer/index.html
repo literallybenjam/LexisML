@@ -6,6 +6,16 @@
         <link rel="stylesheet" type="text/css" href="style.css" />
         <script type="text/javascript" src="script.js"></script>
     </head>
-    <body id="lexis-viewer-container">
+    <body>
+        <header>
+            <h1 id="lexis-viewer-title">The LexisML Viewer</h1>
+            <span id="lexis-viewer-splash">Splash content</span>
+            <p id="lexis-viewer-description">Description</p>
+        </header>
+        <nav style="float: left; width: 25%; overflow-x: hidden; overflow-y: auto;">
+            <form id="lexis-viewer-search"></form>
+            <ul id="lexis-viewer-entry_list"></ul>
+        </nav>
+        <main id="lexis-viewer-word" style="padding-left: 25%;"></main>
     </body>
 </html>
