@@ -5,6 +5,20 @@ if (typeof Lexis === "undefined" || !(Lexis instanceof Object)) Lexis = {};
 
 Lexis.Viewer = {
 
+    getQuery: function(name) {
+        var i;
+        var j;
+        var q = decodeURIComponent(window.location.search);
+        if (!q) q = "?";
+        i = q.indexOf("?" + name + "=");
+        if (i === -1) i = q.indexOf("&" + name + "=");
+        if (i === -1) return undefined;
+        i += name.length + 2;
+        j = q.indexOf("&", i);
+        if (j === -1) return q.substring(i);
+        else return q.substring(i, j);
+    },
+
     handleClicks: function(e) {
         if (e.type !== "click" || document.documentElement.hasAttribute("data-lexis-viewer-is_loading")) return;
         var n = e.target;
@@ -77,20 +91,6 @@ Lexis.Viewer = {
 
     },
 
-    getQuery: function(name) {
-        var i;
-        var j;
-        var q = decodeURIComponent(window.location.search);
-        if (!q) q = "?";
-        i = q.indexOf("?" + name + "=");
-        if (i === -1) i = q.indexOf("&" + name + "=");
-        if (i === -1) return undefined;
-        i += name.length + 2;
-        j = q.indexOf("&", i);
-        if (j === -1) return q.substring(i);
-        else return q.substring(i, j);
-    },
-
     handleQuery: function(e) {
         if (!document.getElementById("lexis-viewer-search")) return;
         Lexis.Viewer.require_perfect_match = true;
@@ -102,26 +102,6 @@ Lexis.Viewer = {
             document.getElementById("lexis-viewer-search").elements.namedItem("tags").item(e.state.tag);
             Lexis.Viewer.handleInputs();
         }
-    },
-
-    pushQuery: function(name, value, push_object) {
-        var i;
-        var j;
-        var q = decodeURIComponent(window.location.search);
-        var r = "";
-        if ((!q || q == "?") && value) r = "?" + name + "=" + value;
-        else {
-            i = q.indexOf("?" + name + "=");
-            if (i === -1) i = q.indexOf("&" + name + "=");
-            if (i != -1) {
-                if (value) i += name.length + 2;
-                j = q.indexOf("&", i);
-                if (j != -1) r = q.substring(0, i) + value + q.substring(j);
-                else r = q.substring(0, i) + value;
-            }
-            else if (value) r = q + "&" + name + "=" + value;
-        }
-        window.history.pushState(push_object, "", r);
     },
 
     Item: function(lemma, src, tag) {
@@ -329,11 +309,34 @@ Lexis.Viewer = {
         }
         document.documentElement.removeAttribute("data-lexis-viewer-is_loading");
     },
+
+    pushQuery: function(name, value, push_object) {
+        var i;
+        var j;
+        var q = decodeURIComponent(window.location.search);
+        var r = "";
+        if ((!q || q == "?") && value) r = "?" + name + "=" + value;
+        else {
+            i = q.indexOf("?" + name + "=");
+            if (i === -1) i = q.indexOf("&" + name + "=");
+            if (i != -1) {
+                if (value) i += name.length + 2;
+                j = q.indexOf("&", i);
+                if (j != -1) r = q.substring(0, i) + value + q.substring(j);
+                else r = q.substring(0, i) + value;
+            }
+            else if (value) r = q + "&" + name + "=" + value;
+        }
+        window.history.pushState(push_object, "", r);
+    },
+
     require_perfect_match: false,
+
     Tag: function(name, value) {
         this.name = name;
         this.value = value;
     },
+
     TagGroup: function(name, value) {
         if (name === undefined || name === null) name = "";
         this.name = name;
