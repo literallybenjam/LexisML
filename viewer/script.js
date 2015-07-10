@@ -101,7 +101,7 @@ Lexis.Viewer = {
         if (typeof src != "string" && !(src instanceof String)) return;
 
         var base;
-        if (document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", "base")) base = document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", "base").item(0);
+        if (document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", "base").length) base = document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", "base").item(0);
         else base = document.head.appendChild(document.createElementNS("http://www.w3.org/1999/xhtml", "base"));
         base.href = src;
         var request = new XMLHttpRequest();
