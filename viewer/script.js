@@ -11,22 +11,20 @@ Lexis.Viewer = {
         var value;
         if (n.dataset && n.dataset.src) {
             Lexis.Viewer.loadWord(n.dataset.src);
-            if (document.getElementById("lexis-viewer-search")) {
-                window.history.pushState({
-                    input: document.getElementById("lexis-viewer-search").elements.namedItem("input").value,
-                    tag: document.getElementById("lexis-viewer-search").elements.namedItem("tags").selectedIndex
-                }, "", "?" + n.textContent);
-            }
+            if (document.getElementById("lexis-viewer-search")) Lexis.Viewer.pushQuery("word", n.textContent, {
+                input: document.getElementById("lexis-viewer-search").elements.namedItem("input").value,
+                tag: document.getElementById("lexis-viewer-search").elements.namedItem("tags").selectedIndex
+            });
         }
         else if (this.namespaceURI === "about:lexisml?word" && this.tagName === "wordref") {
             Lexis.Viewer.require_perfect_match = true;
             if (this.hasAttribute("for")) value = this.getAttribute("for");
             else value = this.textContent;
             if (document.getElementById("lexis-viewer-search")) {
-                window.history.pushState({
+                Lexis.Viewer.pushQuery("word", value, {
                     input: document.getElementById("lexis-viewer-search").elements.namedItem("input").value,
                     tag: document.getElementById("lexis-viewer-search").elements.namedItem("tags").selectedIndex
-                }, "", "?" + value);
+                });
                 document.getElementById("lexis-viewer-search").elements.namedItem("input").value = value;
                 document.getElementById("lexis-viewer-search").elements.namedItem("tags").item(0);
             }
@@ -37,10 +35,10 @@ Lexis.Viewer = {
             if (document.getElementById("lexis-viewer-search")) {
                 document.getElementById("lexis-viewer-search").elements.namedItem("input").value = "";
                 document.getElementById("lexis-viewer-search").elements.namedItem("tags").item(0);
-                window.history.pushState({
+                Lexis.Viewer.pushQuery("word", "", {
                     input: document.getElementById("lexis-viewer-search").elements.namedItem("input").value,
                     tag: document.getElementById("lexis-viewer-search").elements.namedItem("tags").selectedIndex
-                }, "", "?");
+                });
             }
             Lexis.Viewer.handleInputs();
         }
@@ -79,12 +77,24 @@ Lexis.Viewer = {
 
     },
 
-    handleQuery: function(e) {
-        if (!document.getElementById("lexis-viewer-search")) return;
+    getQuery: function(name) {
+        var i;
+        var j;
         var q = decodeURIComponent(window.location.search);
         if (!q) q = "?";
+        i = q.indexOf("?" + name + "=");
+        if (i === -1) i = q.indexOf("&" + name + "=");
+        if (i === -1) return undefined;
+        i += name.length + 2;
+        j = q.indexOf("&", i);
+        if (j === -1) return q.substring(i);
+        else return q.substring(i, j);
+    },
+
+    handleQuery: function(e) {
+        if (!document.getElementById("lexis-viewer-search")) return;
         Lexis.Viewer.require_perfect_match = true;
-        document.getElementById("lexis-viewer-search").elements.namedItem("input").value = q.substr(1);
+        document.getElementById("lexis-viewer-search").elements.namedItem("input").value = Lexis.Viewer.getQuery("word");
         document.getElementById("lexis-viewer-search").elements.namedItem("tags").item(0);
         Lexis.Viewer.handleInputs();
         if (e && e.state) {
@@ -92,6 +102,26 @@ Lexis.Viewer = {
             document.getElementById("lexis-viewer-search").elements.namedItem("tags").item(e.state.tag);
             Lexis.Viewer.handleInputs();
         }
+    },
+
+    pushQuery: function(name, value, push_object) {
+        var i;
+        var j;
+        var q = decodeURIComponent(window.location.search);
+        var r = "";
+        if ((!q || q == "?") && value) r = "?" + name + "=" + value;
+        else {
+            i = q.indexOf("?" + name + "=");
+            if (i === -1) i = q.indexOf("&" + name + "=");
+            if (i != -1) {
+                if (value) i += name.length + 2;
+                j = q.indexOf("&", i);
+                if (j != -1) r = q.substring(0, i) + value + q.substring(j);
+                else r = q.substring(0, i) + value;
+            }
+            else if (value) r = q + "&" + name + "=" + value;
+        }
+        window.history.pushState(push_object, "", r);
     },
 
     Item: function(lemma, src, tag) {
