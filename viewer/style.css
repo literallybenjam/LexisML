@@ -2,49 +2,49 @@
 @namespace url(http://www.w3.org/1999/xhtml);
 @namespace word url(about:lexisml?word);
 
-html[data-lexis-is-loading], html[data-lexis-is-loading] #list li, html[data-lexis-is-loading] #title, html[data-lexis-is-loading] word|wordref {
+html[data-lexis-viewer-is_loading], html[data-viewer-is_loading] #lexis-viewer-entry_list li, html[data-lexis-viewer-is_loading] #lexis-viewer-title, html[data-lexis-viewer-is_loading] word|wordref {
     cursor: progress;
 }
 
-#header {
+#lexis-viewer-header {
     text-align: center;
     margin: 1em;
     border-bottom: thin black solid;
 }
 
-#sidebar {
+#lexis-viewer-sidebar {
     float: left;
     width: 25%;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
-#search {
+#lexis-viewer-search {
     display: block;
     margin: auto;
     width: 100%;
     text-align: center;
 }
 
-#search input {
+#lexis-viewer-search input {
     display: inline;
     width: 40%;
 }
 
-#search select {
+#lexis-viewer-search select {
     display: inline;
     width: 40%;
 }
 
-#list {
+#lexis-viewer-entry_list {
     list-style-type: none;
 }
 
-#list li, #title {
+#lexis-viewer-entry_list li, #lexis-viewer-title {
     cursor: pointer;
 }
 
-#container {
+#lexis-viewer-word {
     padding-left: 25%;
 }
 

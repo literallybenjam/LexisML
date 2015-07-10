@@ -104,6 +104,7 @@ Lexis.Viewer = {
         if (document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", "base").length) base = document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", "base").item(0);
         else base = document.head.appendChild(document.createElementNS("http://www.w3.org/1999/xhtml", "base"));
         base.href = src;
+
         var request = new XMLHttpRequest();
         request.open("GET", "", true);
         request.responseType = "document";
@@ -113,7 +114,7 @@ Lexis.Viewer = {
     },
 
     loadWord: function(src) {
-        document.documentElement.setAttribute("data-lexis-is-loading", "");
+        document.documentElement.setAttribute("data-lexis-viewer-is_loading", "");
         var request = new XMLHttpRequest();
         request.open("GET", src, true);
         request.responseType = "document";
@@ -129,7 +130,8 @@ Lexis.Viewer = {
         var index_document = this.response;
         if (!(index_document instanceof Document) || index_document.documentElement.namespaceURI !== "about:lexisml?lexis") return;
 
-        document.body.textContent = "";
+        if (!document.getElementById("lexis-viewer-container")) return;
+        document.getElementById("lexis-viewer-container").textContent = "";
 
         var metadata = {
             title: "",
@@ -184,7 +186,7 @@ Lexis.Viewer = {
         var title;
         if (metadata.title) {
             title = document.createElementNS("http://www.w3.org/1999/xhtml", "h1");
-            title.id = "title";
+            title.id = "lexis-viewer-title";
             while (metadata.title.childNodes.length) {
                 title.appendChild(metadata.title.childNodes.item(0));
             }
@@ -195,7 +197,7 @@ Lexis.Viewer = {
         var splash;
         if (metadata.splashes.length) {
             splash = document.createElementNS("http://www.w3.org/1999/xhtml", "span");
-            splash.id = "splash";
+            splash.id = "lexis-viewer-splash";
             i = Math.floor(Math.random() * metadata.splashes.length);
             while (metadata.splashes[i].childNodes.length) {
                 splash.appendChild(metadata.splashes[i].childNodes.item(0));
@@ -211,11 +213,11 @@ Lexis.Viewer = {
         }
 
         var header = document.createElementNS("http://www.w3.org/1999/xhtml", "header");
-        header.id = "header";
+        header.id = "lexis-viewer-header";
         if (title) header.appendChild(title);
         if (splash) header.appendChild(splash);
         if (description) header.appendChild(description);
-        document.body.appendChild(header);
+        document.getElementById("lexis-viewer-container").appendChild(header);
 
         var search_input = document.createElementNS("http://www.w3.org/1999/xhtml", "input");
         search_input.name = "input";
@@ -250,12 +252,12 @@ Lexis.Viewer = {
         }
 
         var search = document.createElementNS("http://www.w3.org/1999/xhtml", "form");
-        search.id = "search";
+        search.id = "lexis-viewer-search";
         search.appendChild(search_input);
         search.appendChild(search_tags);
 
-        var list = document.createElementNS("http://www.w3.org/1999/xhtml", "ul");
-        list.id = "list";
+        var entry_list = document.createElementNS("http://www.w3.org/1999/xhtml", "ul");
+        entry_list.id = "lexis-viewer-entry_list";
         var list_item;
         for (i = 0; i < items.length; i++) {
             list_item = document.createElementNS("http://www.w3.org/1999/xhtml", "li");
@@ -263,18 +265,18 @@ Lexis.Viewer = {
             list_item.dataset.tag = items[i].tag;
             list_item.textContent = items[i].lemma;
             list_item.hidden = false;
-            list.appendChild(list_item);
+            entry_list.appendChild(list_item);
         }
 
         var sidebar = document.createElementNS("http://www.w3.org/1999/xhtml", "nav");
         sidebar.id = "sidebar";
         sidebar.appendChild(search);
-        sidebar.appendChild(list);
-        document.body.appendChild(sidebar);
+        sidebar.appendChild(entry_list);
+        document.getElementById("lexis-viewer-container").appendChild(sidebar);
 
-        var container = document.createElementNS("http://www.w3.org/1999/xhtml", "div");
-        container.id = "container";
-        document.body.appendChild(container);
+        var word = document.createElementNS("http://www.w3.org/1999/xhtml", "div");
+        word.id = "lexis-viewer-word";
+        document.getElementById("lexis-viewer-word").appendChild(word);
 
         Lexis.Viewer.handleQuery();
 
@@ -291,9 +293,9 @@ Lexis.Viewer = {
         for (i = 0; i < wordrefs.length; i++) {
             wordrefs.item(i).addEventListener("click", Lexis.Viewer.handleClicks, false);
         }
-        document.getElementById("container").textContent = "";
-        document.getElementById("container").appendChild(word);
-        document.documentElement.removeAttribute("data-lexis-is-loading");
+        document.getElementById("lexis-viewer-word").textContent = "";
+        document.getElementById("lexis-viewer-word").appendChild(word);
+        document.documentElement.removeAttribute("data-lexis-viewer-is_loading");
     },
     require_perfect_match: false,
     Tag: function(name, value) {
