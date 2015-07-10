@@ -289,6 +289,7 @@ Lexis.Viewer = {
     },
 
     processWord: function() {
+        document.documentElement.removeAttribute("data-lexis-viewer-is_loading");
         if (document.documentElement.namespaceURI != "about:lexisml?word") return;
         var i;
         var word = document.importNode(this.response.documentElement, true);
@@ -300,7 +301,6 @@ Lexis.Viewer = {
             document.getElementById("lexis-viewer-word").textContent = "";
             document.getElementById("lexis-viewer-word").appendChild(word);
         }
-        document.documentElement.removeAttribute("data-lexis-viewer-is_loading");
     },
 
     pushQuery: function(name, value, push_object) {
