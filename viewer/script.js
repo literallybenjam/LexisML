@@ -70,9 +70,7 @@ Lexis.Viewer = {
 
         for (i = 0; i < document.getElementById("lexis-viewer-entry_list").children.length; i++) {
 
-            if (!value) document.getElementById("lexis-viewer-entry_list").children.item(i).hidden = false;
-
-            else if (!matched && Lexis.Viewer.require_perfect_match) {
+            if (!matched && Lexis.Viewer.require_perfect_match) {
                 if (value == document.getElementById("lexis-viewer-entry_list").children.item(i).textContent) {
                     document.getElementById("lexis-viewer-entry_list").children.item(i).hidden = false;
                     matched = true;
