@@ -2,7 +2,7 @@
 @namespace url(http://www.w3.org/1999/xhtml);
 @namespace word url(about:lexisml?word);
 
-html[data-loading], html[data-loading] #list li, html[data-loading] #title, html[data-loading] word|wordref {
+html[data-lexis-is-loading], html[data-lexis-is-loading] #list li, html[data-lexis-is-loading] #title, html[data-lexis-is-loading] word|wordref {
     cursor: progress;
 }
 
