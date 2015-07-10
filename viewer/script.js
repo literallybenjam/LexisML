@@ -93,7 +93,7 @@ Lexis.Viewer = {
     },
 
     handleQuery: function(e) {
-        if (!document.getElementById("lexis-viewer-input") || !document.getElementById("lexis-viewer-tags")) return;
+        if (!document.getElementById("lexis-viewer-input") || !document.getElementById("lexis-viewer-tags") || !Lexis.Viewer.getQuery("word")) return;
         Lexis.Viewer.require_perfect_match = true;
         document.getElementById("lexis-viewer-input").value = Lexis.Viewer.getQuery("word");
         document.getElementById("lexis-viewer-tags").item(0);
