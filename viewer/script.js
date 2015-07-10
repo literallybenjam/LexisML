@@ -284,6 +284,7 @@ Lexis.Viewer = {
     },
 
     processWord: function() {
+        if (document.documentElement.namespaceURI != "about:lexisml?word") return;
         var i;
         var word = document.importNode(this.response.documentElement, true);
         var wordrefs = word.getElementsByTagNameNS("about:lexisml?word", "wordref");
