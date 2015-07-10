@@ -93,7 +93,7 @@ Lexis.Viewer = {
     },
 
     handleQuery: function(e) {
-        if (!document.getElementById("lexis-viewer-input") || !document.getElementById("lexis-viewer-tags")) return;
+        if (!document.getElementById("lexis-viewer-input") || !document.getElementById("lexis-viewer-tags") || !Lexis.Viewer.getQuery("word")) return;
         Lexis.Viewer.require_perfect_match = true;
         document.getElementById("lexis-viewer-input").value = Lexis.Viewer.getQuery("word");
         document.getElementById("lexis-viewer-tags").item(0);
@@ -289,6 +289,7 @@ Lexis.Viewer = {
     },
 
     processWord: function() {
+        document.documentElement.removeAttribute("data-lexis-viewer-is_loading");
         if (document.documentElement.namespaceURI != "about:lexisml?word") return;
         var i;
         var word = document.importNode(this.response.documentElement, true);
@@ -300,7 +301,6 @@ Lexis.Viewer = {
             document.getElementById("lexis-viewer-word").textContent = "";
             document.getElementById("lexis-viewer-word").appendChild(word);
         }
-        document.documentElement.removeAttribute("data-lexis-viewer-is_loading");
     },
 
     pushQuery: function(name, value, push_object) {
