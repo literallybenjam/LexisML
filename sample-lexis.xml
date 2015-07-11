@@ -9,5 +9,9 @@
         <tag value="tag2">An unused tag</tag>
     </taggroup>
     <tag value="tag3">Another tag</tag> <!--  Tags don't have to be in <taggroups>  -->
-    <item src="sample-item.xml" tag="tag1 tag3">sample item</item>
+    <item src="sample-item.xml" tag="tag1 tag3">
+        <lemma>sample item</lemma>
+        <alt>sample-item</alt>
+        <alt>sample items</alt>
+    </item>
 </lexis>
