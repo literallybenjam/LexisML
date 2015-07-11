@@ -64,23 +64,42 @@ Lexis.Viewer = {
         if (!document.getElementById("lexis-viewer-input") || !document.getElementById("lexis-viewer-tags") || !document.getElementById("lexis-viewer-entry_list")) return;
 
         var i;
+        var j;
         var tag = document.getElementById("lexis-viewer-tags").value;
         var value = document.getElementById("lexis-viewer-input").value.toLocaleLowerCase();
         var matched = false;
+        var alts;
 
         for (i = 0; i < document.getElementById("lexis-viewer-entry_list").children.length; i++) {
 
-            if (!matched && Lexis.Viewer.require_perfect_match) {
-                if (value == document.getElementById("lexis-viewer-entry_list").children.item(i).textContent) {
-                    document.getElementById("lexis-viewer-entry_list").children.item(i).hidden = false;
-                    matched = true;
-                    Lexis.Viewer.loadWord(document.getElementById("lexis-viewer-entry_list").children.item(i).dataset.lexisViewerWordref);
+            alts = [];
+            j = 0;
+
+            if (Lexis.Viewer.require_perfect_match) {
+                if (!matched) {
+                    if (value == document.getElementById("lexis-viewer-entry_list").children.item(i).textContent) matched = true;
+                    else if (document.getElementById("lexis-viewer-entry_list").children.item(i).dataset.listViewerAlts) alts = JSON.parse(document.getElementById("lexis-viewer-entry_list").children.item(i).dataset.listViewerAlts);
+                    while (!matched && alts[j]) {
+                        if (value == alts[j]) matched = true;
+                        j++;
+                    }
+                    if (matched) {
+                        document.getElementById("lexis-viewer-entry_list").children.item(i).hidden = false;
+                        Lexis.Viewer.loadWord(document.getElementById("lexis-viewer-entry_list").children.item(i).dataset.lexisViewerWordref);
+                    }
                 }
                 else document.getElementById("lexis-viewer-entry_list").children.item(i).hidden = true;
             }
 
             else {
-                if (value == document.getElementById("lexis-viewer-entry_list").children.item(i).textContent.toLocaleLowerCase().substr(0, value.length) && (!tag || document.getElementById("lexis-viewer-entry_list").children.item(i).dataset.lexisViewerTag.split(/\s+/).indexOf(tag) !== -1)) document.getElementById("lexis-viewer-entry_list").children.item(i).hidden = false;
+                matched = false;
+                if (value == document.getElementById("lexis-viewer-entry_list").children.item(i).textContent.toLocaleLowerCase().substr(0, value.length)) matched = true;
+                else if (document.getElementById("lexis-viewer-entry_list").children.item(i).dataset.listViewerAlts) alts = JSON.parse(document.getElementById("lexis-viewer-entry_list").children.item(i).dataset.listViewerAlts);
+                while (!matched && alts[j]) {
+                    if (value == alts[j].toLocaleLowerCase().substr(0, value.length)) matched = true;
+                    j++;
+                }
+                if (matched && (!tag || document.getElementById("lexis-viewer-entry_list").children.item(i).dataset.lexisViewerTag.split(/\s+/).indexOf(tag) !== -1)) document.getElementById("lexis-viewer-entry_list").children.item(i).hidden = false;
                 else document.getElementById("lexis-viewer-entry_list").children.item(i).hidden = true;
             }
 
@@ -103,10 +122,11 @@ Lexis.Viewer = {
         }
     },
 
-    Item: function(lemma, src, tag) {
+    Item: function(lemma, src, tag, alts) {
         this.lemma = lemma;
         this.src = src;
         this.tag = tag;
+        this.alts = alts;
     },
 
     load: function(src) {
@@ -154,6 +174,7 @@ Lexis.Viewer = {
         }
         var items = [];
         var tags = [];
+        var alts = [];
 
         var current_element;
         var object;
@@ -189,7 +210,14 @@ Lexis.Viewer = {
                     break;
 
                 case "item":
-                    items.push(new Lexis.Viewer.Item(current_element.textContent.trim(), current_element.getAttribute("src"), current_element.getAttribute("tag")));
+                    if (!current_element.children.length) items.push(new Lexis.Viewer.Item(current_element.textContent.trim(), current_element.getAttribute("src"), current_element.getAttribute("tag")));
+                    else if (current_element.getElementsByTagNameNS("about:lexisml?lexis", "lemma").length) {
+                        alts = [];
+                        for (j = 0; j < current_element.getElementsByTagNameNS("about:lexisml?lexis", "alt").length; j++) {
+                            alts.push(current_element.getElementsByTagNameNS("about:lexisml?lexis", "alt").item(j).textContent.trim());
+                        }
+                        items.push(new Lexis.Viewer.Item(current_element.getElementsByTagNameNS("about:lexisml?lexis", "lemma").item(0).textContent.trim(), current_element.getAttribute("src"), current_element.getAttribute("tag"), JSON.stringify(alts)));
+                    }
                     break;
 
             }
@@ -206,7 +234,6 @@ Lexis.Viewer = {
             document.getElementById("lexis-viewer-title").addEventListener("click", Lexis.Viewer.handleClicks, false);
         }
 
-        var splash;
         if (metadata.splashes.length && document.getElementById("lexis-viewer-splash")) {
             document.getElementById("lexis-viewer-splash").textContent = "";
             i = Math.floor(Math.random() * metadata.splashes.length);
@@ -215,7 +242,6 @@ Lexis.Viewer = {
             }
         }
 
-        var description;
         if (metadata.description && document.getElementById("lexis-viewer-description")) {
             document.getElementById("lexis-viewer-description").textContent = "";
             while (metadata.description.childNodes.length) {
@@ -271,8 +297,9 @@ Lexis.Viewer = {
             var nav_item;
             for (i = 0; i < items.length; i++) {
                 nav_item = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
-                nav_item.dataset.lexisViewerWordref = items[i].src;
-                nav_item.dataset.lexisViewerTag = items[i].tag;
+                if (items[i].src) nav_item.dataset.lexisViewerWordref = items[i].src;
+                if (items[i].tag) nav_item.dataset.lexisViewerTag = items[i].tag;
+                if (items[i].alts) nav_item.dataset.lexisViewerAlts = items[i].alts;
                 nav_item.textContent = items[i].lemma;
                 nav_item.hidden = false;
                 document.getElementById("lexis-viewer-entry_list").appendChild(nav_item);
