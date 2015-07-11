@@ -344,7 +344,7 @@ Lexis.Viewer = {
             if (i === -1) i = q.indexOf("&" + name + "=");
             if (i != -1) {
                 if (value) i += name.length + 2;
-                j = q.indexOf("&", i);
+                j = q.indexOf("&", i + 1);
                 if (j != -1) r = q.substring(0, i) + value + q.substring(j);
                 else r = q.substring(0, i) + value;
             }
