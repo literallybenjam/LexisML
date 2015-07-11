@@ -236,8 +236,8 @@ Lexis.Viewer = {
         if (document.getElementById("lexis-viewer-title")) {
             document.getElementById("lexis-viewer-title").textContent = "";
             if (Lexis.Viewer.metadata.title) {
-                while (Lexis.Viewer.metadata.title.childNodes.length) {
-                    document.getElementById("lexis-viewer-title").appendChild(Lexis.Viewer.metadata.title.childNodes.item(0).cloneNode(true));
+                for (j = 0; j < Lexis.Viewer.metadata.title.childNodes.length; j++) {
+                    document.getElementById("lexis-viewer-title").appendChild(Lexis.Viewer.metadata.title.childNodes.item(j).cloneNode(true));
                 }
                 document.title = Lexis.Viewer.metadata.title.textContent;
             }
@@ -249,8 +249,8 @@ Lexis.Viewer = {
         if (document.getElementById("lexis-viewer-description")) {
             document.getElementById("lexis-viewer-description").textContent = "";
             if (Lexis.Viewer.metadata.description) {
-                while (Lexis.Viewer.metadata.description.childNodes.length) {
-                    document.getElementById("lexis-viewer-description").appendChild(Lexis.Viewer.metadata.description.childNodes.item(0).cloneNode(true));
+                for (j = 0; j < Lexis.Viewer.metadata.title.childNodes.length; j++) {
+                    document.getElementById("lexis-viewer-description").appendChild(Lexis.Viewer.metadata.description.childNodes.item(j).cloneNode(true));
                 }
             }
         }
@@ -321,12 +321,13 @@ Lexis.Viewer = {
 
     processSplash: function() {
         var i;
+        var j;
         if (document.getElementById("lexis-viewer-splash")) {
             document.getElementById("lexis-viewer-splash").textContent = "";
             if (Lexis.Viewer.metadata.splashes.length) {
                 i = Math.floor(Math.random() * Lexis.Viewer.metadata.splashes.length);
-                while (Lexis.Viewer.metadata.splashes[i].childNodes.length) {
-                    document.getElementById("lexis-viewer-splash").appendChild(Lexis.Viewer.metadata.splashes[i].childNodes.item(0).cloneNode(true));
+                for (j = 0; j < Lexis.Viewer.metadata.title.childNodes.length; j++) {
+                    document.getElementById("lexis-viewer-splash").appendChild(Lexis.Viewer.metadata.splashes[i].childNodes.item(j).cloneNode(true));
                 }
             }
         }
