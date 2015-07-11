@@ -23,8 +23,8 @@ Lexis.Viewer = {
         if (e.type !== "click" || document.documentElement.hasAttribute("data-lexis-viewer-is_loading")) return;
         var n = e.target;
         var value;
-        if (n.dataset && n.dataset.lexisViewerSrc) {
-            Lexis.Viewer.loadWord(n.dataset.lexisViewerSrc);
+        if (n.dataset && n.dataset.lexisViewerWordref) {
+            Lexis.Viewer.loadWord(n.dataset.lexisViewerWordref);
             if (document.getElementById("lexis-viewer-input") && document.getElementById("lexis-viewer-tags")) Lexis.Viewer.pushQuery("word", n.textContent, {
                 input: document.getElementById("lexis-viewer-input").value,
                 tag: document.getElementById("lexis-viewer-tags").selectedIndex
@@ -74,7 +74,7 @@ Lexis.Viewer = {
                 if (value == document.getElementById("lexis-viewer-entry_list").children.item(i).textContent) {
                     document.getElementById("lexis-viewer-entry_list").children.item(i).hidden = false;
                     matched = true;
-                    Lexis.Viewer.loadWord(document.getElementById("lexis-viewer-entry_list").children.item(i).dataset.lexisViewerSrc);
+                    Lexis.Viewer.loadWord(document.getElementById("lexis-viewer-entry_list").children.item(i).dataset.lexisViewerWordref);
                 }
                 else document.getElementById("lexis-viewer-entry_list").children.item(i).hidden = true;
             }
@@ -271,7 +271,7 @@ Lexis.Viewer = {
             var nav_item;
             for (i = 0; i < items.length; i++) {
                 nav_item = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
-                nav_item.dataset.lexisViewerSrc = items[i].src;
+                nav_item.dataset.lexisViewerWordref = items[i].src;
                 nav_item.dataset.lexisViewerTag = items[i].tag;
                 nav_item.textContent = items[i].lemma;
                 nav_item.hidden = false;
