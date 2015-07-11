@@ -79,8 +79,8 @@ Lexis.Viewer = {
                 if (matched) document.getElementById("lexis-viewer-entry_list").children.item(i).hidden = true;
                 else {
                     if (value == document.getElementById("lexis-viewer-entry_list").children.item(i).textContent) matched = true;
-                    else if (document.getElementById("lexis-viewer-entry_list").children.item(i).dataset.listViewerAlts) {
-                        alts = JSON.parse(document.getElementById("lexis-viewer-entry_list").children.item(i).dataset.listViewerAlts);
+                    else if (document.getElementById("lexis-viewer-entry_list").children.item(i).dataset.lexisViewerAlts) {
+                        alts = JSON.parse(document.getElementById("lexis-viewer-entry_list").children.item(i).dataset.lexisViewerAlts);
                         while (!matched && alts[j]) {
                             if (value == alts[j]) matched = true;
                             j++;
@@ -97,8 +97,8 @@ Lexis.Viewer = {
             else {
                 matched = false;
                 if (value == document.getElementById("lexis-viewer-entry_list").children.item(i).textContent.toLocaleLowerCase().substr(0, value.length)) matched = true;
-                else if (document.getElementById("lexis-viewer-entry_list").children.item(i).dataset.listViewerAlts) {
-                    alts = JSON.parse(document.getElementById("lexis-viewer-entry_list").children.item(i).dataset.listViewerAlts);
+                else if (document.getElementById("lexis-viewer-entry_list").children.item(i).dataset.lexisViewerAlts) {
+                    alts = JSON.parse(document.getElementById("lexis-viewer-entry_list").children.item(i).dataset.lexisViewerAlts);
                     while (!matched && alts[j]) {
                         if (value == alts[j].toLocaleLowerCase().substr(0, value.length)) matched = true;
                         j++;
