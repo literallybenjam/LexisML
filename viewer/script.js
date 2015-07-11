@@ -237,7 +237,7 @@ Lexis.Viewer = {
             document.getElementById("lexis-viewer-title").textContent = "";
             if (Lexis.Viewer.metadata.title) {
                 while (Lexis.Viewer.metadata.title.childNodes.length) {
-                    document.getElementById("lexis-viewer-title").appendChild(Lexis.Viewer.metadata.title.childNodes.item(0));
+                    document.getElementById("lexis-viewer-title").appendChild(Lexis.Viewer.metadata.title.childNodes.item(0).cloneNode(true));
                 }
                 document.title = Lexis.Viewer.metadata.title.textContent;
             }
@@ -250,7 +250,7 @@ Lexis.Viewer = {
             document.getElementById("lexis-viewer-description").textContent = "";
             if (Lexis.Viewer.metadata.description) {
                 while (Lexis.Viewer.metadata.description.childNodes.length) {
-                    document.getElementById("lexis-viewer-description").appendChild(Lexis.Viewer.metadata.description.childNodes.item(0));
+                    document.getElementById("lexis-viewer-description").appendChild(Lexis.Viewer.metadata.description.childNodes.item(0).cloneNode(true));
                 }
             }
         }
@@ -326,7 +326,7 @@ Lexis.Viewer = {
             if (Lexis.Viewer.metadata.splashes.length) {
                 i = Math.floor(Math.random() * Lexis.Viewer.metadata.splashes.length);
                 while (Lexis.Viewer.metadata.splashes[i].childNodes.length) {
-                    document.getElementById("lexis-viewer-splash").appendChild(Lexis.Viewer.metadata.splashes[i].childNodes.item(0));
+                    document.getElementById("lexis-viewer-splash").appendChild(Lexis.Viewer.metadata.splashes[i].childNodes.item(0).cloneNode(true));
                 }
             }
         }
