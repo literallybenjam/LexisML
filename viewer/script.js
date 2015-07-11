@@ -249,7 +249,7 @@ Lexis.Viewer = {
         if (document.getElementById("lexis-viewer-description")) {
             document.getElementById("lexis-viewer-description").textContent = "";
             if (Lexis.Viewer.metadata.description) {
-                for (j = 0; j < Lexis.Viewer.metadata.title.childNodes.length; j++) {
+                for (j = 0; j < Lexis.Viewer.metadata.description.childNodes.length; j++) {
                     document.getElementById("lexis-viewer-description").appendChild(Lexis.Viewer.metadata.description.childNodes.item(j).cloneNode(true));
                 }
             }
@@ -326,7 +326,7 @@ Lexis.Viewer = {
             document.getElementById("lexis-viewer-splash").textContent = "";
             if (Lexis.Viewer.metadata.splashes.length) {
                 i = Math.floor(Math.random() * Lexis.Viewer.metadata.splashes.length);
-                for (j = 0; j < Lexis.Viewer.metadata.title.childNodes.length; j++) {
+                for (j = 0; j < Lexis.Viewer.metadata.splashes[i].childNodes.length; j++) {
                     document.getElementById("lexis-viewer-splash").appendChild(Lexis.Viewer.metadata.splashes[i].childNodes.item(j).cloneNode(true));
                 }
             }
