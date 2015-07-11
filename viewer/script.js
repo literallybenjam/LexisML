@@ -218,7 +218,7 @@ Lexis.Viewer = {
                     break;
 
                 case "item":
-                    if (!current_element.children.length) items.push(new Lexis.Viewer.Item(current_element.textContent.trim(), current_element.getAttribute("src"), current_element.getAttribute("tag")));
+                    if (!current_element.getElementsByTagNameNS("about:lexisml?lexis", "lemma").length) items.push(new Lexis.Viewer.Item(current_element.textContent.trim(), current_element.getAttribute("src"), current_element.getAttribute("tag")));  // Allows for depreciated old-style item declarations, delete this line eventually
                     else if (current_element.getElementsByTagNameNS("about:lexisml?lexis", "lemma").length) {
                         alts = [];
                         for (j = 0; j < current_element.getElementsByTagNameNS("about:lexisml?lexis", "alt").length; j++) {
