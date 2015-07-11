@@ -200,6 +200,7 @@ Lexis.Viewer = {
                             break;
                         case "splash":
                             Lexis.Viewer.metadata.splashes.push(document.importNode(current_element, true));
+                            break;
                     }
                     break;
 
@@ -234,7 +235,7 @@ Lexis.Viewer = {
 
         if (document.getElementById("lexis-viewer-title")) {
             document.getElementById("lexis-viewer-title").textContent = "";
-            if (Lexis.Viewer.title) {
+            if (Lexis.Viewer.metadata.title) {
                 while (Lexis.Viewer.metadata.title.childNodes.length) {
                     document.getElementById("lexis-viewer-title").appendChild(Lexis.Viewer.metadata.title.childNodes.item(0));
                 }
