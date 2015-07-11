@@ -3,7 +3,7 @@
 @namespace word url(about:lexisml?word);
 
 html[data-lexis-viewer-is_loading],
-html[data-lexis-viewer-is_loading] *[data-lexis-viewer-src],
+html[data-lexis-viewer-is_loading] *[data-lexis-viewer-wordref],
 html[data-lexis-viewer-is_loading] #lexis-viewer-title,
 html[data-lexis-viewer-is_loading] word|wordref {
     cursor: progress;
@@ -30,7 +30,7 @@ html[data-lexis-viewer-is_loading] word|wordref {
     list-style-type: none;
 }
 
-*[data-lexis-viewer-src],
+*[data-lexis-viewer-wordref],
 #lexis-viewer-title {
     cursor: pointer;
 }
