@@ -90,6 +90,7 @@ Lexis.Viewer = {
                         document.getElementById("lexis-viewer-entry_list").children.item(i).hidden = false;
                         Lexis.Viewer.loadWord(document.getElementById("lexis-viewer-entry_list").children.item(i).dataset.lexisViewerWordref);
                     }
+                    else document.getElementById("lexis-viewer-entry_list").children.item(i).hidden = true;
                 }
             }
 
