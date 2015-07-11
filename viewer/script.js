@@ -239,7 +239,7 @@ Lexis.Viewer = {
                 while (Lexis.Viewer.metadata.title.childNodes.length) {
                     document.getElementById("lexis-viewer-title").appendChild(Lexis.Viewer.metadata.title.childNodes.item(0));
                 }
-                document.title = Lexis.Viewer.metadata.title;
+                document.title = Lexis.Viewer.metadata.title.textContent;
             }
             document.getElementById("lexis-viewer-title").addEventListener("click", Lexis.Viewer.handleClicks, false);
         }
