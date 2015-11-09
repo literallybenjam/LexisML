@@ -91,11 +91,12 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
 
         Contents : Of a line, the sequence of zero or more characters
             which comprise the line. Of a page, lines 05--45 of the
-            page. Of a section, the sequence of lines which comprise
-            the section, not including the section heading. Of another
-            sequence, the sequence itself. A sequence of characters or
-            lines is said to be "contained" in another sequence if it
-            is in the sequence's contents.
+            page. Of an LSDOC, the contents of each of its pages. Of a
+            section, the sequence of lines which comprise the section,
+            not including the section heading. Of another sequence, the
+            sequence itself. A sequence of characters or lines is said
+            to be "contained" in another sequence if it is in the
+            sequence's contents.
 
         Document identifier : A sequence of seven characters as defined
             in §02-B.
@@ -121,7 +122,7 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
         List : A sequence of one or more list items. List items MAY be
             separated by blank lines.
 
-        List item : A sequence lines, as defined in §02-F.
+        List item : A sequence of lines, as defined in §02-F.
 
         LSDOC : A file which conforms to this specification.
 
@@ -136,31 +137,31 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
 
         Paragraph : A sequence of lines, as defined in §02-E.
 
-        Section : A sequence of lines, possibly contained in one or
-            more pages, as defined in §02-D. The first line of a
-            section heading SHOULD be the first line in a section.
-
-        Section heading : One or more lines as defined in §02-D. A
-            heading is described as "describing" a section if the first
-            line of the section heading is the first line of the
+        Section : A sequence of lines, as defined in §02-D. The first
+            line of a section heading SHOULD be the first line in a
             section.
 
+        Section heading : One or more lines as defined in §02-D. A
+            section heading is described as "describing" a section if
+            the first line of the section heading is the first line of
+            the section.
+
         Sentence case : Capitalized according to standard conventions
-            for sentences, such as those laid out in §03.
+            for sentences, such as those laid out in §??.
 
         Sibling : Of a subsection, contained in exactly the same
             sections as another. Sections which are not subsections are
             also considered siblings of each other.
 
-        Subsection : A section contained by another section.
+        Subsection : A section which is contained by another section.
 
         Title case : Capitalized according to standard conventions for
-            titles, such as those laid out in §03.
+            titles, such as those laid out in §??.
 
         Unicode character : A Unicode scalar value, as defined in
             [UNICODE].
 
-        Unnumbered section heading : A section heading which is not an
+        Unnumbered section heading : A section heading which is not a
             numbered section heading.
 
         Uppercase : Containing only upperchase characters, as defined
@@ -188,6 +189,8 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
         -   Each line of a page MUST contain no more than 71
             characters, followed by U+000A LINE FEED. This makes the
             maximum length of a line 72 Unicode characters.
+
+        -   U+0020 SPACE characters cannot end a line.
 
         -   The first line of a page MUST be blank.
 
@@ -268,7 +271,7 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
 
         -   Characters 04--07 MUST be digits (0--9) uniquely
             identifying the document. These MUST be unique across
-            document statuses; that is, WD-0009, RC-0009, and FR-0009
+            various statuses; that is, WD-0009, RC-0009, and FR-0009
             refer to different drafts of the same document, and EB-0009
             refers to FR-0009's second errata.
 
@@ -321,7 +324,7 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
         heading, if present.
 
         Section headings MUST describe a section. Section headings
-        MAY be found inside a section's contents, in which case they
+        MAY be contained by another section, in which case they
         describe a subsection. Any sequence of lines which meets the
         requirements for section headings described in this document
         MUST be considered a section heading.
@@ -371,9 +374,8 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
                     the ranges above to be exhausted, sections SHOULD
                     be regrouped to avoid such a problem.
 
-                +   One U+002E FULL STOP.
-
-                +   Exactly three U+0020 SPACE characters.
+            -   One U+002E FULL STOP, followed by exactly three U+0020
+                SPACE characters.
 
             -   The section title. This SHOULD NOT be ended by a U+003A
                 COLON.
@@ -402,27 +404,26 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
     02-F.   Lists
 
         The first line of a list item SHOULD begin with one of the
-        following characters, depending on how many lists the item in
-        question is contained in: U+002D HYPHEN-MINUS, U+002B PLUS
-        SIGN, U+003D EQUALS SIGN, U+2021 DOUBLE DAGGER. For example, an
-        item contained in only one list would use U+002D HYPHEN-MINUS,
-        but an item contained in a list which is contained in another
-        list which is contianed in yet another list would use U+003D
-        EQUALS SIGN. Should this sequence of characters be exhausted,
-        it SHOULD be cycled through again; for example, an item which
-        is contained in six lists simultaneously would use U+002B PLUS.
+        following characters, depending on how many lists contain the
+        list item in question: U+002D HYPHEN-MINUS, U+002B PLUS SIGN,
+        U+003D EQUALS SIGN, U+2021 DOUBLE DAGGER. For example, an item
+        contained in only one list would use U+002D HYPHEN-MINUS, but
+        an item contained in a list which is contained in another list
+        which is contianed in yet another list would use U+003D EQUALS
+        SIGN. If this sequence of characters be exhausted, it SHOULD be
+        cycled through again; for example, an item which is contained
+        in six lists simultaneously would also use U+002B PLUS.
 
-        The character chosen using this methodology SHOULD be followed
-        by exactly three U+0020 SPACE characters. Non-initial lines in
-        a list item SHOULD be indented from the initial line. List
-        items MAY be preceeded or followed by blank lines. List items
-        MAY contain one or more paragraphs; a paragraph which begins a
-        list item should still be formatted according to this section.
-        Paragraphs which do not begin a list item should be indented
-        from the list item's initial line.
+        This character SHOULD be followed by exactly three U+0020 SPACE
+        characters. Non-initial lines in a list item SHOULD be indented
+        from the initial line. List items MAY be preceeded or followed
+        by blank lines. List items MAY contain one or more paragraphs;
+        a paragraph which begins a list item should still be formatted
+        according to this section. Paragraphs which do not begin a list
+        item should be indented from the list item's initial line.
 
 
-04.     References
+03.     References
 
     [RFC 2119] S. Bradner, Harvard University. Key words for use in
         RFCs to Indicate Requirement Levels. <http://tools.ietf.org/
