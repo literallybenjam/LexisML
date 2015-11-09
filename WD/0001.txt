@@ -425,9 +425,9 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
 
 03.     References
 
-    [RFC 2119] S. Bradner, Harvard University. Key words for use in
-        RFCs to Indicate Requirement Levels. <http://tools.ietf.org/
+    [RFC 2119] S. Bradner, Harvard University. "Key words for use in
+        RFCs to Indicate Requirement Levels". <http://tools.ietf.org/
         html/rfc2119>.
 
-    [UNICODE] The Unicode Consortium. The Unicode Standard. <http://
+    [UNICODE] The Unicode Consortium. "The Unicode Standard". <http://
         www.unicode.org/versions/>.
