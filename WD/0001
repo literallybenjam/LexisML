@@ -1,0 +1,432 @@
+
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              001
+
+
+                      LexisML Standards Documents
+
+                          The LANGDEV Project
+
+
+Abstract:
+
+    This LexisML Standards Document (LSDOC) provides information about
+    the proper style and formatting for future LSDOCs.
+
+
+Status of This Document:
+
+    This document is currently a WORKING DRAFT. This means that its
+    contents are still under contstruction and may change at any
+    time. This document is made public to allow interested parties to
+    view the latest in standards development.
+
+    This document was last updated on 08 November 2015.
+
+
+Copyright Notice:
+
+    This document is released by its author into the public domain
+    under a Creative Commons CC0 1.0 Unported License. For more
+    information, see <http://creativecommons.org/publicdomain/zero/
+    1.0/>.
+
+
+Table of Contents:
+
+01.   Introduction
+    01-A.   Definitions
+02.   Format Rules
+    02-A.   Pages
+    02-B.   Document identifiers
+    02-C.   Opening contents
+    02-D.   Sections, headings, and the table of contents
+    02-E.   Paragraphs
+    02-F.   Lists
+03.   References
+
+
+WD-0001                                                             001
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
+
+
+01.     Introduction
+
+    The LexisML Standards Document (LSDOC) provides information
+    relating to current standards and best-practices in the development
+    and deployment of LexisML, a markup syntax and collection of
+    related tools for recording the lexicons and other grammatical
+    information of languages. This document provides the syntax and
+    file format for all future LSDOCs, until such a time as this
+    standard is superseded.
+
+    The canonical representation of an LSDOC is a UTF-8--encoded plain
+    text file. This ensures consistent representation and readability
+    on virtually any platform. The specific requirements for the proper
+    formatting of these text files are listed in §02.
+
+    This document also presents a number of style suggestions for the
+    composition of LSDOCs. Although these need not be followed
+    strictly, deviations should not be made without good reason. Where
+    style suggestions are not specified, this document encourages
+    general adherance with the latest version of the Chicago Manual of
+    Style.
+
+    01-A.   Definitions
+
+        Begin : Of a sequence of lines or characters, to be first in an
+            sequence's contents.
+
+        Blank line : A line which contains zero characters; that is,
+            a single U+000A LINE FEED.
+
+        Centered : Of a sequence of lines, having every line preceeded
+            by (71-L)/2 U+0020 SPACE characters, rounded down, where L
+            is the number of characters in the line's contents.
+
+        Character : When not qualified as a Unicode character, a
+            graphic character, as defined in [UNICODE].
+
+        Contents : Of a line, the sequence of zero or more characters
+            which comprise the line. Of a page, lines 05--45 of the
+            page. Of a section, the sequence of lines which comprise
+            the section, not including the section heading. Of another
+            sequence, the sequence itself. A sequence of characters or
+            lines is said to be "contained" in another sequence if it
+            is in the sequence's contents.
+
+        Document identifier : A sequence of seven characters as defined
+            in §02-B.
+
+        End : Of a sequence of characters, to be last in an sequence's
+            contents. Of a sequence of lines, to be the last lines in
+            an sequence's contents which are not blank.
+
+        Indented : Of a line, starting with some number of U+0020 SPACE
+            characters. When used as "indented from" some line X, the
+            first non-space character of the line must be preceeded by
+            four more U+0020 SPACE characters than the first non-space
+            character of X.
+
+        Indented contents : The contents of a line, starting with the
+            first non-space character in the line.
+
+        Initial line : The line which begins a sequence.
+
+        Line : A sequence of zero or more characters terminated by
+            U+000A LINE FEED.
+
+        List : A sequence of one or more list items. List items MAY be
+            separated by blank lines.
+
+        List item : A sequence lines, as defined in §02-F.
+
+        LSDOC : A file which conforms to this specification.
+
+        Non-initial line : A line which does not begin a sequence.
+
+        Non-space character : A character which is not U+0020 SPACE.
+
+        Numbered section heading : A section heading, as defined in
+            §02-D.
+
+        Page : A sequence of lines, as defined in §02-A.
+
+        Paragraph : A sequence of lines, as defined in §02-E.
+
+        Section : A sequence of lines, possibly contained in one or
+            more pages, as defined in §02-D. The first line of a
+            section heading SHOULD be the first line in a section.
+
+        Section heading : One or more lines as defined in §02-D. A
+            heading is described as "describing" a section if the first
+            line of the section heading is the first line of the
+            section.
+
+        Sentence case : Capitalized according to standard conventions
+            for sentences, such as those laid out in §03.
+
+        Sibling : Of a subsection, contained in exactly the same
+            sections as another. Sections which are not subsections are
+            also considered siblings of each other.
+
+        Subsection : A section contained by another section.
+
+        Title case : Capitalized according to standard conventions for
+            titles, such as those laid out in §03.
+
+        Unicode character : A Unicode scalar value, as defined in
+            [UNICODE].
+
+        Unnumbered section heading : A section heading which is not an
+            numbered section heading.
+
+        Uppercase : Containing only upperchase characters, as defined
+            in [UNICODE].
+
+        The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
+        NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
+        "MAY", and "OPTIONAL" in this document are to be interpreted as
+        described in [RFC 2119].
+
+
+
+02.     Format Rules
+
+    LSDOCs are plain text files, encoded in UTF-8.
+
+
+    02-A.   Pages
+
+        LSDOCs are made up of one or more pages conforming to the
+        following requirements:
+
+        -   Each page MUST be exactly 50 lines long.
+
+        -   Each line of a page MUST contain no more than 71
+            characters, followed by U+000A LINE FEED. This makes the
+            maximum length of a line 72 Unicode characters.
+
+        -   The first line of a page MUST be blank.
+
+        -   The second line of a page MUST contain the following
+            components, in order:
+
+            +   The author of the document, followed by U+0020 SPACE
+                characters until its length exactly matches 16
+                characters. Authors names longer than 16 characters
+                MUST be abbreviated.
+
+            +   A single U+0020 SPACE.
+
+            +   The document identifier (seven characters; see §02-B).
+
+            +   U+0020 SPACE, followed by U+003A COLON, followed by
+                another U+0020 SPACE.
+
+            +   The title of the document, followed by U+0020 SPACE
+                characters until its length exactly matches 40
+                characters. This SHOULD be represented in uppercase.
+
+            +   A single U+0020 SPACE.
+
+            +   The page number, preceeded by zeroes such that its
+                length is exactly 03 characters. LSDOCs of greater than
+                999 pages MUST be split into multiple documents.
+
+        -   The third and fourth lines of a page MUST be blank.
+
+        -   Lines 46 and 47 MUST be blank.
+
+        -   Line 48 MUST contain the following components, in order:
+
+            +   The document identifier (seven characters; see 02-B).
+
+            +   Exactly 61 U+0020 SPACE characters.
+
+            +   The page number, preceeded by zeroes such that its
+                length is exactly three characters. LSDOCs of greater
+                than 999 pages MUST be split into multiple documents.
+
+        -   Line 49 MUST be blank.
+
+        -   Line 50 MUST contain exactly 71 U+0025 PERCENT SIGN
+            characters.
+
+
+    02-B.   Document identifiers
+
+    Document identifiers are 07-character codes which uniquely identify
+    the LSDOC. They are constructed as follows:
+
+        -   The first two characters indicate the current document
+            status. The document statuses permitted by this document
+            are:
+
+            Working Draft (WD) : This document is currently under
+                construction, and can be expected to change at any
+                time.
+
+            Release Candidate (RC) : This document is not expected to
+                change significantly before final approval, but might
+                contain small errors or bugs.
+
+            Final Recommendation (FR) : This document is in its final
+                form and MUST NOT undergo changes.
+
+            Errata (E_) : This document is a formal modification to
+                an LSDOC with Final Recommendation status. The
+                underscore should be replaced with a letter (A--Z) to
+                identify the errata. Errata MUST NOT undergo changes
+                after publication; however, errata MAY modify previous
+                errata. A new document SHOULD be written to supersede
+                an LSDOC with a substantial number of errata.
+
+        -   The third character MUST be U+002D HYPHEN-MINUS.
+
+        -   Characters 04--07 MUST be digits (0--9) uniquely
+            identifying the document. These MUST be unique across
+            document statuses; that is, WD-0009, RC-0009, and FR-0009
+            refer to different drafts of the same document, and EB-0009
+            refers to FR-0009's second errata.
+
+
+    02-C.   Opening contents
+
+    An LSDOC MUST begin with the following contents, in order:
+
+        -   A title, centred. Titles MUST NOT exceed 59 characters,
+            and MUST be on their own line. Titles SHOULD be represented
+            in title case.
+
+        -   (OPTIONAL) A subtitle, centred. Subtitles SHOULD be
+            represented in sentence case, with the first letter
+            capitalized. Subtitles SHOULD begin on the line immediately
+            following a title, and MAY take up multiple lines.
+
+        -   The author of the document, centred. A blank line SHOULD
+            be placed between the title/subtitle and the author of the
+            document. Information, including contact information, MAY
+            be placed on the lines immediately following the author's
+            name; there SHOULD NOT be a blank line before or within any
+            such content.
+
+            Multiple authors MAY be included; there SHOULD be a blank
+            line in-between each.
+
+        -   The following sections, with unnumbered seaction headings:
+
+            +   (OPTIONAL) An abstract.
+
+            +   A "Status of This Document" section. This SHOULD
+                contain a textual description of the document status
+                designated by the document identifier (see §02-B) and
+                the date of publication. Other pertinent information
+                related to the status of the document may also be
+                included here.
+
+            +   A copyright notice.
+
+            +   (RECOMMENDED) In documents with more than one numbered
+                section heading, a table of contents.
+
+
+    02-D.  Sections, headings, and the table of contents
+
+        A section SHOULD be used to group together thematic content,
+        and SHOULD be described by a section heading, defined below.
+        The contents of a section MUST be indented from section's
+        heading, if present.
+
+        Section headings MUST describe a section. Section headings
+        MAY be found inside a section's contents, in which case they
+        describe a subsection. Any sequence of lines which meets the
+        requirements for section headings described in this document
+        MUST be considered a section heading.
+
+        Section headings MUST NOT contain a blank line, and non-initial
+        lines in a section heading MUST be indented from the initial
+        line. Section headings which do not describe subsections SHOULD
+        be in title case; all other section headings SHOULD be in
+        sentence case.
+
+        Numbered section headings which are not subheadings SHOULD
+        begin a page. Other section headings which do not begin a page
+        SHOULD be preceeded by two blank lines. Section headings SHOULD
+        be followed by a blank line.
+
+        Sections may consist of only a section heading, but this is NOT
+        RECOMMENDED.
+
+        A numbered section heading consists of the following:
+
+            -   A section number. This consists of:
+
+                +   In the case of subsections, the section number of
+                    the smallest section which contains the subsection,
+                    followed by U+002D HYPHEN-MINUS.
+
+                +   One or more characters in one of the following
+                    ranges, equivalent to the number of preceeding
+                    siblings plus one:
+
+                    -   For sections which are not subsections, a
+                        two-digit number in the range 01--99.
+
+                    -   For subsections which are contained in exactly
+                        one section, an uppercase letter in the range
+                        A--Z.
+
+                    -   For subsections which are contained in an even
+                        number of sections (greater than zero), a
+                        lowercase letter in the range a--z.
+
+                    -   For subsections which are contained in an odd
+                        number of sections, greater than one, a
+                        single-digit number in the range 1--9.
+
+                    If the number of preceeding siblings causes one of
+                    the ranges above to be exhausted, sections SHOULD
+                    be regrouped to avoid such a problem.
+
+                +   One U+002E FULL STOP.
+
+                +   Exactly three U+0020 SPACE characters.
+
+            -   The section title. This SHOULD NOT be ended by a U+003A
+                COLON.
+
+        An unnumbered section heading MUST end with a U+003A COLON. Any
+        sequence of lines which is not a numbered section heading,
+        meets the other requirements for a section heading, and is
+        ended by a U+003A COLON is an unnumbered section heading.
+
+        The table of contents for an LSDOC (see §02-C) MUST be a list
+        of the contents of each numbered section heading, in order, one
+        per line, with matching indentation.
+
+
+    02-E.   Paragraphs
+
+        Paragraphs SHOULD be separated from other paragraphs by a blank
+        line. All lines in a paragraph SHOULD have matching
+        indentation, with the exception of the first paragraph of a
+        list (see §02-F). Paragraphs MAY NOT contain blank lines.
+
+        A paragraph of quoted material SHOULD be indented from the
+        surrounding text.
+
+
+    02-F.   Lists
+
+        The first line of a list item SHOULD begin with one of the
+        following characters, depending on how many lists the item in
+        question is contained in: U+002D HYPHEN-MINUS, U+002B PLUS
+        SIGN, U+003D EQUALS SIGN, U+2021 DOUBLE DAGGER. For example, an
+        item contained in only one list would use U+002D HYPHEN-MINUS,
+        but an item contained in a list which is contained in another
+        list which is contianed in yet another list would use U+003D
+        EQUALS SIGN. Should this sequence of characters be exhausted,
+        it SHOULD be cycled through again; for example, an item which
+        is contained in six lists simultaneously would use U+002B PLUS.
+
+        The character chosen using this methodology SHOULD be followed
+        by exactly three U+0020 SPACE characters. Non-initial lines in
+        a list item SHOULD be indented from the initial line. List
+        items MAY be preceeded or followed by blank lines. List items
+        MAY contain one or more paragraphs; a paragraph which begins a
+        list item should still be formatted according to this section.
+        Paragraphs which do not begin a list item should be indented
+        from the list item's initial line.
+
+
+04.     References
+
+    [RFC 2119] S. Bradner, Harvard University. Key words for use in
+        RFCs to Indicate Requirement Levels. <http://tools.ietf.org/
+        html/rfc2119>.
+
+    [UNICODE] The Unicode Consortium. The Unicode Standard. <http://
+        www.unicode.org/versions/>.
