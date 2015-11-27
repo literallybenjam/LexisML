@@ -590,9 +590,9 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              012
             This SHOULD be interpreted as the term's definition.
 
         Non-initial lines in a dictionary item SHOULD be indented from
-        the initial line. Dictionary items MAY contain one or more
+        the initial line. Dictionary items MAY be preceeded or followed
+        by blank lines. Dictionary items MAY contain one or more
         paragraphs; a paragraph which begins a dictionary item should
-        still be formatted according to this section. Paragraphs which
 
 
 WD-0001                                                             012
@@ -602,6 +602,7 @@ WD-0001                                                             012
 LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              013
 
 
+        still be formatted according to this section. Paragraphs which
         do not begin a dictionary item should be indented from the
         dictionary item's initial line.
 
@@ -641,8 +642,7 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              013
 
         Words SHOULD NOT be broken up across multiple lines by use of
         hyphenation. U+002D HYPHEN-MINUS characters MAY end a line
-        in other circumstances, however (for example, in hyphenated
-        compounds or in URIs).
+        in other circumstances, however.
 
 
 WD-0001                                                             013
