@@ -130,7 +130,7 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              003
             sequence's contents.
 
         Blank line : A line which contains zero characters; that is,
-            a single U+000A LINE FEED.
+            a single U+000A LINE FEED Unicode character.
 
         Centered : Of a sequence of lines, having every line preceeded
             by (71-L)/2 U+0020 SPACE characters, rounded down, where L
@@ -181,8 +181,8 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              004
 
         Initial line : The line which begins a sequence.
 
-        Line : A sequence of zero or more characters terminated by
-            U+000A LINE FEED.
+        Line : A sequence of zero or more characters terminated by a
+            U+000A LINE FEED Unicode character.
 
         List : A sequence of one or more list items. List items MAY be
             separated by blank lines.
@@ -315,8 +315,9 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              007
         -   Each page MUST be exactly 50 lines long.
 
         -   Each line of a page MUST contain no more than 71
-            characters, followed by a U+000A LINE FEED character. This
-            makes the maximum length of a line 72 Unicode characters.
+            characters, followed by a U+000A LINE FEED Unicode
+            character. This makes the maximum length of a line 72
+            Unicode characters.
 
         -   U+0020 SPACE characters cannot end a line.
 
@@ -342,7 +343,6 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              007
                 characters until its length exactly matches 40
                 characters. This SHOULD be represented in uppercase.
 
-            +   A single U+0020 SPACE character.
 
 
 WD-0001                                                             007
@@ -351,6 +351,8 @@ WD-0001                                                             007
 
 LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              008
 
+
+            +   A single U+0020 SPACE character.
 
             +   The page number, preceeded by zeroes such that its
                 length is exactly 03 characters. LSDOCs of greater than
@@ -390,8 +392,6 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              008
         Release Candidate (RC) : This document is not expected to
             change significantly before final approval, but might
             contain small errors or bugs.
-
-
 
 
 
@@ -636,13 +636,13 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              013
         -   The character sequence U+0020 SPACE, U+003A COLON, U+0020
             SPACE.
 
-        -   One or more non-space characters. This SHOULD be
-            interpreted as the term's definition.
+        -   A sequence of characters and U+000A LINE FEED Unicode
+            characters, at least one of which is a non-space character.
+            This SHOULD be interpreted as the term's definition.
 
         Non-initial lines in a dictionary item SHOULD be indented from
         the initial line. A dictionary item for which the indented
-        contents of the initial line begins with the sequence U+003A
-        COLON, U+0020 SPACE SHOULD be interpreted as providing an
+        contents of the initial line begins with the character sequence
 
 
 WD-0001                                                             013
@@ -652,8 +652,9 @@ WD-0001                                                             013
 LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              014
 
 
-        alternate definition for the preceeding dictionary item's term.
-        Such a dictionary item SHOULD NOT begin a list.
+        U+003A COLON, U+0020 SPACE SHOULD be interpreted as providing
+        an alternate definition for the preceeding dictionary item's
+        term. Such a dictionary item SHOULD NOT begin a list.
 
         Dictionary items MAY contain one or more paragraphs; a
         paragraph which begins a dictionary item should still be
@@ -692,7 +693,6 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              014
         Orphan lines (lines which end a paragraph but begin a page, or
         vice versa) SHOULD be avoided. This may require ending a page
         with more blank lines than would otherwise be necessary.
-
 
 
 WD-0001                                                             014
