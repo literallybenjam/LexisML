@@ -235,10 +235,10 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              005
         Uppercase : Containing only upperchase characters, as defined
             in [UNICODE].
 
-
-
-
-
+        The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
+        NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
+        "MAY", and "OPTIONAL" in this document are to be interpreted as
+        described in [RFC 2119].
 
 
 
@@ -250,56 +250,6 @@ WD-0001                                                             005
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              006
-
-
-        The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
-        NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
-        "MAY", and "OPTIONAL" in this document are to be interpreted as
-        described in [RFC 2119].
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-WD-0001                                                             006
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              007
 
 
 02.     Format Rules
@@ -345,11 +295,11 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              007
 
 
 
-WD-0001                                                             007
+WD-0001                                                             006
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              008
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              007
 
 
             +   A single U+0020 SPACE character.
@@ -395,11 +345,11 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              008
 
 
 
-WD-0001                                                             008
+WD-0001                                                             007
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              009
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              008
 
 
         Final Recommendation (FR) : This document is in its final form
@@ -445,11 +395,11 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              009
 
 
 
-WD-0001                                                             009
+WD-0001                                                             008
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              010
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              009
 
 
         Multiple authors MAY be included; there SHOULD be a blank line
@@ -494,11 +444,11 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              010
 
 
 
-WD-0001                                                             010
+WD-0001                                                             009
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              011
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              010
 
 
         Numbered section headings which are not subheadings SHOULD
@@ -544,11 +494,11 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              011
 
 
 
-WD-0001                                                             011
+WD-0001                                                             010
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              012
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              011
 
 
         -   One U+002E FULL STOP, followed by exactly three U+0020
@@ -595,11 +545,11 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              012
         U+002D HYPHEN-MINUS, but an item contained in a list which is
 
 
-WD-0001                                                             012
+WD-0001                                                             011
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              013
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              012
 
 
         contained in another list which is contianed in yet another
@@ -645,11 +595,11 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              013
         still be formatted according to this section. Paragraphs which
 
 
-WD-0001                                                             013
+WD-0001                                                             012
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              014
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              013
 
 
         do not begin a dictionary item should be indented from the
@@ -695,11 +645,11 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              014
 
 
 
-WD-0001                                                             014
+WD-0001                                                             013
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              015
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              014
 
 
 03.     References
@@ -745,6 +695,6 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              015
 
 
 
-WD-0001                                                             015
+WD-0001                                                             014
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
