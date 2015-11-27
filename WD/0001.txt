@@ -102,7 +102,7 @@ WD-0001                                                             002
 LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              003
 
 
-01.     Introduction
+01.   Introduction
 
     The LexisML Standards Document (LSDOC) provides information
     relating to current standards and best-practices in the development
@@ -252,7 +252,7 @@ WD-0001                                                             005
 LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              006
 
 
-02.     Format Rules
+02.   Format Rules
 
     LSDOCs are plain text files, encoded in UTF-8.
 
@@ -652,7 +652,7 @@ WD-0001                                                             013
 LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              014
 
 
-03.     References
+03.   References
 
     [RFC 2119] S. Bradner, Harvard University. "Key words for use in
         RFCs to Indicate Requirement Levels". <http://tools.ietf.org/
