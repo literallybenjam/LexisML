@@ -238,7 +238,7 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              005
         The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
         NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
         "MAY", and "OPTIONAL" in this document are to be interpreted as
-        described in [RFC 2119].
+        described in [RFC-2119].
 
 
 
@@ -654,7 +654,7 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              014
 
 03.   References
 
-    [RFC 2119] : S. Bradner, Harvard University. "Key words for use in
+    [RFC-2119] : S. Bradner, Harvard University. "Key words for use in
         RFCs to Indicate Requirement Levels". March 1997. <http://
         tools.ietf.org/html/rfc2119>.
 
