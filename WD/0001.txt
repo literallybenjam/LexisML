@@ -636,13 +636,13 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              013
     02-I.   Other considerations
 
         Orphan lines (lines which end a paragraph but begin a page, or
-        vice versa) SHOULD be avoided. This may require ending a page
+        vice versa) SHOULD be avoided. This might require ending a page
         with more blank lines than would otherwise be necessary.
 
-
-
-
-
+        Words SHOULD NOT be broken up across multiple lines by use of
+        hyphenation. U+002D HYPHEN-MINUS characters MAY end a line
+        in other circumstances, however (for example, in hyphenated
+        words or in URIs).
 
 
 WD-0001                                                             013
