@@ -628,10 +628,9 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              013
         -   Zero or more U+0020 SPACE characters, as necessary for
             proper indentation.
 
-        -   A sequence of zero or more characters which does not
-            include the sequence U+0020 SPACE, U+003A COLON, U+0020
-            SPACE. This SHOULD be interpreted as the term being
-            defined.
+        -   A sequence of characters which does not include the
+            sequence U+0020 SPACE, U+003A COLON, U+0020 SPACE. This
+            SHOULD be interpreted as the term being defined.
 
         -   The character sequence U+0020 SPACE, U+003A COLON, U+0020
             SPACE.
@@ -641,8 +640,9 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              013
             This SHOULD be interpreted as the term's definition.
 
         Non-initial lines in a dictionary item SHOULD be indented from
-        the initial line. A dictionary item for which the indented
-        contents of the initial line begins with the character sequence
+        the initial line. Dictionary items MAY contain one or more
+        paragraphs; a paragraph which begins a dictionary item should
+        still be formatted according to this section. Paragraphs which
 
 
 WD-0001                                                             013
@@ -652,18 +652,13 @@ WD-0001                                                             013
 LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              014
 
 
-        U+003A COLON, U+0020 SPACE SHOULD be interpreted as providing
-        an alternate definition for the preceeding dictionary item's
-        term. Such a dictionary item SHOULD NOT begin a list.
-
-        Dictionary items MAY contain one or more paragraphs; a
-        paragraph which begins a dictionary item should still be
-        formatted according to this section. Paragraphs which do not
-        begin a dictionary item should be indented from the dictionary
-        item's initial line.
+        do not begin a dictionary item should be indented from the
+        dictionary item's initial line.
 
         Dictionaries MAY be contained in list items, but SHOULD NOT
-        begin them.
+        begin them. Similarly, dictionary items MAY contain lists, but
+        these SHOULD be preceeded by at least one U+000A LINE FEED
+        Unicode character.
 
 
     02-H.   Inline formatting
@@ -693,6 +688,11 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              014
         Orphan lines (lines which end a paragraph but begin a page, or
         vice versa) SHOULD be avoided. This may require ending a page
         with more blank lines than would otherwise be necessary.
+
+
+
+
+
 
 
 WD-0001                                                             014
