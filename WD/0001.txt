@@ -42,7 +42,7 @@ Table of Contents:
     02-D.   Sections, headings, and the table of contents
     02-E.   Paragraphs
     02-F.   Lists
-03.   References
+    02-G.   Dictionaries
 
 
 WD-0001                                                             001
@@ -50,6 +50,56 @@ WD-0001                                                             001
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
+
+
+    02-H.   Inline formatting
+    02-I.   Other considerations
+03.   References
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WD-0001                                                             002
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              003
 
 
 01.     Introduction
@@ -93,10 +143,24 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
             which comprise the line. Of a page, lines 05--45 of the
             page. Of an LSDOC, the contents of each of its pages. Of a
             section, the sequence of lines which comprise the section,
+
+
+WD-0001                                                             003
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              004
+
+
             not including the section heading. Of another sequence, the
             sequence itself. A sequence of characters or lines is said
             to be "contained" in another sequence if it is in the
             sequence's contents.
+
+        Dictionary : A sequence of one or more dictionary items.
+            Dictionary items MAY be separated by blank lines.
+
+        Dictionary item : A sequence of lines, as defined in §02-G.
 
         Document identifier : A sequence of seven characters as defined
             in §02-B.
@@ -105,11 +169,12 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
             contents. Of a sequence of lines, to be the last lines in
             an sequence's contents which are not blank.
 
-        Indented : Of a line, starting with some number of U+0020 SPACE
-            characters. When used as "indented from" some line X, the
-            first non-space character of the line must be preceeded by
-            four more U+0020 SPACE characters than the first non-space
-            character of X.
+        Indented : Of a line, having some number of U+0020 SPACE
+            characters begin the line. When used as "indented from"
+            some line X, the first non-space character of the line MUST
+            be preceeded by some number (four is RECOMMENDED) more
+            U+0020 SPACE characters than the first non-space character
+            of X.
 
         Indented contents : The contents of a line, starting with the
             first non-space character in the line.
@@ -127,6 +192,15 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
         LSDOC : A file which conforms to this specification.
 
         Non-initial line : A line which does not begin a sequence.
+
+
+WD-0001                                                             004
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              005
+
+
 
         Non-space character : A character which is not U+0020 SPACE.
 
@@ -167,11 +241,65 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
         Uppercase : Containing only upperchase characters, as defined
             in [UNICODE].
 
+
+
+
+
+WD-0001                                                             005
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              006
+
+
         The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
         NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
         "MAY", and "OPTIONAL" in this document are to be interpreted as
         described in [RFC 2119].
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WD-0001                                                             006
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              007
 
 
 02.     Format Rules
@@ -187,8 +315,8 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
         -   Each page MUST be exactly 50 lines long.
 
         -   Each line of a page MUST contain no more than 71
-            characters, followed by U+000A LINE FEED. This makes the
-            maximum length of a line 72 Unicode characters.
+            characters, followed by a U+000A LINE FEED character. This
+            makes the maximum length of a line 72 Unicode characters.
 
         -   U+0020 SPACE characters cannot end a line.
 
@@ -202,18 +330,27 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
                 characters. Authors names longer than 16 characters
                 MUST be abbreviated.
 
-            +   A single U+0020 SPACE.
+            +   A single U+0020 SPACE character.
 
             +   The document identifier (seven characters; see §02-B).
 
-            +   U+0020 SPACE, followed by U+003A COLON, followed by
-                another U+0020 SPACE.
+            +   A single U+0020 SPACE character, followed by a U+003A
+                COLON character, followed by another U+0020 SPACE
+                character.
 
             +   The title of the document, followed by U+0020 SPACE
                 characters until its length exactly matches 40
                 characters. This SHOULD be represented in uppercase.
 
-            +   A single U+0020 SPACE.
+            +   A single U+0020 SPACE character.
+
+
+WD-0001                                                             007
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              008
+
 
             +   The page number, preceeded by zeroes such that its
                 length is exactly 03 characters. LSDOCs of greater than
@@ -221,7 +358,7 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
 
         -   The third and fourth lines of a page MUST be blank.
 
-        -   Lines 46 and 47 MUST be blank.
+        -   Lines 46 and 47 of a page MUST be blank.
 
         -   Line 48 MUST contain the following components, in order:
 
@@ -244,76 +381,94 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
     Document identifiers are 07-character codes which uniquely identify
     the LSDOC. They are constructed as follows:
 
-        -   The first two characters indicate the current document
-            status. The document statuses permitted by this document
-            are:
+    -   The first two characters indicate the current document status.
+        The document statuses permitted by this document are:
 
-            Working Draft (WD) : This document is currently under
-                construction, and can be expected to change at any
-                time.
+        Working Draft (WD) : This document is currently under
+            construction, and can be expected to change at any time.
 
-            Release Candidate (RC) : This document is not expected to
-                change significantly before final approval, but might
-                contain small errors or bugs.
+        Release Candidate (RC) : This document is not expected to
+            change significantly before final approval, but might
+            contain small errors or bugs.
 
-            Final Recommendation (FR) : This document is in its final
-                form and MUST NOT undergo changes.
 
-            Errata (E_) : This document is a formal modification to
-                an LSDOC with Final Recommendation status. The
-                underscore should be replaced with a letter (A--Z) to
-                identify the errata. Errata MUST NOT undergo changes
-                after publication; however, errata MAY modify previous
-                errata. A new document SHOULD be written to supersede
-                an LSDOC with a substantial number of errata.
 
-        -   The third character MUST be U+002D HYPHEN-MINUS.
 
-        -   Characters 04--07 MUST be digits (0--9) uniquely
-            identifying the document. These MUST be unique across
-            various statuses; that is, WD-0009, RC-0009, and FR-0009
-            refer to different drafts of the same document, and EB-0009
-            refers to FR-0009's second errata.
+
+WD-0001                                                             008
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              009
+
+
+        Final Recommendation (FR) : This document is in its final form
+            and MUST NOT undergo changes, except through errata (see
+            below).
+
+        Errata (E_) : This document is a formal modification to an
+            LSDOC with Final Recommendation status. The underscore
+            should be replaced with a letter (A--Z) to identify the
+            errata. Errata MUST NOT undergo changes after publication;
+            however, errata MAY modify previous errata. A new document
+            SHOULD be written to supersede an LSDOC with a substantial
+            number of errata.
+
+    -   The third character MUST be U+002D HYPHEN-MINUS.
+
+    -   Characters 04--07 MUST be digits (0--9) uniquely identifying
+        the document. These MUST be unique across various statuses;
+        that is, WD-0009, RC-0009, and FR-0009 refer to different
+        drafts of the same document, and EB-0009 refers to FR-0009's
+        second errata.
 
 
     02-C.   Opening contents
 
     An LSDOC MUST begin with the following contents, in order:
 
-        -   A title, centred. Titles MUST NOT exceed 59 characters,
-            and MUST be on their own line. Titles SHOULD be represented
-            in title case.
+    -   A title, centred. Titles MUST NOT exceed 59 characters, and
+        MUST be on their own line. Titles SHOULD be represented in
+        title case.
 
-        -   (OPTIONAL) A subtitle, centred. Subtitles SHOULD be
-            represented in sentence case, with the first letter
-            capitalized. Subtitles SHOULD begin on the line immediately
-            following a title, and MAY take up multiple lines.
+    -   (OPTIONAL) A subtitle, centred. Subtitles SHOULD be represented
+        in sentence case, with the first letter capitalized. Subtitles
+        SHOULD begin on the line immediately following a title, and MAY
+        take up multiple lines.
 
-        -   The author of the document, centred. A blank line SHOULD
-            be placed between the title/subtitle and the author of the
-            document. Information, including contact information, MAY
-            be placed on the lines immediately following the author's
-            name; there SHOULD NOT be a blank line before or within any
-            such content.
+    -   The author of the document, centred. A blank line SHOULD be
+        placed between the title/subtitle and the author of the
+        document. Information, including contact information, MAY be
+        placed on the lines immediately following the author's name;
+        there SHOULD NOT be a blank line before or within any such
+        content.
 
-            Multiple authors MAY be included; there SHOULD be a blank
-            line in-between each.
 
-        -   The following sections, with unnumbered seaction headings:
 
-            +   (OPTIONAL) An abstract.
+WD-0001                                                             009
 
-            +   A "Status of This Document" section. This SHOULD
-                contain a textual description of the document status
-                designated by the document identifier (see §02-B) and
-                the date of publication. Other pertinent information
-                related to the status of the document may also be
-                included here.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            +   A copyright notice.
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              010
 
-            +   (RECOMMENDED) In documents with more than one numbered
-                section heading, a table of contents.
+
+        Multiple authors MAY be included; there SHOULD be a blank line
+        in-between each.
+
+    -   The following sections, with unnumbered seaction headings:
+
+        +   (OPTIONAL) An abstract.
+
+        +   A "Status of This Document" section. This SHOULD contain a
+            textual description of the document status  designated by
+            the document identifier (see §02-B) and the date of
+            publication. Other pertinent information related to the
+            status of the document may also be included here.
+
+        +   A copyright notice.
+
+        +   (RECOMMENDED) In documents with more than one numbered
+            section heading, a table of contents.
 
 
     02-D.  Sections, headings, and the table of contents
@@ -335,6 +490,17 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
         be in title case; all other section headings SHOULD be in
         sentence case.
 
+
+
+
+
+WD-0001                                                             010
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              011
+
+
         Numbered section headings which are not subheadings SHOULD
         begin a page. Other section headings which do not begin a page
         SHOULD be preceeded by two blank lines. Section headings SHOULD
@@ -343,59 +509,72 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
         Sections may consist of only a section heading, but this is NOT
         RECOMMENDED.
 
-        A numbered section heading consists of the following:
+        A numbered section heading is comprised of the following:
 
-            -   A section number. This consists of:
+        -   A section number. This consists of:
 
-                +   In the case of subsections, the section number of
-                    the smallest section which contains the subsection,
-                    followed by U+002D HYPHEN-MINUS.
+            +   In the case of subsections, the section number of
+                the smallest section which contains the subsection,
+                followed by U+002D HYPHEN-MINUS.
 
-                +   One or more characters in one of the following
-                    ranges, equivalent to the number of preceeding
-                    siblings plus one:
+            +   One or more characters in one of the following
+                ranges, equivalent to the number of preceeding
+                siblings plus one:
 
-                    -   For sections which are not subsections, a
-                        two-digit number in the range 01--99.
+                =   For sections which are not subsections, a
+                    two-digit number in the range 01--99.
 
-                    -   For subsections which are contained in exactly
-                        one section, an uppercase letter in the range
-                        A--Z.
+                =   For subsections which are contained in exactly
+                    one section, an uppercase letter in the range
+                    A--Z.
 
-                    -   For subsections which are contained in an even
-                        number of sections (greater than zero), a
-                        lowercase letter in the range a--z.
+                =   For subsections which are contained in an even
+                    number of sections (greater than zero), a
+                    lowercase letter in the range a--z.
 
-                    -   For subsections which are contained in an odd
-                        number of sections, greater than one, a
-                        single-digit number in the range 1--9.
+                =   For subsections which are contained in an odd
+                    number of sections (greater than one) a
+                    single-digit number in the range 1--9.
 
-                    If the number of preceeding siblings causes one of
-                    the ranges above to be exhausted, sections SHOULD
-                    be regrouped to avoid such a problem.
+                If the number of preceeding siblings causes one of
+                the ranges above to be exhausted, sections SHOULD
+                be regrouped to avoid such a problem.
 
-            -   One U+002E FULL STOP, followed by exactly three U+0020
-                SPACE characters.
 
-            -   The section title. This SHOULD NOT be ended by a U+003A
-                COLON.
+
+
+
+WD-0001                                                             011
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              012
+
+
+        -   One U+002E FULL STOP, followed by exactly three U+0020
+            SPACE characters.
+
+        -   The section title. This SHOULD NOT be ended by a U+003A
+            COLON.
 
         An unnumbered section heading MUST end with a U+003A COLON. Any
         sequence of lines which is not a numbered section heading,
         meets the other requirements for a section heading, and is
         ended by a U+003A COLON is an unnumbered section heading.
 
-        The table of contents for an LSDOC (see §02-C) MUST be a list
-        of the contents of each numbered section heading, in order, one
-        per line, with matching indentation.
+        The table of contents for an LSDOC (see §02-C) MUST be a
+        sequence of lines containing the contents of each numbered
+        section heading, in order, one per line, with matching
+        indentation. Blank lines MAY be inserted between headings for
+        readability purposes.
 
 
     02-E.   Paragraphs
 
         Paragraphs SHOULD be separated from other paragraphs by a blank
         line. All lines in a paragraph SHOULD have matching
-        indentation, with the exception of the first paragraph of a
-        list (see §02-F). Paragraphs MAY NOT contain blank lines.
+        indentation, except where otherwise specified in this document.
+        Paragraphs MAY NOT contain blank lines.
 
         A paragraph of quoted material SHOULD be indented from the
         surrounding text.
@@ -403,24 +582,124 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
 
     02-F.   Lists
 
-        The first line of a list item SHOULD begin with one of the
-        following characters, depending on how many lists contain the
-        list item in question: U+002D HYPHEN-MINUS, U+002B PLUS SIGN,
-        U+003D EQUALS SIGN, U+2021 DOUBLE DAGGER. For example, an item
-        contained in only one list would use U+002D HYPHEN-MINUS, but
-        an item contained in a list which is contained in another list
-        which is contianed in yet another list would use U+003D EQUALS
-        SIGN. If this sequence of characters be exhausted, it SHOULD be
-        cycled through again; for example, an item which is contained
-        in six lists simultaneously would also use U+002B PLUS.
+        Any sequence of lines matching the following description MUST
+        be considered a list item, and any sequence of list items MUST
+        be considered a list.
 
-        This character SHOULD be followed by exactly three U+0020 SPACE
+        The indented contents of the first line of a list item MUST
+        begin with a single character, which SHOULD be that in the
+        following sequence which corresponds with the number of lists
+        containing the list item in question: U+002D HYPHEN-MINUS,
+        U+002B PLUS SIGN, U+003D EQUALS SIGN, U+2021 DOUBLE DAGGER.
+        For example, an item contained in only one list SHOULD use
+        U+002D HYPHEN-MINUS, but an item contained in a list which is
+
+
+WD-0001                                                             012
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              013
+
+
+        contained in another list which is contianed in yet another
+        list SHOULD use U+003D EQUALS SIGN. If this sequence of
+        characters be exhausted, it SHOULD be cycled through again; for
+        example, an item which is contained in six lists simultaneously
+        SHOULD also use U+002B PLUS.
+
+        This character MUST be followed by exactly three U+0020 SPACE
         characters. Non-initial lines in a list item SHOULD be indented
         from the initial line. List items MAY be preceeded or followed
         by blank lines. List items MAY contain one or more paragraphs;
         a paragraph which begins a list item should still be formatted
         according to this section. Paragraphs which do not begin a list
         item should be indented from the list item's initial line.
+
+
+    02-G.   Dictionaries
+
+        Any sequence of lines matching the following description MUST
+        be considered a dictionary item, and any sequence of list items
+        MUST be considered a dictionary.
+
+        Dictionary items MUST begin with the following, in order:
+
+        -   Zero or more U+0020 SPACE characters, as necessary for
+            proper indentation.
+
+        -   A sequence of zero or more characters which does not
+            include the sequence U+0020 SPACE, U+003A COLON, U+0020
+            SPACE. This SHOULD be interpreted as the term being
+            defined.
+
+        -   The character sequence U+0020 SPACE, U+003A COLON, U+0020
+            SPACE.
+
+        -   One or more non-space characters. This SHOULD be
+            interpreted as the term's definition.
+
+        Non-initial lines in a dictionary item SHOULD be indented from
+        the initial line. A dictionary item for which the indented
+        contents of the initial line begins with the sequence U+003A
+        COLON, U+0020 SPACE SHOULD be interpreted as providing an
+
+
+WD-0001                                                             013
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              014
+
+
+        alternate definition for the preceeding dictionary item's term.
+        Such a dictionary item SHOULD NOT begin a list.
+
+        Dictionary items MAY contain one or more paragraphs; a
+        paragraph which begins a dictionary item should still be
+        formatted according to this section. Paragraphs which do not
+        begin a dictionary item should be indented from the dictionary
+        item's initial line.
+
+        Dictionaries MAY be contained in list items, but SHOULD NOT
+        begin them.
+
+
+    02-H.   Inline formatting
+
+
+        Reference citations SHOULD be placed inside square brackets
+        ("[]"). URIs SHOULD be placed inside angle brackets ("<>").
+
+        Two U+002D HYPHEN-MINUS characters SHOULD be used instead of an
+        en-dash, and three U+002D HYPHEN-MINUS characters SHOULD be
+        used instead of an em-dash.
+
+        Important text SHOULD be represented in uppercase. Sections
+        SHOULD be referenced by section number, preceeded by U+00A7
+        SECTION SIGN.
+
+        Single-digit numbers represented using the digits 0--9 SHOULD
+        be preceeded by a zero such that they are two characters long;
+        the digits 0--9 SHOULD appear alone only when they are used
+        to refer to their respective characters. This recommendation
+        MAY be disregarded in the case of mathematical equations or
+        other situations where brevity is important.
+
+
+    02-I.   Other considerations
+
+        Orphan lines (lines which end a paragraph but begin a page, or
+        vice versa) SHOULD be avoided. This may require ending a page
+        with more blank lines than would otherwise be necessary.
+
+
+
+WD-0001                                                             014
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              015
 
 
 03.     References
@@ -431,3 +710,41 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              002
 
     [UNICODE] The Unicode Consortium. "The Unicode Standard". <http://
         www.unicode.org/versions/>.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WD-0001                                                             015
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
