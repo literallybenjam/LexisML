@@ -654,12 +654,12 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              014
 
 03.   References
 
-    [RFC 2119] S. Bradner, Harvard University. "Key words for use in
+    [RFC 2119] : S. Bradner, Harvard University. "Key words for use in
         RFCs to Indicate Requirement Levels". <http://tools.ietf.org/
         html/rfc2119>.
 
-    [UNICODE] The Unicode Consortium. "The Unicode Standard". <http://
-        www.unicode.org/versions/>.
+    [UNICODE] : The Unicode Consortium. "The Unicode Standard".
+        <http://www.unicode.org/versions/>.
 
 
 
