@@ -254,7 +254,8 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              006
 
 02.   Format Rules
 
-    LSDOCs are plain text files, encoded in UTF-8.
+    LSDOCs are plain-text files, encoded in UTF-8 as specified by
+    [UNICODE].
 
 
     02-A.   Pages
@@ -292,7 +293,6 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              006
             +   The title of the document, followed by U+0020 SPACE
                 characters until its length exactly matches 40
                 characters. This SHOULD be represented in uppercase.
-
 
 
 WD-0001                                                             006
