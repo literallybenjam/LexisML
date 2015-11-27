@@ -220,17 +220,11 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              005
             the first line of the section heading is the first line of
             the section.
 
-        Sentence case : Capitalized according to standard conventions
-            for sentences, such as those laid out in §??.
-
         Sibling : Of a subsection, contained in exactly the same
             sections as another. Sections which are not subsections are
             also considered siblings of each other.
 
         Subsection : A section which is contained by another section.
-
-        Title case : Capitalized according to standard conventions for
-            titles, such as those laid out in §??.
 
         Unicode character : A Unicode scalar value, as defined in
             [UNICODE].
@@ -240,6 +234,12 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              005
 
         Uppercase : Containing only upperchase characters, as defined
             in [UNICODE].
+
+
+
+
+
+
 
 
 
