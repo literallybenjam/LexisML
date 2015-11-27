@@ -642,7 +642,7 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              013
         Words SHOULD NOT be broken up across multiple lines by use of
         hyphenation. U+002D HYPHEN-MINUS characters MAY end a line
         in other circumstances, however (for example, in hyphenated
-        words or in URIs).
+        compounds or in URIs).
 
 
 WD-0001                                                             013
