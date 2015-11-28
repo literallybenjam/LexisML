@@ -34,15 +34,15 @@ Copyright Notice:
 
 Table of Contents:
 
-01.   Introduction
-    01-A.   Definitions
-02.   The LREC Format
-    02-A.   Record and field definitions
-        02-A-a.   Metadata records
-        02-A-b.   Tag-group records
-        02-A-c.   Lexeme records
-03.   Processing LREC Documents
-04.   References
+    01.   Introduction
+        01-A.   Definitions
+    02.   The LREC Format
+        02-A.   Record and field definitions
+            02-A-a.   Metadata records
+            02-A-b.   Tag-group records
+            02-A-c.   Lexeme records
+    03.   Processing LREC Documents
+    04.   References
 
 
 WD-0002                                                             001
