@@ -1,0 +1,411 @@
+
+LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    001
+
+
+                         LexisML Index Records
+
+                          The LANGDEV Project
+
+
+Abstract:
+
+    This LexisML Standards Document (LSDOC) provides information about
+    the proper style and formatting for LexisML Index Records (LRECs),
+    used to catalogue the lexicon of a language.
+
+
+Status of This Document:
+
+    This document is currently a WORKING DRAFT. This means that its
+    contents are still under contstruction and may change at any
+    time. This document is made public to allow interested parties to
+    view the latest in standards development.
+
+    This document was last updated on 27 November 2015.
+
+
+Copyright Notice:
+
+    This document is released by its author into the public domain
+    under a Creative Commons CC0 1.0 Unported License. For more
+    information, see <http://creativecommons.org/publicdomain/zero/
+    1.0/>.
+
+
+Table of Contents:
+
+01.   Introduction
+    01-A.   Definitions
+02.   The LREC Format
+    02-A.   Record and field definitions
+        02-A-a.   Metadata records
+        02-A-b.   Tag-group records
+        02-A-c.   Lexeme records
+03.   Processing LREC Documents
+04.   References
+
+
+WD-0002                                                             001
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    002
+
+
+01.   Introduction
+
+    The LexisML Index Record (LREC) serves to index the lexicon of a
+    language and provide links to word definitions. LRECs are designed
+    to be minimalist text files that can store a large number of
+    records in a compact, human-readable format. The purpose of an LREC
+    is to give users and programs a sense of the scope of a lexicon
+    without having to encode each individual entry, thus reducing
+    initial load times for displaying an index thereof.
+
+    The format of a LREC is based upon that of the IANA Language Subtag
+    Registry, which is in turn derived from the record-jar format
+    described in [ART-UNIX].
+
+    01-A.   Definitions
+
+        Begin : Of a sequence of lines or characters, to be first in an
+            sequence's contents.
+
+        Blank line : A line which contains zero characters; that is,
+            a single U+000A LINE FEED Unicode character.
+
+        Character : When not qualified as a Unicode character, a
+            graphic character, as defined in [UNICODE].
+
+        Contents : Of a line, the sequence of zero or more characters
+            which comprise the line. Of another sequence, the sequence
+            itself. A sequence of characters or lines is said to be
+            "contained" in another sequence if it is in the sequence's
+            contents.
+
+        End : Of a sequence of characters, to be last in an sequence's
+            contents. Of a sequence of lines, to be the last lines in
+            an sequence's contents which are not blank.
+
+        Field : A sequence of lines as defined in §02.
+
+        Line : A sequence of zero or more characters terminated by a
+            U+000A LINE FEED Unicode character.
+
+        LREC : A file which conforms to this specification.
+
+
+WD-0002                                                             002
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    003
+
+
+        Non-space character : A character which is not U+0020 SPACE.
+
+        Blank line : A line which contains zero characters; that is,
+            a single U+000A LINE FEED Unicode character.
+
+        Character : When not qualified as a Unicode character, a
+            graphic character, as defined in [UNICODE].
+
+        Contents : Of a line, the sequence of zero or more characters
+            which comprise the line. Of another sequence, the sequence
+            itself. A sequence of characters or lines is said to be
+            "contained" in another sequence if it is in the sequence's
+            contents.
+
+        End : Of a sequence of characters, to be last in an sequence's
+            contents. Of a sequence of lines, to be the last lines in
+            an sequence's contents which are not blank.
+
+        Line : A sequence of zero or more characters terminated by a
+            U+000A LINE FEED Unicode character. The contents of lines
+            MUST NOT exceed 71 characters; including the final U+000A
+            Unicode character, lines MUST NOT exceed 72 Unicode
+            characters total.
+
+        LREC : A file which conforms to this specification.
+
+        Record : A collection of lines as defined in §02.
+
+        Unicode character : A Unicode scalar value, as defined in
+            [UNICODE].
+
+        The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
+        NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
+        "MAY", and "OPTIONAL" in this document are to be interpreted as
+        described in [RFC-2119].
+
+
+
+
+
+
+
+
+WD-0002                                                             003
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    004
+
+
+02.   The LREC Format
+
+    LRECs are plain-text files, encoded in UTF-8 as specified by
+    [UNICODE]. They consist of several records which, in turn, consist
+    of several key-value pairs known as 'fields'.
+
+    A field matches the definition of a dictionary item in [WD-0001],
+    with the additional stipulation that blank lines MUST NOT appear in
+    or between fields. The characters preceeding the first appearance
+    of the character sequence U+0020 SPACE, U+003A COLON, U+0020 SPACE,
+    discounting any leading or trailing U+0020 SPACE characters, make
+    up the 'field name'. The characters following this sequence,
+    similarly discarding leading or trailing U+0020 SPACE characters,
+    make up the 'field value'.
+
+    A 'record' is a sequence of fields. Blank lines MUST NOT appear in
+    or around records. The character sequence U+0025 PERCENT SIGN,
+    U+0025 PERCENT SIGN, on its own line, MUST separate records. Other
+    Unicode characters MUST NOT appear in-between, before, or after
+    records.
+
+    Fields are referred to by their field names. Except where otherwise
+    specified, more than one field of a particular field name MUST NOT
+    appear in a single record. All fields which are not marked as
+    OPTIONAL or RECOMMENDED are REQUIRED to appear in a record's
+    contents. Except where otherwise specified, field names are case-
+    insensitive but field values are case-sensitive.
+
+
+    02-A.   Record and field definitions
+
+
+        02-A-a.   Metadata records
+
+            A metadata record MUST begin a LREC, and MUST NOT appear
+            elsewhere in the document. It consists of the following
+            fields, in any order, specified by their field names:
+
+            Title : The title of the LDOC.
+
+            Subtitle : (OPTIONAL) The subtitle of the LDOC.
+
+
+WD-0002                                                             004
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    005
+
+
+            Author : (RECOMMENDED) The author(s) of the LDOC.
+
+            Date : (RECOMMENDED) The date upon which the LDOC was last
+                modified. The field-value of a date field SHOULD be in
+                the "full-date" format as specified by [RFC3339].
+
+            Document language : (RECOMMENDED) A language tag matching
+                the syntax provided in [BCP47], describing the language
+                of the LDOC as a whole; ie., that of its intended
+                audience. This SHOULD be a valid (recognized) tag.
+
+            Description : (RECOMMENDED) A description of the scope and
+                purpose of the LDOC, or similar relevant information.
+
+            Splash : (OPTIONAL) Splash text; that is, miscellaneous
+                words and phrases used to celebrate different aspects
+                or achievements of the document. This field MAY appear
+                more than once.
+
+            Commentary : (OPTIONAL) A comment on the LDOC as a whole.
+
+        02-A-b.   Tag-group records
+
+            A tag-group record groups together the tags which MAY
+            appear in lexeme records. If present, tag-group records
+            MUST appear before any lexeme records. They consist of the
+            following fields, in any order, specified by their field
+            names:
+
+            Name : The name of the tag-group.
+
+            Description : (OPTIONAL) A description of the tag-group.
+
+            Subgroup : (OPTIONAL) The name of another tag-group which
+                should be considered a part of this one. This field MAY
+                appear more than once.
+
+            Tag : (OPTIONAL) The name of a tag which should be
+                considered a part of this tag-group. This field MAY
+                appear more than once.
+
+
+
+WD-0002                                                             005
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    006
+
+
+            Although both tag and subgroup fields are OPTIONAL, at
+            least one of these fields MUST appear in a tag-group
+            record. Furthermore, both fields MUST be unique across an
+            LDOC; that is, any two tag or subgroup fields MUST NOT have
+            the same field value, regardless of the record they are
+            contained in.
+
+        02-A-c.   Lexeme records
+
+            A lexeme record provides information on a lexeme. It
+            consists of the following fields, in any order, specified
+            by their field names:
+
+            Lexeme : The lexeme itself.
+
+            At : A URI at which information on the lexeme can be
+                retrieved.
+
+            Language : (RECOMMENDED) A language tag matching
+                the syntax provided in [BCP47], describing the language
+                of the lexeme itself. If this field is absent but the
+                document language field is present in the LDOC's
+                metadata record, the language of the lexeme should be
+                inherited from the language of the LDOC as a whole.
+
+            Pronunciation : (RECOMMENDED) A hint at pronouncing the
+                lexeme.
+
+            Tagged : (OPTIONAL) A tag providing more information about
+                a lexeme. This field MAY appear more than once.
+
+            Note : (OPTIONAL) A note or comment on the lexeme record.
+
+
+
+
+
+
+
+
+
+
+
+WD-0002                                                             006
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    007
+
+03.   Processing LREC Documents
+
+    [[This section has not yet been written.]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WD-0002                                                             007
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    008
+
+04.   References
+
+    [ART-UNIX] : Eric S. Raymond. "The Art of Unix Programming". 2003.
+        <http://www.catb.org/~esr/writings/taoup/>.
+
+    [BCP47] : A. Phillips, Lab126 and M. Davis, Google; editors. "Tags
+        for Identifying Languages". September 2009. <http://
+        tools.ietf.org/html/bcp47>.
+
+    [RFC2119] : S. Bradner, Harvard University. "Key words for use in
+        RFCs to Indicate Requirement Levels". March 1997. <http://
+        tools.ietf.org/html/rfc2119>.
+
+    [RFC3339] : G. Klyne, Clearswift Corporation, editor and C. Newman,
+        Sun Microsystems. "Date and Time on the Internet: Timestamps".
+        July 2002. <http://tools.ietf.org/html/rfc3339>.
+
+    [UNICODE] : The Unicode Consortium. "The Unicode Standard".
+        <http://www.unicode.org/versions/>.
+
+    [WD-0001] : The LANGDEV Project. "LexisML Standards Documents".
+        <http://benjam.xyz/LexisML/WD/0001.txt>.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WD-0002                                                             008
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
