@@ -234,15 +234,15 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    005
             Name : The name of the tag-group.
 
             Description : (OPTIONAL) A description of the tag-group.
+                The field value of this field is case-insensitive.
 
             Subgroup : (OPTIONAL) The name of another tag-group which
                 should be considered a part of this one. This field MAY
-                appear more than once.
+                appear more than once. The field value of this field is
+                case-insensitive.
 
             Tag : (OPTIONAL) The name of a tag which should be
                 considered a part of this tag-group. This field MAY
-                appear more than once.
-
 
 
 WD-0002                                                             005
@@ -252,12 +252,15 @@ WD-0002                                                             005
 LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    006
 
 
+                appear more than once. The field value of this field is
+                case-insensitive.
+
             Although both tag and subgroup fields are OPTIONAL, at
             least one of these fields MUST appear in a tag-group
             record. Furthermore, both fields MUST be unique across an
             LDOC; that is, any two tag or subgroup fields MUST NOT have
-            the same field value, regardless of the record they are
-            contained in.
+            the same field value when compared in a case-insensitive
+            manner, regardless of the record they are contained in.
 
         02-A-c.   Lexeme records
 
@@ -281,13 +284,10 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    006
                 lexeme.
 
             Tagged : (OPTIONAL) A tag providing more information about
-                a lexeme. This field MAY appear more than once.
+                a lexeme. This field MAY appear more than once. The
+                field value of this field is case-insensitive.
 
             Note : (OPTIONAL) A note or comment on the lexeme record.
-
-
-
-
 
 
 
