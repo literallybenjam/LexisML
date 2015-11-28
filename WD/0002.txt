@@ -104,30 +104,6 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    003
 
         Non-space character : A character which is not U+0020 SPACE.
 
-        Blank line : A line which contains zero characters; that is,
-            a single U+000A LINE FEED Unicode character.
-
-        Character : When not qualified as a Unicode character, a
-            graphic character, as defined in [UNICODE].
-
-        Contents : Of a line, the sequence of zero or more characters
-            which comprise the line. Of another sequence, the sequence
-            itself. A sequence of characters or lines is said to be
-            "contained" in another sequence if it is in the sequence's
-            contents.
-
-        End : Of a sequence of characters, to be last in an sequence's
-            contents. Of a sequence of lines, to be the last lines in
-            an sequence's contents which are not blank.
-
-        Line : A sequence of zero or more characters terminated by a
-            U+000A LINE FEED Unicode character. The contents of lines
-            MUST NOT exceed 71 characters; including the final U+000A
-            Unicode character, lines MUST NOT exceed 72 Unicode
-            characters total.
-
-        LREC : A file which conforms to this specification.
-
         Record : A collection of lines as defined in §02.
 
         Unicode character : A Unicode scalar value, as defined in
@@ -137,6 +113,30 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    003
         NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
         "MAY", and "OPTIONAL" in this document are to be interpreted as
         described in [RFC-2119].
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
