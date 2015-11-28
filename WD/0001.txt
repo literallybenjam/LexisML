@@ -194,6 +194,7 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              004
         Non-initial line : A line which does not begin a sequence.
 
 
+
 WD-0001                                                             004
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -239,7 +240,6 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              005
         NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
         "MAY", and "OPTIONAL" in this document are to be interpreted as
         described in [RFC-2119].
-
 
 
 
@@ -440,7 +440,8 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              009
         be in title case; all other section headings SHOULD be in
         sentence case.
 
-
+        Numbered section headings which are not subheadings SHOULD
+        begin a page. Other section headings which do not begin a page
 
 
 
@@ -451,8 +452,6 @@ WD-0001                                                             009
 LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              010
 
 
-        Numbered section headings which are not subheadings SHOULD
-        begin a page. Other section headings which do not begin a page
         SHOULD be preceeded by two blank lines. Section headings SHOULD
         be followed by a blank line.
 
@@ -490,6 +489,8 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              010
                 the ranges above to be exhausted, sections SHOULD
                 be regrouped to avoid such a problem.
 
+        -   One U+002E FULL STOP, followed by exactly three U+0020
+            SPACE characters.
 
 
 
@@ -500,9 +501,6 @@ WD-0001                                                             010
 
 LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              011
 
-
-        -   One U+002E FULL STOP, followed by exactly three U+0020
-            SPACE characters.
 
         -   The section title. This SHOULD NOT be ended by a U+003A
             COLON.
@@ -542,7 +540,9 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              011
         begin with a single character, which SHOULD be that in the
         following sequence which corresponds with the number of lists
         containing the list item in question: U+002D HYPHEN-MINUS,
-        U+002B PLUS SIGN, U+003D EQUALS SIGN, U+2021 DOUBLE
+        U+002B PLUS SIGN, U+003D EQUALS SIGN, U+2021 DOUBLE DAGGER. For
+        example, an item contained in only one list SHOULD use U+002D
+        HYPHEN-MINUS, but an item contained in a list which is
 
 
 WD-0001                                                             011
@@ -552,9 +552,7 @@ WD-0001                                                             011
 LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              012
 
 
-        DAGGER. For example, an item contained in only one list SHOULD
-        use U+002D HYPHEN-MINUS, but an item contained in a list which
-        is contained in another list which is contianed in yet another
+        contained in another list which is contianed in yet another
         list SHOULD use U+003D EQUALS SIGN. If this sequence of
         characters be exhausted, it SHOULD be cycled through again; for
         example, an item which is contained in six lists simultaneously
@@ -593,6 +591,8 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              012
 
         Non-initial lines in a dictionary item SHOULD be indented from
         the initial line. Dictionary items MAY be preceeded or followed
+        by blank lines. Dictionary items MAY contain one or more
+        paragraphs; a paragraph which begins a dictionary item should
 
 
 WD-0001                                                             012
@@ -602,8 +602,6 @@ WD-0001                                                             012
 LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              013
 
 
-        by blank lines. Dictionary items MAY contain one or more
-        paragraphs; a paragraph which begins a dictionary item should
         still be formatted according to this section. Paragraphs which
         do not begin a dictionary item should be indented from the
         dictionary item's initial line.
@@ -642,6 +640,9 @@ LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              013
         vice versa) SHOULD be avoided. This might require ending a page
         with more blank lines than would otherwise be necessary.
 
+        Sentences which begin pages SHOULD also begin paragraphs; in
+        the instance where a sentence does not begin a paragraph but
+
 
 
 WD-0001                                                             013
@@ -651,18 +652,12 @@ WD-0001                                                             013
 LANGDEV          WD-0001 : LEXISML STANDARDS DOCUMENTS              014
 
 
-        Sentences which begin pages SHOULD also begin paragraphs; in
-        the instance where a sentence does not begin a paragraph but
         would otherwise begin a page, the final word of the previous
         sentence SHOULD be carried over to the next line.
 
         Words SHOULD NOT be broken up across multiple lines by use of
         hyphenation. U+002D HYPHEN-MINUS characters MAY end a line
         in other circumstances, however.
-
-
-
-
 
 
 
