@@ -258,10 +258,10 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    006
                 modified. The field-value of a date field SHOULD be in
                 the "full-date" format as specified by [RFC3339].
 
-            Document language : (RECOMMENDED) A language tag matching
-                the syntax provided in [BCP47], describing the language
-                of the LDOC as a whole; ie., that of its intended
-                audience. This SHOULD be a valid (recognized) tag.
+            Language : (RECOMMENDED) A language tag matching the syntax
+                provided in [BCP47], describing the language of the
+                LDOC as a whole; ie., that of its intended audience.
+                This SHOULD be a valid (recognized) tag.
 
             Description : (RECOMMENDED) A description of the scope and
                 purpose of the LDOC, or similar relevant information.
