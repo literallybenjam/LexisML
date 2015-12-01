@@ -41,8 +41,8 @@ Table of Contents:
             02-A-a.   Metadata records
             02-A-b.   Tag-group records
             02-A-c.   Lexeme records
-    03.   Processing LREC Documents
-    04.   References
+            02-A-d.   Inflected records
+            02-A-e.   Alternate records
 
 
 WD-0002                                                             001
@@ -50,6 +50,56 @@ WD-0002                                                             001
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    002
+
+
+    03.   Processing LREC Documents
+    04.   References
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WD-0002                                                             002
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    003
 
 
 01.   Introduction
@@ -95,11 +145,11 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    002
         LREC : A file which conforms to this specification.
 
 
-WD-0002                                                             002
+WD-0002                                                             003
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    003
+LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    004
 
 
         Non-space character : A character which is not U+0020 SPACE.
@@ -145,11 +195,11 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    003
 
 
 
-WD-0002                                                             003
+WD-0002                                                             004
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    004
+LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    005
 
 
 02.   The LREC Format
@@ -195,11 +245,11 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    004
             Subtitle : (OPTIONAL) The subtitle of the LDOC.
 
 
-WD-0002                                                             004
+WD-0002                                                             005
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    005
+LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    006
 
 
             Author : (RECOMMENDED) The author(s) of the LDOC.
@@ -221,7 +271,8 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    005
                 or achievements of the document. This field MAY appear
                 more than once.
 
-            Commentary : (OPTIONAL) A comment on the LDOC as a whole.
+            Note : (OPTIONAL) A note or comment on the LDOC as a whole.
+
 
         02-A-b.   Tag-group records
 
@@ -241,19 +292,22 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    005
                 appear more than once. The field value of this field is
                 case-insensitive.
 
-            Tag : (OPTIONAL) The name of a tag which should be
-                considered a part of this tag-group. This field MAY
 
 
-WD-0002                                                             005
+
+WD-0002                                                             006
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    006
+LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    007
 
 
+            Tag : (OPTIONAL) The name of a tag which should be
+                considered a part of this tag-group. This field MAY
                 appear more than once. The field value of this field is
                 case-insensitive.
+
+            Note : (OPTIONAL) A note or comment on the tag group.
 
             Although both tag and subgroup fields are OPTIONAL, at
             least one of these fields MUST appear in a tag-group
@@ -262,13 +316,16 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    006
             the same field value when compared in a case-insensitive
             manner, regardless of the record they are contained in.
 
+
         02-A-c.   Lexeme records
 
             A lexeme record provides information on a lexeme. It
             consists of the following fields, in any order, specified
             by their field names:
 
-            Lexeme : The lexeme itself.
+            Lexeme : The lexeme itself. This MUST be unique across an
+                LDOC; ie., there must not be more than one lexeme
+                record with a given lexeme field.
 
             At : A URI at which information on the lexeme can be
                 retrieved.
@@ -287,19 +344,112 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    006
                 a lexeme. This field MAY appear more than once. The
                 field value of this field is case-insensitive.
 
-            Note : (OPTIONAL) A note or comment on the lexeme record.
 
-
-
-
-
-
-
-WD-0002                                                             006
+WD-0002                                                             007
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    007
+LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    008
+
+
+            Note : (OPTIONAL) A note or comment on the lexeme record.
+
+
+        02-A-d.   Inflection records
+
+            An inflection record provides inflected forms for lexemes.
+            It consists of the following fields, in any order,
+            specified by their field names:
+
+            Inflected : The inflected form
+
+            Of : The lexeme that the record provides an inflection of.
+                This MUST match the lexeme field of a lexeme record,
+                which MUST appear before a given record.
+
+            Pronunciation : (RECOMMENDED) A hint at pronouncing the
+                inflected form.
+
+            Note : (OPTIONAL) A note or comment on the inflection.
+
+
+        02-A-e.   Alternate records
+
+            An alternate record provides alternate forms for lexemes
+            or inflections. It consists of the following fields, in any
+            order, specified by their field names:
+
+            Alternate : The alternate form
+
+            For : The lexeme or inflection that the record provides an
+                alternate for. This MUST match the lexeme field of a
+                lexeme record or the inflected field of an inflection
+                record, either of which MUST appear before the given
+                alternate record.
+
+            Script : (OPTIONAL) A script tag as specified in [BCP47],
+                describing the script that the alternate form is
+                written in. If left unspecified, the script is assumed
+                to be the same as the lexeme that the record provides
+                an alternate for.
+
+
+
+WD-0002                                                             008
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    009
+
+
+            Pronunciation : (OPTIONAL) If the pronunciation of the
+                alternate differs from the original lexeme, a hint at
+                its pronunciation.
+
+            Note : (OPTIONAL) A note or comment on the alternate.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WD-0002                                                             009
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    010
 
 03.   Processing LREC Documents
 
@@ -345,11 +495,11 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    007
 
 
 
-WD-0002                                                             007
+WD-0002                                                             010
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    008
+LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    011
 
 04.   References
 
@@ -395,6 +545,6 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    008
 
 
 
-WD-0002                                                             008
+WD-0002                                                             011
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
