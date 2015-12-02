@@ -282,7 +282,7 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    006
             following fields, in any order, specified by their field
             names:
 
-            Name : The name of the tag-group.
+            Group : The name of the tag-group.
 
             Description : (OPTIONAL) A description of the tag-group.
                 The field value of this field is case-insensitive.
