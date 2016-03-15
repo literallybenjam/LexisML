@@ -286,12 +286,12 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    006
             following fields, in any order, specified by their field
             names:
 
-            Group : The name of the tag-group.
+            Group : The name of the tag-group. This MUST be unique
+                across an LDOC; ie., there must not be more than one
+                tag-group record with a given group field.
 
             Description : (OPTIONAL) A description of the tag-group.
                 The field value of this field is case-insensitive.
-
-
 
 
 
@@ -369,7 +369,7 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    008
             It consists of the following fields, in any order,
             specified by their field names:
 
-            Inflected : The inflected form
+            Inflected : The inflected form.
 
             Of : The lexeme that the record provides an inflection of.
                 This MUST match the lexeme field of a lexeme record,
@@ -381,6 +381,9 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    008
             Note : (OPTIONAL) A note or comment on the inflection. This
                 field MAY appear more than once.
 
+            Any two inflection records in a single LDOC MUST NOT have
+            identical values for both the inflected and of fields.
+
 
         02-A-e.   Alternate records
 
@@ -388,10 +391,7 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    008
             or inflections. It consists of the following fields, in any
             order, specified by their field names:
 
-            Alternate : The alternate form
-
-
-
+            Alternate : The alternate form.
 
 
 
@@ -408,6 +408,10 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    009
                 record, either of which MUST appear before the given
                 alternate record.
 
+            Of : (OPTIONAL) If the for field refers to an inflection,
+                this field MUST match the of field of the corresponding
+                inflection record.
+
             Script : (OPTIONAL) A script tag as specified in [BCP47],
                 describing the script that the alternate form is
                 written in. If left unspecified, the script is assumed
@@ -421,6 +425,13 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    009
             Note : (OPTIONAL) A note or comment on the alternate. This
                 field MAY appear more than once.
 
+            Any two alternate records in a single LDOC MUST NOT have
+            identical values for both the alternate and for fields,
+            when both records provide an alternate form for a lexeme,
+            or identical values for all three of the alternate, for,
+            and of fields, when both records provide an alternate form
+            for an inflection.
+
 
         02-A-f.   Comment records
 
@@ -429,17 +440,6 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    009
 
             Note : (REQUIRED) A note or comment. This field MAY appear
                 more than once.
-
-
-
-
-
-
-
-
-
-
-
 
 
 
