@@ -271,7 +271,11 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    006
                 or achievements of the document. This field MAY appear
                 more than once.
 
+            Frontmatter : (OPTIONAL) A URI at which the frontmatter for
+                the dictionary may be retrieved, if available.
+
             Note : (OPTIONAL) A note or comment on the LDOC as a whole.
+                This field MAY appear more than once.
 
 
         02-A-b.   Tag-group records
@@ -287,10 +291,6 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    006
             Description : (OPTIONAL) A description of the tag-group.
                 The field value of this field is case-insensitive.
 
-            Subgroup : (OPTIONAL) The name of another tag-group which
-                should be considered a part of this one. This field MAY
-                appear more than once. The field value of this field is
-                case-insensitive.
 
 
 
@@ -302,12 +302,18 @@ WD-0002                                                             006
 LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    007
 
 
+            Subgroup : (OPTIONAL) The name of another tag-group which
+                should be considered a part of this one. This field MAY
+                appear more than once. The field value of this field is
+                case-insensitive.
+
             Tag : (OPTIONAL) The name of a tag which should be
                 considered a part of this tag-group. This field MAY
                 appear more than once. The field value of this field is
                 case-insensitive.
 
-            Note : (OPTIONAL) A note or comment on the tag group.
+            Note : (OPTIONAL) A note or comment on the tag group. This
+                field MAY appear more than once.
 
             Although both tag and subgroup fields are OPTIONAL, at
             least one of these fields MUST appear in a tag-group
@@ -337,12 +343,6 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    007
                 metadata record, the language of the lexeme should be
                 inherited from the language of the LDOC as a whole.
 
-            Pronunciation : (RECOMMENDED) A hint at pronouncing the
-                lexeme.
-
-            Tagged : (OPTIONAL) A tag providing more information about
-                a lexeme. This field MAY appear more than once. The
-                field value of this field is case-insensitive.
 
 
 WD-0002                                                             007
@@ -352,7 +352,15 @@ WD-0002                                                             007
 LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    008
 
 
+            Pronunciation : (RECOMMENDED) A hint at pronouncing the
+                lexeme.
+
+            Tagged : (OPTIONAL) A tag providing more information about
+                a lexeme. This field MAY appear more than once. The
+                field value of this field is case-insensitive.
+
             Note : (OPTIONAL) A note or comment on the lexeme record.
+                This field MAY appear more than once.
 
 
         02-A-d.   Inflection records
@@ -370,7 +378,8 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    008
             Pronunciation : (RECOMMENDED) A hint at pronouncing the
                 inflected form.
 
-            Note : (OPTIONAL) A note or comment on the inflection.
+            Note : (OPTIONAL) A note or comment on the inflection. This
+                field MAY appear more than once.
 
 
         02-A-e.   Alternate records
@@ -380,6 +389,18 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    008
             order, specified by their field names:
 
             Alternate : The alternate form
+
+
+
+
+
+
+WD-0002                                                             008
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    009
+
 
             For : The lexeme or inflection that the record provides an
                 alternate for. This MUST match the lexeme field of a
@@ -393,42 +414,21 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    008
                 to be the same as the lexeme that the record provides
                 an alternate for.
 
-
-
-WD-0002                                                             008
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    009
-
-
             Pronunciation : (OPTIONAL) If the pronunciation of the
                 alternate differs from the original lexeme, a hint at
                 its pronunciation.
 
-            Note : (OPTIONAL) A note or comment on the alternate.
+            Note : (OPTIONAL) A note or comment on the alternate. This
+                field MAY appear more than once.
 
 
+        02-A-f.   Comment records
 
+            A comment record inserts a comment into a document. It
+            consists of only one field:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            Note : (REQUIRED) A note or comment. This field MAY appear
+                more than once.
 
 
 
