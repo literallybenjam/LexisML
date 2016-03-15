@@ -303,8 +303,10 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    007
 
 
             Subgroup : (OPTIONAL) The name of another tag-group which
-                should be considered a part of this one. This field MAY
-                appear more than once. The field value of this field is
+                should be considered a part of this one. This MUST
+                match the group field of a tag-group record, which MUST
+                appear before this one. This field MAY appear more than
+                once. The field value of this field is
                 case-insensitive.
 
             Tag : (OPTIONAL) The name of a tag which should be
@@ -340,8 +342,6 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    007
                 the syntax provided in [BCP47], describing the language
                 of the lexeme itself. If this field is absent but the
                 document language field is present in the LDOC's
-                metadata record, the language of the lexeme should be
-                inherited from the language of the LDOC as a whole.
 
 
 
@@ -351,6 +351,8 @@ WD-0002                                                             007
 
 LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    008
 
+                metadata record, the language of the lexeme should be
+                inherited from the language of the LDOC as a whole.
 
             Pronunciation : (RECOMMENDED) A hint at pronouncing the
                 lexeme.
@@ -391,8 +393,6 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    008
             or inflections. It consists of the following fields, in any
             order, specified by their field names:
 
-            Alternate : The alternate form.
-
 
 
 WD-0002                                                             008
@@ -401,6 +401,8 @@ WD-0002                                                             008
 
 LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    009
 
+
+            Alternate : The alternate form.
 
             For : The lexeme or inflection that the record provides an
                 alternate for. This MUST match the lexeme field of a
@@ -440,8 +442,6 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    009
 
             Note : (REQUIRED) A note or comment. This field MAY appear
                 more than once.
-
-
 
 
 
