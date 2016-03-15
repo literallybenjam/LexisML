@@ -52,9 +52,9 @@ WD-0002                                                             001
 LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    002
 
 
+            02-A-f.   Comment records
     03.   Processing LREC Documents
     04.   References
-
 
 
 
