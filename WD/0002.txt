@@ -351,6 +351,7 @@ WD-0002                                                             007
 
 LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    008
 
+
                 metadata record, the language of the lexeme should be
                 inherited from the language of the LDOC as a whole.
 
@@ -392,7 +393,6 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    008
             An alternate record provides alternate forms for lexemes
             or inflections. It consists of the following fields, in any
             order, specified by their field names:
-
 
 
 WD-0002                                                             008
@@ -451,10 +451,10 @@ WD-0002                                                             009
 
 LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    010
 
+
 03.   Processing LREC Documents
 
     [[This section has not yet been written.]]
-
 
 
 
@@ -501,6 +501,7 @@ WD-0002                                                             010
 
 LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    011
 
+
 04.   References
 
     [ART-UNIX] : Eric S. Raymond. "The Art of Unix Programming". 2003.
@@ -523,7 +524,6 @@ LANGDEV          WD-0002 : LEXISML INDEX RECORDS                    011
 
     [WD-0001] : The LANGDEV Project. "LexisML Standards Documents".
         <http://benjam.xyz/LexisML/WD/0001.txt>.
-
 
 
 
